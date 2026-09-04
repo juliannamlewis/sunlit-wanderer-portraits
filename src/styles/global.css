@@ -1,18 +1,26 @@
 :root {
-  --color-bg: #faf6ef;
-  --color-bg-alt: #f2e9da;
-  --color-surface: #ffffff;
-  --color-text: #2b241d;
-  --color-text-muted: #6b6058;
-  --color-accent: #c17a2e;
-  --color-accent-dark: #9c611f;
-  --color-border: #e6dac4;
+  /* Requirements §37 brand palette */
+  --color-forest: #1a2217;
+  --color-cream: #e6caaa;
+  --color-olive: #5f502a;
+  --color-rust: #954c20;
+  --color-soil: #312615;
+  --color-gold: #b68b45;
+
+  --color-bg: var(--color-cream);
+  --color-bg-alt: #dcbb90;
+  --color-surface: #faf3e6;
+  --color-text: var(--color-forest);
+  --color-text-muted: var(--color-olive);
+  --color-accent: var(--color-rust);
+  --color-accent-dark: #723a18;
+  --color-border: #c9ac7c;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   --container-width: 72rem;
-  --radius: 0.5rem;
+  --radius: 0.375rem;
 }
 
 * {
@@ -21,6 +29,19 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
@@ -86,7 +107,7 @@ p { margin: 0 0 1em; }
   justify-content: center;
   gap: 0.5rem;
   padding: 0.85rem 1.6rem;
-  border-radius: 999px;
+  border-radius: 0.3rem;
   font-weight: 600;
   text-decoration: none;
   border: 2px solid var(--color-accent);

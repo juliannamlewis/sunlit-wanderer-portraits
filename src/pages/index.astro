@@ -5,11 +5,23 @@ import GallerySection from '../components/GallerySection.astro';
 import PricingSection from '../components/PricingSection.astro';
 import ReviewsSection from '../components/ReviewsSection.astro';
 import FaqSection from '../components/FaqSection.astro';
-import { site, navLinks } from '../lib/content';
+import { site, pricing, navLinks } from '../lib/content';
+import { loadCopy } from '../lib/markdown';
 import homeGallery from '../content/galleries/home.json';
 import generalFaq from '../content/faq/general.json';
 
 const categoryLinks = navLinks.slice(0, 4);
+const about = loadCopy('about');
+const aboutTeaser = about.html.match(/<p>([\s\S]*?)<\/p>/)?.[1] ?? '';
+
+const howItWorks = [
+  'Choose your session',
+  'See Availability & Book through ShootProof',
+  'Complete a short questionnaire',
+  'Planning & communication as needed',
+  'Your session',
+  `Finished gallery within ${site.delivery.turnaround}`,
+];
 ---
 
 <BaseLayout title={site.site.name} headerVariant="full">
@@ -17,16 +29,44 @@ const categoryLinks = navLinks.slice(0, 4);
     <div class="container hero-inner">
       <span class="eyebrow">{site.site.serviceArea}</span>
       <h1>{site.site.tagline}</h1>
+      <p class="hero-price">Sessions from {pricing.tiers[0].priceDisplay}</p>
       <div class="hero-actions">
+        <a href="#home-gallery" class="btn btn-outline">Portfolio Gallery</a>
         <BookingButton />
-        <a href="#pricing" class="btn btn-outline">See pricing</a>
+      </div>
+      <p class="hero-quiet">
+        Questions? <a href={site.contact.messenger} target="_blank" rel="noopener">{site.contact.messengerLabel}</a>
+      </p>
+    </div>
+  </section>
+
+  <a class="already-booked" href="/prepare">
+    Already booked? Prepare for your session &rarr;
+  </a>
+
+  <section class="section plan-your-session">
+    <div class="container">
+      <h2>Plan Your Session</h2>
+      <div class="steps-grid">
+        <a class="step-card" href="#categories">
+          <span class="step-number">01</span>
+          <span class="step-label">Choose your coverage</span>
+        </a>
+        <a class="step-card" href="#pricing">
+          <span class="step-number">02</span>
+          <span class="step-label">Choose your session</span>
+        </a>
+        <a class="step-card" href="#find-your-setting">
+          <span class="step-number">03</span>
+          <span class="step-label">Find your setting</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="section categories">
+  <section class="section categories" id="categories">
     <div class="container">
-      <h2>Choose your session</h2>
+      <h2>Choose your coverage</h2>
       <div class="category-grid">
         {categoryLinks.map((link) => (
           <a class="category-card" href={link.href}>
@@ -50,11 +90,46 @@ const categoryLinks = navLinks.slice(0, 4);
     <PricingSection />
   </div>
 
+  <section class="section find-your-setting" id="find-your-setting">
+    <div class="container">
+      <h2>Find Your Setting</h2>
+      <p>
+        Gardens, rustic trails, city streets or somewhere meaningful to you. See what
+        some of my favorite {site.site.serviceArea} locations actually look like before
+        choosing.
+      </p>
+      <div class="find-your-setting-actions">
+        <a href="/locations" class="btn">Explore Locations</a>
+      </div>
+      <p class="fine-print">
+        Already have somewhere special in mind?
+        <a href={site.contact.messenger} target="_blank" rel="noopener">Tell me about it.</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section-alt how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <ol class="steps-list">
+        {howItWorks.map((step) => <li>{step}</li>)}
+      </ol>
+    </div>
+  </section>
+
   <ReviewsSection placement="home" />
 
-  <div class="section-alt">
-    <FaqSection title={generalFaq.title} questions={generalFaq.questions} />
-  </div>
+  <FaqSection title={generalFaq.title} questions={generalFaq.questions} />
+
+  {aboutTeaser && (
+    <section class="section-alt about-teaser">
+      <div class="container about-teaser-inner">
+        <h2>Hi, I'm Julie</h2>
+        <p set:html={aboutTeaser} />
+        <a href="/about" class="btn btn-outline btn-small">More about me</a>
+      </div>
+    </section>
+  )}
 
   <section class="section closing-cta">
     <div class="container closing-inner">
@@ -67,7 +142,7 @@ const categoryLinks = navLinks.slice(0, 4);
 
 <style>
   .hero {
-    padding: 4.5rem 0 3.5rem;
+    padding: 4.5rem 0 3rem;
     background: linear-gradient(160deg, var(--color-bg-alt) 0%, var(--color-bg) 70%);
     border-bottom: 1px solid var(--color-border);
   }
@@ -77,13 +152,76 @@ const categoryLinks = navLinks.slice(0, 4);
   }
 
   .hero h1 {
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-price {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-accent-dark);
+    margin-bottom: 1.5rem;
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
+  }
+
+  .hero-quiet {
+    margin: 1.25rem 0 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .already-booked {
+    display: block;
+    text-align: center;
+    padding: 0.9rem 1rem;
+    background: var(--color-soil);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .already-booked:hover {
+    background: var(--color-forest);
+  }
+
+  .steps-grid {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 720px) {
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .step-card {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .step-number {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .step-label {
+    font-weight: 600;
   }
 
   .category-grid {
@@ -121,6 +259,35 @@ const categoryLinks = navLinks.slice(0, 4);
 
   .category-arrow {
     color: var(--color-accent);
+  }
+
+  .find-your-setting p {
+    max-width: 42rem;
+  }
+
+  .find-your-setting-actions {
+    margin: 1.25rem 0;
+  }
+
+  .fine-print {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .steps-list {
+    margin: 1.5rem 0 0;
+    padding-left: 1.25rem;
+    display: grid;
+    gap: 0.6rem;
+    max-width: 32rem;
+  }
+
+  .about-teaser-inner {
+    max-width: 34rem;
+  }
+
+  .about-teaser p {
+    color: var(--color-text-muted);
   }
 
   .closing-cta {
