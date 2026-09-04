@@ -28,6 +28,7 @@ public/images/            images, organised by gallery
 | File | Purpose |
 |---|---|
 | `HANDOFF.md` | State of the build. Read first. |
+| `HOW_TO_UPDATE_SITE.md` | Nondeveloper guide to changing content, images, and pages yourself |
 | `CONTENT_CHECKLIST.md` | Everything missing or undecided |
 | `PENDING_IMAGES.md` | Work order for watermarked originals |
 | `RELEASE_REVIEW.md` | Quarterly model-release audit |
