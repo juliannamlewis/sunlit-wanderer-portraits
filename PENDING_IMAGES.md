@@ -85,17 +85,19 @@ anywhere but a phone thumbnail. Worth finding at full size or skipping.
 
 ## Priority 6 — Railroad yard
 
-Approved for use as portfolio images. **Not listed as a location** — the site is
-now posted no-trespassing. See the note in CONTENT_CHECKLIST.md about how these
-are framed.
+**Decided (2026-09-04):** use exactly **one** of these three, not all three.
+Approved for use as a portfolio image. **Not listed as a location** — the
+property has a new owner who doesn't want photographers using the site
+(liability), on top of the no-trespassing signs. See
+`REQUIREMENTS_CHANGELOG_v1.5.md`.
+
+Pick whichever of the three exports cleanest; only one needs to be sourced.
 
 | Source | Target filename | Folder |
 |---|---|---|
 | IMG_0350 — balancing on the rail | `seniors-09-rail-balance.jpg` | `public/images/seniors/` |
 | IMG_0345 — lying on the flatbed | `seniors-10-flatbed-recline.jpg` | `public/images/seniors/` |
 | IMG_0344 — seated in the boxcar door | `seniors-11-boxcar-doorway.jpg` | `public/images/seniors/` |
-
-Recommend using **one**, not all three. Reasoning in the checklist.
 
 ---
 

@@ -15,19 +15,25 @@ order. Two Families frames sit at the top of it.
 
 ---
 
-## Two judgement calls to make
-
-**The railroad yard images.** Approved for use, and they're strong — the
-balancing frame especially. But the site is now posted no-trespassing, which
-means a senior who sees them and asks for that look gets told no, at the exact
-moment they're most excited. Three of them makes it read like a location you
-offer. **Recommend using one, not three,** and letting it sit alongside the
-"somewhere that means something to you" idea rather than looking like a menu
-item.
+## One judgement call remaining
 
 **The "SENIOR 2018" graphic** on the softball portrait dates your most recent
 sports work to eight years ago, on a page selling 2026 sessions. Worth finding
 an un-stamped version if one exists.
+
+---
+
+## Resolved — railroad yard images (2026-09-04)
+
+**Decided.** Use exactly one railroad-yard image, in the Seniors gallery only
+— never listed as a location. The property has a new owner who doesn't want
+photographers using the site (liability), a firmer reason than the
+no-trespassing signs alone and one that should be treated as permanent. Past
+portraits taken there are fine to keep using as portfolio images; it's future
+use of the location that's off the table. See `REQUIREMENTS_CHANGELOG_v1.5.md`.
+
+Still blocked only on locating and exporting the actual file — see
+`PENDING_IMAGES.md` Priority 6.
 
 ---
 
