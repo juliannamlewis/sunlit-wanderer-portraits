@@ -1,0 +1,24 @@
+{
+  "_comment": "One file per location. Empty fields simply do not display — leave a field blank rather than guessing. The 'status' field controls visibility: draft = exists in the files but does not appear on the site.",
+  "id": "sycamore-state-park",
+  "name": "Sycamore State Park",
+  "status": "published",
+  "availability": "year-round",
+  "availabilityWindow": "",
+  "accessNote": "",
+  "shortDescription": "A half-mile walk that turns into a family adventure — scenic trails, rustic steps, and a large pond at the end. Peaceful, lovely in the fall, and often completely empty.",
+  "bestFor": "Families with kids old enough to enjoy a walk, and anyone who wants trails and open water rather than manicured gardens.",
+  "walkingLevel": "About a half mile to the pond, on natural trails with some rustic steps.",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": [
+    "Fall",
+    "Spring",
+    "Summer"
+  ],
+  "seasonalNote": "Fall is the standout here — the color along the trails is genuinely worth timing a session around.",
+  "images": [],
+  "video": "",
+  "_status": "Description and walking level confirmed. Restrooms, parking and accessibility still need to be verified on site. Images not selected."
+}

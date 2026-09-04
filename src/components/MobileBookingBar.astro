@@ -1,0 +1,41 @@
+---
+import BookingButton from './BookingButton.astro';
+---
+
+<div class="mobile-booking-bar">
+  <BookingButton class="mobile-book-btn" />
+</div>
+
+<style is:global>
+  @media (max-width: 720px) {
+    body {
+      padding-bottom: 4.75rem;
+    }
+  }
+</style>
+
+<style>
+  .mobile-booking-bar {
+    display: none;
+  }
+
+  @media (max-width: 720px) {
+    .mobile-booking-bar {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      padding: 0.65rem 1rem;
+      background: rgba(250, 246, 239, 0.97);
+      backdrop-filter: blur(6px);
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  .mobile-booking-bar :global(.mobile-book-btn) {
+    display: flex;
+    width: 100%;
+  }
+</style>

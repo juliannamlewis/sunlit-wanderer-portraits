@@ -1,0 +1,23 @@
+{
+  "_comment": "PROPOSED — not yet approved. A location entry for places the client brings rather than places Julie has scouted. Requirements §9 already promise 'Already have somewhere special in mind? Tell me about it' on the homepage; this gives that promise somewhere to land, and gives the school-shot sports images a home that isn't tied to a park Julie can offer. Set status to 'published' to turn it on, or delete this file to drop the idea.",
+  "id": "your-own-location",
+  "name": "Somewhere That Means Something to You",
+  "status": "draft",
+  "availability": "year-round",
+  "availabilityWindow": "",
+  "accessNote": "",
+  "isProposal": true,
+  "sortLast": true,
+  "shortDescription": "Your school's field or track. The farm you grew up on. The street you got engaged on. Your own back garden. Some of the best sessions happen somewhere I'd never have picked, because the place is already part of the story.",
+  "bestFor": "Seniors with a sport, a barn, a shop or a stage that matters to them, and anyone whose meaningful place beats a pretty one.",
+  "walkingLevel": "",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": [],
+  "seasonalNote": "",
+  "practicalNote": "A few things to check first: whether the property is public or needs permission, whether there's somewhere to park, and what the light does there at the time we'd be shooting. Message me with the spot and I'll tell you honestly whether it will work.",
+  "images": [],
+  "video": "",
+  "_status": "Proposal only. If approved, the two school sports frames belong here as well as in the Seniors gallery — they demonstrate exactly this idea and currently have no location home."
+}

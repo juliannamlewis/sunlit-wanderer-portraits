@@ -1,0 +1,35 @@
+{
+  "_comment": "SEASONAL LOCATION. Available only in a short window each year. Rendered in a separate 'Seasonal & Limited' group on the Locations page so nobody books a February session expecting sunflowers.",
+  "id": "sunflower-field",
+  "name": "Tecumseh Sunflower Field, Yellow Springs",
+  "status": "draft",
+  "availability": "seasonal",
+  "availabilityWindow": "Roughly August into September, depending on the season",
+  "accessNote": "",
+  "shortDescription": "Acres of sunflowers at head height, all facing the same way, going gold in the last hour of light. There is no subtle version of this location and that's the appeal — it photographs like nowhere else in the area, and it's only itself for a few weeks a year.",
+  "bestFor": "Seniors and anyone who wants colour that does the work for them. Also lovely with children, though the plants are tall enough to swallow a toddler.",
+  "walkingLevel": "",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": [
+    "Late summer"
+  ],
+  "seasonalNote": "The bloom window is short and moves with the weather. If you want this one, book early and stay flexible — I'll tell you honestly how the field is looking.",
+  "images": [
+    {
+      "file": "sunflower-01-holding-bloom.jpg",
+      "alt": "A high-school senior standing in a sunflower field, holding one bloom, a flower tucked behind her ear"
+    },
+    {
+      "file": "sunflower-02-black-dress-turn.jpg",
+      "alt": "A senior in a black dress turning back toward the camera amid rows of sunflowers"
+    },
+    {
+      "file": "sunflower-03-armful-of-blooms.jpg",
+      "alt": "A senior laughing and holding up a handful of cut sunflowers in a field of blooms"
+    }
+  ],
+  "video": "",
+  "_status": "Name confirmed. 3 clean images placed; 1 more takes it over the §9 minimum (see PENDING_IMAGES.md). Access terms still to confirm — whether the field is open to photography freely, by fee, or by arrangement. Yellow Springs is outside the usual 30-mile framing, so check whether a travel note is needed."
+}

@@ -1,0 +1,59 @@
+{
+  "_comment": "Client reviews pulled from the Facebook page. First name + single last initial only, never a full last name and never a date. The 'placement' field controls which page a review appears on. Maternity intentionally has no review — the slot stays empty rather than borrowing an unrelated one.",
+
+  "reviews": [
+    {
+      "id": "curtis-h",
+      "name": "Curtis H.",
+      "placement": "home",
+      "order": 1,
+      "theme": "Reluctant kids relaxed and let their personalities show",
+      "text": "Anyone can take a picture. Julie captured a moment and made it art. My kids were reluctant to have their pictures taken. Julie made them feel relaxed and let them be themselves and let their personalities shine through on 'film.' I couldn't be happier with the results!"
+    },
+    {
+      "id": "marianne-m",
+      "name": "Marianne M.",
+      "placement": "home",
+      "order": 2,
+      "theme": "Communication before and after, comfort, wanting the photos on the wall",
+      "text": "My family had so much fun doing our photoshoot with Julie. She had fun, creative ideas for us to do and props to bring. She kept in contact with us prior to the shoot and after. We felt comfortable and had so much fun. I highly recommend her. The photos turned out amazing. I cannot wait to hang them in my home!"
+    },
+    {
+      "id": "emily-a",
+      "name": "Emily A.",
+      "placement": "home",
+      "order": 3,
+      "theme": "Creative collaboration — originally an engagement session review",
+      "text": "Julie is such a fantastic photographer! She takes your ideas and creates amazing pictures! She is such an outgoing, energetic person and I couldn't have asked for a better engagement photo session. I highly recommend her!"
+    },
+    {
+      "id": "chris-l",
+      "name": "Chris L.",
+      "placement": "families",
+      "order": 1,
+      "theme": "Making family pictures fun for children",
+      "text": "Can't thank you enough for the session today Julie! We had a blast and you're an expert at getting kids to find the fun in family pictures. Awesome job, thanks again!"
+    },
+    {
+      "id": "brie-f",
+      "name": "Brie F.",
+      "placement": "seniors",
+      "order": 1,
+      "theme": "Coaching and encouragement during the shoot",
+      "text": "I'm a makeup artist who has had the pleasure of working with Julie and she's so professional and kind. I love a photographer that can coach you and give you encouragement through the shots. She's awesome!"
+    },
+    {
+      "id": "jamie-p",
+      "name": "Jamie P.",
+      "placement": "couples",
+      "order": 1,
+      "theme": "Patience, and letting clients choose shots they wanted",
+      "text": "Julie is absolutely amazing! She is so patient and has a good eye! If you are looking for a great photographer, she's the one! I loved that she let us pick some certain shots we wanted as well! Will definitely be using her again."
+    }
+  ],
+
+  "_placementNotes": {
+    "maternity": "No review exists. Slot stays empty by decision, not by oversight.",
+    "observation": "Emily A.'s review names an engagement session specifically, and Jamie P.'s is more general. If you ever want them swapped, Emily A. would read more naturally on the Couples page and Jamie P. on the homepage. Changelog v1.1 §8 assigns them as written above, so they are left as approved."
+  }
+}

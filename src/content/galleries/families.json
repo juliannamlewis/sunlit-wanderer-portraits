@@ -1,0 +1,21 @@
+{
+  "_comment": "Ordered list of images for the Families & Kids gallery. Order matters — the first image leads the page. To swap an image, replace the filename and rewrite the alt text. Files live in public/images/families/. Never include a child's name or age in alt text (Requirements §28).",
+  "category": "Families & Kids",
+  "images": [
+    { "file": "families-01-pink-dress-fence.jpg", "alt": "A young girl in a pink dress standing at a wooden fence in late afternoon light" },
+    { "file": "families-02-overhead-quilt-bw.jpg", "alt": "Black and white overhead photograph of a family lying together on a quilt in the grass" },
+    { "file": "families-03-mother-daughter-fence.jpg", "alt": "A mother and her daughter leaning together against a fence, laughing" },
+    { "file": "families-04-flower-in-hair-bw.jpg", "alt": "Black and white close portrait of a girl with a flower tucked into her hair" },
+    { "file": "families-05-siblings-cheek-to-cheek.jpg", "alt": "Two young siblings pressed cheek to cheek outdoors" },
+    { "file": "families-06-baby-teddy-bear.jpg", "alt": "A baby holding a teddy bear, photographed outdoors in soft light" },
+    { "file": "families-07-boy-boardwalk.jpg", "alt": "A young boy walking along a wooden boardwalk through tall grass" }
+  ],
+  "_gapsToFill": [
+    "Boys past toddler age",
+    "Babies and toddlers",
+    "Larger families of five or more",
+    "Engaged, involved dads",
+    "Autumn and winter sessions"
+  ],
+  "_excluded": "Three family images in matching white tops and khakis (they contradict the coordinate-don't-match guidance on the What to Wear page), two kids by the pond (wide-angle distortion, cluttered background), and girl with long shadow (dated processing)."
+}

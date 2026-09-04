@@ -1,0 +1,209 @@
+---
+import { site, navLinks } from '../lib/content';
+import BookingButton from './BookingButton.astro';
+
+export interface Props {
+  variant?: 'full' | 'compact';
+}
+
+const { variant = 'compact' } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark">
+      {variant === 'full' ? (
+        <span class="wordmark-full">{site.site.name}</span>
+      ) : (
+        <span class="wordmark-compact">
+          <span class="sun-icon" aria-hidden="true">&#9728;</span>
+          <span>{site.site.name}</span>
+        </span>
+      )}
+    </a>
+
+    <button
+      type="button"
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="visually-hidden">Menu</span>
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav">
+      <ul>
+        {navLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+      <BookingButton class="header-book btn-small" />
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 246, 239, 0.97);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .wordmark {
+    text-decoration: none;
+    color: var(--color-text);
+    font-family: var(--font-display);
+    flex-shrink: 0;
+  }
+
+  .wordmark-full {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .wordmark-compact {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .sun-icon {
+    color: var(--color-accent);
+    font-size: 1.3rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .nav-toggle-bars,
+  .nav-toggle-bars::before,
+  .nav-toggle-bars::after {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background: var(--color-text);
+    content: '';
+    transition: transform 0.15s ease;
+  }
+
+  .nav-toggle-bars {
+    position: relative;
+  }
+
+  .nav-toggle-bars::before {
+    position: absolute;
+    top: -6px;
+  }
+
+  .nav-toggle-bars::after {
+    position: absolute;
+    top: 6px;
+  }
+
+  .site-nav {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform 0.2s ease;
+    padding: 2rem;
+  }
+
+  .site-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .site-nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+  }
+
+  .header-book {
+    white-space: nowrap;
+  }
+
+  @media (min-width: 860px) {
+    .nav-toggle {
+      display: none;
+    }
+
+    .site-nav {
+      position: static;
+      transform: none;
+      flex-direction: row;
+      background: transparent;
+      padding: 0;
+      gap: 1.75rem;
+    }
+
+    .site-nav ul {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+
+    .site-nav a {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+  }
+</style>

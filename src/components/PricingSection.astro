@@ -1,0 +1,108 @@
+---
+import { pricing } from '../lib/content';
+import BookingButton from './BookingButton.astro';
+
+export interface Props {
+  category?: keyof typeof pricing.whichFits.byCategory;
+}
+
+const { category } = Astro.props;
+const categoryGuidance = category ? pricing.whichFits.byCategory[category] : null;
+---
+
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <span class="eyebrow">Pricing</span>
+    <h2>{pricing.whichFits.heading}</h2>
+    <p class="pricing-intro">{pricing.whichFits.intro}</p>
+
+    <div class="pricing-grid">
+      {pricing.tiers.map((tier) => (
+        <div class="pricing-card">
+          <h3>{tier.name}</h3>
+          <p class="price">{tier.priceDisplay}</p>
+          <p class="duration">{tier.duration} &middot; {tier.minimumImagesDisplay}</p>
+          <p class="best-for">{tier.bestFor}</p>
+          {categoryGuidance && (
+            <p class="category-fit">{categoryGuidance[tier.id]}</p>
+          )}
+          <ul>
+            {tier.includes.map((line) => (
+              <li>{line}</li>
+            ))}
+          </ul>
+          <BookingButton tierKey={tier.bookingUrlKey} class="btn-small" />
+        </div>
+      ))}
+    </div>
+
+    <p class="pricing-note">{pricing.universalPolicy.includesLine}</p>
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    padding: 3rem 0;
+  }
+
+  .pricing-intro {
+    max-width: 42rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 780px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pricing-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin: 0.2rem 0;
+    color: var(--color-accent-dark);
+  }
+
+  .duration {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .best-for {
+    font-style: italic;
+  }
+
+  .category-fit {
+    font-size: 0.92rem;
+  }
+
+  .pricing-card ul {
+    margin: 0 0 1.25rem;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    flex-grow: 1;
+  }
+
+  .pricing-note {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    max-width: 46rem;
+  }
+</style>

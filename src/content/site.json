@@ -1,0 +1,117 @@
+{
+  "_comment": "Every external link and site-wide setting lives here. Change it once, it updates everywhere. Empty strings do not display anywhere on the site — leave a value blank rather than inventing one.",
+  "site": {
+    "name": "The Sunlit Wanderer",
+    "tagline": "Relaxed portrait photography in Dayton, Ohio and surrounding areas.",
+    "title": "The Sunlit Wanderer — Portrait Photography in Dayton, Ohio",
+    "metaDescription": "Relaxed, outdoor portrait photography for families, high-school seniors, maternity and couples in Dayton, Ohio and surrounding communities. Sessions from $150.",
+    "url": "https://portraits.thesunlitwanderer.com",
+    "serviceArea": "Dayton, Ohio and surrounding communities",
+    "serviceRadiusNote": "Sessions are generally within about 30 miles of Dayton. Farther locations can be arranged individually and may include a travel fee, which is always discussed before booking."
+  },
+  "booking": {
+    "_comment": "ShootProof handles booking, contracts, questionnaires, invoices and client galleries. All three URLs verified working September 3, 2026.",
+    "all": "https://thesunlitwanderer.shootproof.com/booking",
+    "short": "https://thesunlitwanderer.shootproof.com/booking/the-short",
+    "standard": "https://thesunlitwanderer.shootproof.com/booking/the-standard",
+    "extended": "https://thesunlitwanderer.shootproof.com/booking/the-extended"
+  },
+  "contact": {
+    "_comment": "Messenger is primary. The m.me link must ALWAYS render as a button labeled 'Message me' — never as a visible URL. The Google Voice number is the only number published anywhere.",
+    "messenger": "https://m.me/311951671232",
+    "messengerLabel": "Message me",
+    "phoneDisplay": "(513) 318-7278",
+    "phoneSms": "sms:+15133187278",
+    "phoneTel": "tel:+15133187278"
+  },
+  "social": {
+    "_comment": "Facebook URL needs to be confirmed on a phone before launch — the page has no username, so the numeric-ID form is the only option. Instagram and TikTok are blank until the handles are confirmed; blank means the icon simply does not render.",
+    "facebook": "https://www.facebook.com/311951671232",
+    "instagram": "",
+    "tiktok": "",
+    "pinterest": "https://www.pinterest.com/thesunlitwanderer/"
+  },
+  "shop": {
+    "label": "Looking for wall art? Visit The Sunlit Wanderer Shop",
+    "url": "https://thesunlitwanderer.com"
+  },
+  "pinterestBoards": {
+    "_comment": "Eleven boards. Nine link from session pages at launch. The two under 'usingYourPortraits' are reserved for the future Resources page and must not be linked yet. Labels are the board names as shown on Pinterest — the URL slugs do not always match, which is fine.",
+    "families": [
+      {
+        "label": "Families & Kids Portraits Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/families-kids-portraits-inspiration/"
+      },
+      {
+        "label": "Families & Kids Outfits & Props Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/families-kids-outfits-props-inspiration/"
+      }
+    ],
+    "seniors": [
+      {
+        "label": "High School Senior Boys Portraits Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/high-school-senior-boys-portraits-inspiration/"
+      },
+      {
+        "label": "High School Senior Girls Portraits Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/high-school-senior-girls-portraits-inspiration/"
+      },
+      {
+        "label": "High School Seniors Outfits & Props Ideas",
+        "url": "https://www.pinterest.com/thesunlitwanderer/high-school-seniors-outfits-props-ideas/"
+      }
+    ],
+    "maternity": [
+      {
+        "label": "Maternity Portraits Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/maternity-portraits-inspiration/"
+      },
+      {
+        "label": "Maternity Outfits & Props Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/maternity-outfits-props-inspiration/"
+      }
+    ],
+    "couples": [
+      {
+        "label": "Couples & Engagement Portraits Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/couples-engagement-portraits-inspiration/"
+      },
+      {
+        "label": "Couples & Engagement Outfits & Props Inspiration",
+        "url": "https://www.pinterest.com/thesunlitwanderer/couples-engagement-props-inspiration/"
+      }
+    ],
+    "usingYourPortraits": [
+      {
+        "label": "Choosing the Right Size Art for Your Walls",
+        "url": "https://www.pinterest.com/thesunlitwanderer/choosing-right-size-art-for-your-walls/",
+        "linkedAtLaunch": false
+      },
+      {
+        "label": "Decorate Your Home & Photo Gift Ideas",
+        "url": "https://www.pinterest.com/thesunlitwanderer/decorate-your-home-photo-gifts-ideas/",
+        "linkedAtLaunch": false
+      }
+    ]
+  },
+  "delivery": {
+    "_comment": "The all-inclusive delivery model. Locked — do not change without a requirements amendment.",
+    "turnaround": "7–10 business days",
+    "galleryWindow": "30 days",
+    "editRequestWindow": "7 days after your gallery is delivered"
+  },
+  "analytics": {
+    "_comment": "No analytics or tracking at launch, by requirement §47. This flag exists so the decision is visible rather than forgotten.",
+    "enabled": false
+  },
+  "policies": {
+    "_comment": "Canonical wording for the booking and weather policies. These are echoed in faq/general.json and copy/prepare.md — if you change a policy, change it in all three places. The ShootProof contract is the legally binding version; this is the plain-English one.",
+    "paymentAtBooking": "Nothing is due when you book.",
+    "paymentDue": "Payment in full is due by the date of your session, invoiced through ShootProof.",
+    "rescheduling": "With at least 24 hours' notice you can reschedule or move your session. Short-notice illness and genuine emergencies are handled case by case — just let me know as soon as you can.",
+    "weather": "If weather makes a session impractical and I'm the one calling it, rescheduling never costs you anything.",
+    "tipping": "disabled",
+    "_contingency": "If two no-shows or unpaid sessions occur, revisit a 10% nonrefundable booking fee — $15 / $27.50 / $47.50. ShootProof supports full payment upfront, a percentage of the session fee, or payment due by the session date. A flat $25 across all tiers is not possible.",
+    "salesTax": "No sales tax collected. Determination: this model delivers digital files through ShootProof only, with no physical product sold or shipped."
+  }
+}

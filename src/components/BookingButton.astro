@@ -1,0 +1,26 @@
+---
+import { bookingUrl, type BookingKey } from '../lib/content';
+
+export interface Props {
+  tierKey?: BookingKey;
+  label?: string;
+  class?: string;
+  outline?: boolean;
+}
+
+const {
+  tierKey = 'all',
+  label = 'See Availability & Book',
+  class: className = '',
+  outline = false,
+} = Astro.props;
+---
+
+<a
+  href={bookingUrl(tierKey)}
+  target="_blank"
+  rel="noopener"
+  class={`btn ${outline ? 'btn-outline' : ''} ${className}`.trim()}
+>
+  {label}
+</a>

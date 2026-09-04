@@ -1,0 +1,37 @@
+{
+  "_comment": "Split out from Downtown Dayton per Changelog v1.3. Minutes from the Oregon District but a completely different look, which is the point — two stops, two moods, one evening.",
+  "id": "dayton-art-institute",
+  "name": "The Dayton Art Institute",
+  "status": "published",
+  "availability": "year-round",
+  "availabilityWindow": "",
+  "accessNote": "Access confirmed — Julie's husband retired from the Art Institute. Relationship-based rather than formal; re-check annually (see RELEASE_REVIEW.md).",
+  "shortDescription": "Stone balustrades, wide terraces and the whole city spread out behind you — the river, the bridges, the skyline. Architectural and a little grand, without feeling stiff.",
+  "bestFor": "Seniors and couples who want something with structure and scale behind them. Pairs naturally with the Oregon District, a few minutes away.",
+  "walkingLevel": "",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": [],
+  "seasonalNote": "",
+  "images": [
+    {
+      "file": "dai-01-balustrade-city-view.jpg",
+      "alt": "A high-school senior in a green dress leaning against a stone balustrade with the Dayton skyline and river behind her"
+    },
+    {
+      "file": "dai-02-balustrade-river-profile.jpg",
+      "alt": "A senior turning back toward the camera at a stone balustrade above the river, city buildings in the distance"
+    },
+    {
+      "file": "dai-03-stone-steps.jpg",
+      "alt": "A high-school senior seated on wide stone steps at golden hour, stonework and warm light behind him"
+    },
+    {
+      "file": "dai-04-balustrade-skyline-bw.jpg",
+      "alt": "Black and white photograph of a senior seated on the stone balustrade above the river, city buildings behind him"
+    }
+  ],
+  "video": "",
+  "_status": "Description written. 4 images — meets the 4–10 range. Walking, restrooms, parking and accessibility still to confirm. Images are below the 2000px export standard; replace with full-resolution originals when located."
+}

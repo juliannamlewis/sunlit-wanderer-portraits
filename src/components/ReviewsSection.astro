@@ -1,0 +1,64 @@
+---
+import { reviewsFor } from '../lib/content';
+
+export interface Props {
+  placement: string;
+  heading?: string;
+}
+
+const { placement, heading = 'What clients say' } = Astro.props;
+const items = reviewsFor(placement);
+---
+
+{items.length > 0 && (
+  <section class="reviews-section">
+    <div class="container">
+      <h2>{heading}</h2>
+      <div class="review-grid">
+        {items.map((r) => (
+          <blockquote class="review-card">
+            <p>&ldquo;{r.text}&rdquo;</p>
+            <footer>&mdash; {r.name}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .reviews-section {
+    padding: 2.5rem 0;
+  }
+
+  .review-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  @media (min-width: 720px) {
+    .review-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .review-card {
+    margin: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .review-card p {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .review-card footer {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+  }
+</style>

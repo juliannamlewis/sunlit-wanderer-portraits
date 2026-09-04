@@ -1,0 +1,20 @@
+{
+  "_comment": "SEASONAL LOCATION. Permission must be renewed annually — typically requested Aug/Sept for a Nov/Dec season. Do not publish until this year's permission is confirmed in writing.",
+  "id": "christmas-tree-farm",
+  "name": "NEEDS NAME — Christmas tree farm",
+  "status": "draft",
+  "availability": "seasonal",
+  "availabilityWindow": "November and December only",
+  "accessNote": "Access is by arrangement with the farm and is renewed each year. Permission for the current season is NOT yet confirmed.",
+  "shortDescription": "",
+  "bestFor": "Families wanting holiday-card photographs, and anyone who'd rather make the picture part of a day out than treat it as an errand.",
+  "walkingLevel": "",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": ["Late autumn", "Winter"],
+  "seasonalNote": "",
+  "images": [],
+  "video": "",
+  "_status": "DRAFT and BLOCKED. Two prerequisites before this can publish: (1) written permission from the farm for the current season, requested Aug/Sept; (2) photographs. Well suited to golden-hour mini sessions rather than standard tiers — see BACKLOG.md."
+}

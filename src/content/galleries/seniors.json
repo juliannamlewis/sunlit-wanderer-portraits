@@ -1,0 +1,42 @@
+{
+  "_comment": "Ordered list of images for the High-School Seniors gallery. Files live in public/images/seniors/. Naming: seniors-01-short-description.jpg. EMPTY UNTIL SELECTED.",
+  "category": "High-School Seniors",
+  "images": [
+    {
+      "file": "seniors-01-garden-bench-backlight.jpg",
+      "alt": "A high-school senior seated on an ornate iron bench in a garden, backlit by low evening sun"
+    },
+    {
+      "file": "seniors-03-soccer-bleachers.jpg",
+      "alt": "A high-school senior in a soccer jersey and cleats seated on stadium bleachers, holding a ball"
+    },
+    {
+      "file": "seniors-06-balustrade-skyline-bw.jpg",
+      "alt": "Black and white portrait of a senior seated on a stone balustrade, looking out over the Dayton skyline"
+    },
+    {
+      "file": "seniors-04-track-lanes.jpg",
+      "alt": "A high-school senior in track kit crouched on the lane markings of a school running track, smiling"
+    },
+    {
+      "file": "seniors-05-brick-wall-crouch.jpg",
+      "alt": "A senior in a denim jacket crouched against a weathered painted brick wall, autumn leaves at his feet"
+    },
+    {
+      "file": "seniors-02-laughing-sidewalk.jpg",
+      "alt": "A high-school senior crouched on a city sidewalk, laughing, backlit by late afternoon light"
+    },
+    {
+      "file": "seniors-07-sunflower-field.jpg",
+      "alt": "A high-school senior in a black dress turning back toward the camera in a field of sunflowers"
+    },
+    {
+      "file": "seniors-08-softball-jersey.jpg",
+      "alt": "A high-school senior in a softball jersey holding a ball out toward the camera on a sunlit field"
+    }
+  ],
+  "_status": "8 images placed from five sessions, interleaved so no single shoot reads as a block. Two frames (soccer, track) are still the watermarked versions pending originals.",
+  "_selectionGuidance": "Aim for a spread that speaks to both audiences: a few personality-driven, model-like frames the senior would choose, and a few timeless portraits a parent would want for announcements and graduation displays. Show at least one senior with something meaningful to them — an instrument, uniform, sport, vehicle, animal — since that is the whole argument for a personalized senior session.",
+  "_actionRequired": "seniors-03-soccer-bleachers.jpg and seniors-04-track-lanes.jpg are currently the WATERMARKED versions. Replace with clean originals under the same filenames. All six new files are also below the 2000px export standard — replace with full-resolution originals when located.",
+  "_concentrationNote": "Six of the eight are family members — one granddaughter, one niece. Acceptable as a bridge, but this is exactly what the January 2027 review exists to correct. Prioritise replacing these with paying-client work covered by signed releases."
+}

@@ -1,0 +1,19 @@
+{
+  "id": "cox-arboretum",
+  "name": "Cox Arboretum MetroPark",
+  "status": "draft",
+  "availability": "year-round",
+  "availabilityWindow": "",
+  "accessNote": "",
+  "shortDescription": "",
+  "bestFor": "",
+  "walkingLevel": "",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": [],
+  "seasonalNote": "",
+  "images": [],
+  "video": "",
+  "_status": "Deferred. No usable images with current releases. Exists in the files, invisible on the site. Flip status to 'published' when ready."
+}

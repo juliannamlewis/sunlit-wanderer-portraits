@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingButton from '../components/BookingButton.astro';
+import GallerySection from '../components/GallerySection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import { site, navLinks } from '../lib/content';
+import homeGallery from '../content/galleries/home.json';
+import generalFaq from '../content/faq/general.json';
+
+const categoryLinks = navLinks.slice(0, 4);
+---
+
+<BaseLayout title={site.site.name} headerVariant="full">
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="eyebrow">{site.site.serviceArea}</span>
+      <h1>{site.site.tagline}</h1>
+      <div class="hero-actions">
+        <BookingButton />
+        <a href="#pricing" class="btn btn-outline">See pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section categories">
+    <div class="container">
+      <h2>Choose your session</h2>
+      <div class="category-grid">
+        {categoryLinks.map((link) => (
+          <a class="category-card" href={link.href}>
+            <span>{link.label}</span>
+            <span class="category-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <GallerySection
+    id="home-gallery"
+    folder="home"
+    images={homeGallery.images}
+    eyebrow="Portfolio"
+    title="A little of everything"
+  />
+
+  <div class="section-alt">
+    <PricingSection />
+  </div>
+
+  <ReviewsSection placement="home" />
+
+  <div class="section-alt">
+    <FaqSection title={generalFaq.title} questions={generalFaq.questions} />
+  </div>
+
+  <section class="section closing-cta">
+    <div class="container closing-inner">
+      <h2>Ready when you are</h2>
+      <p>{site.site.serviceRadiusNote}</p>
+      <BookingButton />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 4.5rem 0 3.5rem;
+    background: linear-gradient(160deg, var(--color-bg-alt) 0%, var(--color-bg) 70%);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-inner {
+    max-width: 42rem;
+  }
+
+  .hero h1 {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .category-grid {
+    display: grid;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .category-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 1.6rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--color-text);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    transition: border-color 0.15s ease, transform 0.1s ease;
+  }
+
+  .category-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .category-arrow {
+    color: var(--color-accent);
+  }
+
+  .closing-cta {
+    text-align: center;
+  }
+
+  .closing-inner {
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+</style>

@@ -1,0 +1,35 @@
+{
+  "id": "wegerzyn-gardens",
+  "name": "Wegerzyn Gardens",
+  "status": "published",
+  "availability": "year-round",
+  "availabilityWindow": "",
+  "accessNote": "",
+  "shortDescription": "Flowers everywhere, arbors, and little hidden pockets around every corner — plus a few surprises tucked in just for the little ones.",
+  "bestFor": "Anyone who wants color and structure, and families with young children who do better when there's something to discover.",
+  "walkingLevel": "",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": [
+    "Late spring",
+    "Summer"
+  ],
+  "seasonalNote": "Late spring through late summer is when this one is at its best.",
+  "images": [
+    {
+      "file": "wegerzyn-01-wooded-boardwalk.jpg",
+      "alt": "A high-school senior leaning on the rail of a wooden boardwalk surrounded by dense green summer foliage"
+    },
+    {
+      "file": "wegerzyn-02-garden-bench-backlight.jpg",
+      "alt": "A senior seated on an ornate iron bench in the gardens, backlit by low sun through the planting"
+    },
+    {
+      "file": "wegerzyn-03-iron-arbor-path.jpg",
+      "alt": "A senior standing beneath a tall iron arbor on a paved garden path, clipped hedges and a statue beyond"
+    }
+  ],
+  "video": "",
+  "_status": "Description confirmed. 3 of 4–10 images. Walking level, restrooms, parking and accessibility still to confirm."
+}

@@ -1,0 +1,46 @@
+{
+  "_comment": "Homepage FAQ. Renders as collapsible accordions. Booking and weather answers must match the canonical wording in site.json > policies. Keep answers short enough to read on a phone in twenty seconds.",
+  "title": "Common questions",
+  "questions": [
+    {
+      "q": "How do I book?",
+      "a": "Pick the session that fits what you're after, then tap See Availability & Book. That takes you to my booking system, where you'll pick a date and time and fill out a short questionnaire. I'll read it and get in touch the way you tell me you prefer."
+    },
+    {
+      "q": "What do I pay, and when?",
+      "a": "Nothing is due when you book. Payment in full is due by the date of your session, and you'll get an invoice you can pay online beforehand or that day."
+    },
+    {
+      "q": "What if I need to reschedule?",
+      "a": "With at least 24 hours' notice, we'll find another date and it's no trouble at all. Things come up, and I'd rather move your session than have you spend it distracted or feeling rotten. If something happens on short notice, tell me as soon as you can and we'll work it out."
+    },
+    {
+      "q": "What happens if the weather is bad?",
+      "a": "I start watching the forecast about three days out and check in with you as it gets closer. Sometimes the answer is shifting your start time by half an hour rather than moving the whole day. If I'm the one who decides conditions won't work, rescheduling never costs you anything. Overcast is often better light than bright sun, so a grey forecast isn't automatically a problem."
+    },
+    {
+      "q": "How many photographs do I get?",
+      "a": "Every one that makes the final gallery. Short sessions include at least 10, Full at least 30, Extended at least 50. You don't pick a small number of favorites and you never pay extra to unlock the rest."
+    },
+    {
+      "q": "Are you holding back the good ones?",
+      "a": "No. What gets removed is test frames, blinks, missed focus, duplicates and the half-blink faces nobody wants. Nothing good is set aside for you to buy later. That isn't how this works."
+    },
+    {
+      "q": "When will I see my photographs?",
+      "a": "Your finished gallery arrives within 7–10 business days and stays open for 30 days. Please download the full-resolution files while it's open rather than saving screenshots, and keep them in two places — one of them somewhere off your phone."
+    },
+    {
+      "q": "Where do sessions happen?",
+      "a": "Outdoors, around Dayton and the surrounding communities. There's a Locations page with real photographs from my favorite spots so you can see what a place actually looks like before you choose. If somewhere means something to you, tell me about it."
+    },
+    {
+      "q": "Can I ask you something before I book?",
+      "a": "Please do. Message me or text and ask whatever you need to. I'd rather answer five questions first than have you book something that isn't the right fit."
+    },
+    {
+      "q": "Do you photograph weddings?",
+      "a": "No, I don't offer wedding photography. Engagements, proposals, elopement announcements and anniversaries, yes — but not the wedding day itself."
+    }
+  ]
+}

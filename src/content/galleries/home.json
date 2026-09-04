@@ -1,0 +1,7 @@
+{
+  "_comment": "The homepage mixed portfolio gallery. 12–20 of the strongest photographs, drawn from all four public categories, in an order that feels varied rather than grouped by category. Images can be reused from the category galleries — reference the same filename from its own folder. EMPTY UNTIL SELECTED.",
+  "category": "Mixed portfolio",
+  "targetCount": "12–20",
+  "images": [],
+  "_status": "Not selected yet. Requires signed releases. Blocks nothing structurally — the homepage builds with the gallery section hidden until images are added."
+}

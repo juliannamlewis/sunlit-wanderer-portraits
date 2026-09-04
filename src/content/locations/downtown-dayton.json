@@ -1,0 +1,41 @@
+{
+  "_comment": "The Oregon District is part of Downtown Dayton. The Dayton Art Institute was split out into its own location per Changelog v1.3 — different enough in character to warrant a separate entry.",
+  "id": "downtown-dayton",
+  "name": "Downtown Dayton & the Oregon District",
+  "status": "published",
+  "availability": "year-round",
+  "availabilityWindow": "",
+  "accessNote": "",
+  "shortDescription": "Brick storefronts, string lights over the sidewalk, and low evening sun coming straight down the street. Ohio's oldest neighbourhood, and it photographs like somewhere with a history.",
+  "bestFor": "Seniors and couples who want an urban look. Easy to pair with the Art Institute or Carriage Hill in the same evening.",
+  "walkingLevel": "",
+  "restrooms": "",
+  "parking": "",
+  "accessibility": "",
+  "bestSeasons": [],
+  "seasonalNote": "",
+  "images": [
+    {
+      "file": "oregon-district-01-string-lights-sidewalk.jpg",
+      "alt": "A high-school senior standing on the sidewalk under string lights outside a brick storefront in low evening sun"
+    },
+    {
+      "file": "oregon-district-02-laughing-sidewalk.jpg",
+      "alt": "A senior crouched on a tree-lined sidewalk, laughing, backlit by late afternoon light"
+    },
+    {
+      "file": "oregon-district-03-parking-structure-curve.jpg",
+      "alt": "A senior crouched in an empty lot with the sweeping concrete curves of a parking structure rising behind her"
+    },
+    {
+      "file": "oregon-district-04-cobblestone-street.jpg",
+      "alt": "A high-school senior standing in the middle of a brick-paved street, autumn trees and the downtown skyline behind him"
+    },
+    {
+      "file": "oregon-district-05-brick-wall-crouch.jpg",
+      "alt": "A senior in a denim jacket crouched against a weathered red and white painted brick wall"
+    }
+  ],
+  "video": "",
+  "_status": "Description written. 5 images — meets the 4–10 range. Walking, restrooms, parking and accessibility still to confirm. Images are below the 2000px export standard; replace with full-resolution originals when located."
+}

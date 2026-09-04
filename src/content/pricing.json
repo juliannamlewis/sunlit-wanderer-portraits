@@ -1,0 +1,102 @@
+{
+  "_comment": "The three session tiers. Change a price here and it updates the homepage cards, every session page, and the pricing section. Tier names locked as Short / Full / Extended per Changelog v1.1 §7.",
+  "universalPolicy": {
+    "heading": "Every session includes every finished photograph",
+    "body": "You receive all of the professionally edited photographs selected for your final gallery. You don't choose a handful of files, and you never pay extra to unlock the rest.",
+    "minimumsNote": "The image counts below are minimums, so you know what to expect.",
+    "includesLine": "Session pricing includes the photography session, professionally edited digital files, and personal printing and social-sharing rights. Travel fees may apply to approved locations outside the standard service area and are always discussed before booking."
+  },
+  "tiers": [
+    {
+      "id": "short",
+      "name": "Short Session",
+      "price": 150,
+      "priceDisplay": "$150",
+      "duration": "About 15 minutes",
+      "minimumImages": 10,
+      "minimumImagesDisplay": "10+ edited images",
+      "bestFor": "A focused update rather than a lot of variety.",
+      "description": "Good when you have one clear goal — a current family portrait, a few photographs of the kids, a short maternity set, or a senior who wants the essentials and nothing more.",
+      "includes": [
+        "About 15 minutes of photography",
+        "10+ high-resolution, professionally edited images",
+        "Private ShootProof gallery, available for 30 days",
+        "Optional gallery app for iPhone and Android",
+        "Personal printing and sharing rights"
+      ],
+      "bookingUrlKey": "short",
+      "laborHours": 3,
+      "_laborComment": "Internal only. ~3 hours including communication, planning, culling and editing. Effective rate ~$50.00/hr. Never displayed publicly."
+    },
+    {
+      "id": "standard",
+      "name": "Standard Session",
+      "price": 275,
+      "priceDisplay": "$275",
+      "duration": "About 40 minutes",
+      "minimumImages": 30,
+      "minimumImagesDisplay": "30+ edited images",
+      "bestFor": "Most people. Room to move around, change backgrounds, and photograph different groupings.",
+      "description": "The new family portrait plus enough candids to go with it — siblings together, the kids on their own, mom and dad by themselves, the serious ones and the silly ones. Enough variety for frames, gifts and a small album.",
+      "includes": [
+        "About 40 minutes of photography",
+        "30+ high-resolution, professionally edited images",
+        "Private ShootProof gallery, available for 30 days",
+        "Optional gallery app for iPhone and Android",
+        "Personal printing and sharing rights"
+      ],
+      "bookingUrlKey": "standard",
+      "laborHours": 6,
+      "_laborComment": "Internal only. ~6 hours. Effective rate ~$45.83/hr. Never displayed publicly."
+    },
+    {
+      "id": "extended",
+      "name": "Extended Session",
+      "price": 475,
+      "priceDisplay": "$475",
+      "duration": "About 90 minutes",
+      "minimumImages": 50,
+      "minimumImagesDisplay": "50+ edited images",
+      "bestFor": "Fuller storytelling — multiple looks, more combinations, and enough images for wall groupings and albums.",
+      "description": "Built for families who haven't updated their portraits in years and want enough to work with: siblings alone and together, a mix of scenery and light, outfit changes, and two or three nearby settings when it's practical. Also the right fit for a more comprehensive senior session.",
+      "includes": [
+        "About 90 minutes of photography",
+        "Up to 2–3 nearby locations when practical",
+        "50+ high-resolution, professionally edited images",
+        "Private ShootProof gallery, available for 30 days",
+        "Optional gallery app for iPhone and Android",
+        "Personal printing and sharing rights"
+      ],
+      "bookingUrlKey": "extended",
+      "laborHours": 10,
+      "_laborComment": "Internal only. ~10 hours. Effective rate ~$47.50/hr. Raised from $425 in Changelog v1.1 §6 to correct the rate inversion. Never displayed publicly."
+    }
+  ],
+  "whichFits": {
+    "heading": "Which session fits what you need?",
+    "intro": "The names describe length. What matters is what you want to end up with. Different categories need different things, so the guidance below is written per session type rather than as one rule.",
+    "byCategory": {
+      "families": {
+        "short": "One thing, done well. A current portrait for the wall, a few frames of the kids. If you know exactly what you're after and it's one thing, this is enough.",
+        "standard": "The portrait, plus everything around it. Time to move to a second spot, photograph the siblings together and separately, get mom and dad on their own, catch the silly ones. Enough variety for frames, gifts and a small album.",
+        "extended": "When you want a body of work rather than a photograph. See the walkthrough on the Families & Kids page."
+      },
+      "seniors": {
+        "short": "One look, one location, the frames you actually need for announcements.",
+        "standard": "A second look and room for the personality shots, not just the portrait.",
+        "extended": "Multiple locations in one evening. A typical run is about 40 minutes at the farm and creek at Carriage Hill, 30 in the Oregon District, and 20 at the Art Institute — they're close enough together to make that realistic. Two to four outfits, three completely different backdrops, one senior year documented properly."
+      },
+      "maternity": {
+        "short": "A focused set of just you, one look, one setting. Enough for a frame and an announcement.",
+        "standard": "You on your own, then with your partner, then with your older children — with time between so nobody's rushed.",
+        "extended": "More than one look, more than one setting, and space to move between outdoors and somewhere at home if that's what you want."
+      },
+      "couples": {
+        "short": "One announcement-worthy set. Good when you know the shot you want.",
+        "standard": "Where most engagement sessions land — time to walk, warm up, and get past the self-conscious part before the best frames happen.",
+        "extended": "Two settings and an outfit change. Also the right choice for a proposal, since it leaves room for the walk-up, the moment itself, and the giddy half hour afterward, which is often where the best photographs are."
+      }
+    },
+    "timingNote": "The times above are approximate shooting time. They aren't a stopwatch that starts the second you park. Walking between spots, meeting each other, and letting a toddler warm up are part of the session, not deductions from it."
+  }
+}
