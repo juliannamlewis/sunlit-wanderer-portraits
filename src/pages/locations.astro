@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LocationCard from '../components/LocationCard.astro';
+import { site } from '../lib/content';
+
+const modules = import.meta.glob('../content/locations/*.json', { eager: true });
+const allLocations = Object.values(modules).map((m: any) => m.default);
+const published = allLocations.filter((loc: any) => loc.status === 'published');
+
+function sortLocations(a: any, b: any) {
+  if (Boolean(a.sortLast) !== Boolean(b.sortLast)) return a.sortLast ? 1 : -1;
+  return a.name.localeCompare(b.name);
+}
+
+const yearRound = published.filter((loc: any) => loc.availability === 'year-round').sort(sortLocations);
+const seasonal = published.filter((loc: any) => loc.availability === 'seasonal').sort(sortLocations);
+---
+
+<BaseLayout title="Locations" description={`Real photographs from favorite portrait session locations around ${site.site.serviceArea}.`}>
+  <section class="section locations-intro">
+    <div class="container">
+      <h1>Locations</h1>
+      <p>{site.site.serviceRadiusNote}</p>
+    </div>
+  </section>
+
+  {yearRound.length > 0 && (
+    <section class="section location-group">
+      <div class="container">
+        <h2>Year-Round</h2>
+        <div class="location-grid">
+          {yearRound.map((loc: any) => <LocationCard location={loc} />)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {seasonal.length > 0 && (
+    <section class="section location-group section-alt">
+      <div class="container">
+        <h2>Seasonal &amp; Limited</h2>
+        <div class="location-grid">
+          {seasonal.map((loc: any) => <LocationCard location={loc} />)}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .locations-intro p {
+    max-width: 42rem;
+    color: var(--color-text-muted);
+  }
+
+  .location-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 720px) {
+    .location-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

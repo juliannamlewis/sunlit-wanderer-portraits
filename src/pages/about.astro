@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CopyProse from '../components/CopyProse.astro';
+import { loadCopy } from '../lib/markdown';
+
+const { frontmatter, html } = loadCopy('about');
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.metaDescription}>
+  <section class="section">
+    <div class="container">
+      <CopyProse html={html} />
+    </div>
+  </section>
+</BaseLayout>

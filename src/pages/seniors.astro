@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CopyProse from '../components/CopyProse.astro';
+import GallerySection from '../components/GallerySection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import { loadCopy } from '../lib/markdown';
+import gallery from '../content/galleries/seniors.json';
+import faq from '../content/faq/seniors.json';
+
+const { frontmatter, html } = loadCopy('seniors');
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.metaDescription}>
+  <section class="section page-intro">
+    <div class="container">
+      <CopyProse html={html} />
+    </div>
+  </section>
+
+  <GallerySection
+    id="seniors-gallery"
+    folder="seniors"
+    images={gallery.images}
+    eyebrow="Gallery"
+    title="High-School Seniors"
+  />
+
+  <div class="section-alt">
+    <PricingSection category="seniors" />
+  </div>
+
+  <ReviewsSection placement="seniors" />
+
+  <FaqSection title={faq.title} questions={faq.questions} />
+</BaseLayout>

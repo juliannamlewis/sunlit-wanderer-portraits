@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CopyProse from '../components/CopyProse.astro';
+import GallerySection from '../components/GallerySection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import { loadCopy } from '../lib/markdown';
+import gallery from '../content/galleries/couples.json';
+import faq from '../content/faq/couples.json';
+
+const { frontmatter, html } = loadCopy('couples');
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.metaDescription}>
+  <section class="section page-intro">
+    <div class="container">
+      <CopyProse html={html} />
+    </div>
+  </section>
+
+  <GallerySection
+    id="couples-gallery"
+    folder="couples"
+    images={gallery.images}
+    eyebrow="Gallery"
+    title="Couples & Engagement"
+  />
+
+  <div class="section-alt">
+    <PricingSection category="couples" />
+  </div>
+
+  <ReviewsSection placement="couples" />
+
+  <FaqSection title={faq.title} questions={faq.questions} />
+</BaseLayout>

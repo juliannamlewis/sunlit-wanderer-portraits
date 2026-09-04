@@ -1,0 +1,114 @@
+---
+import GallerySection from './GallerySection.astro';
+
+export interface Props {
+  location: {
+    id: string;
+    name: string;
+    availability: string;
+    availabilityWindow: string;
+    accessNote: string;
+    shortDescription: string;
+    bestFor: string;
+    walkingLevel: string;
+    restrooms: string;
+    parking: string;
+    accessibility: string;
+    seasonalNote: string;
+    practicalNote?: string;
+    images: { file: string; alt: string }[];
+  };
+}
+
+const { location } = Astro.props;
+
+const details = [
+  ['Walking', location.walkingLevel],
+  ['Restrooms', location.restrooms],
+  ['Parking', location.parking],
+  ['Accessibility', location.accessibility],
+].filter(([, value]) => value);
+---
+
+<article class="location-card">
+  <div class="location-card-header">
+    <h3>{location.name}</h3>
+    {location.availability === 'seasonal' && location.availabilityWindow && (
+      <span class="availability-badge">{location.availabilityWindow}</span>
+    )}
+  </div>
+
+  {location.shortDescription && <p>{location.shortDescription}</p>}
+  {location.bestFor && <p class="best-for"><strong>Best for:</strong> {location.bestFor}</p>}
+
+  {details.length > 0 && (
+    <ul class="location-details">
+      {details.map(([label, value]) => (
+        <li><strong>{label}:</strong> {value}</li>
+      ))}
+    </ul>
+  )}
+
+  {location.seasonalNote && <p class="fine-note">{location.seasonalNote}</p>}
+  {location.practicalNote && <p class="fine-note">{location.practicalNote}</p>}
+
+  <GallerySection
+    id={`loc-${location.id}`}
+    folder={`locations/${location.id}`}
+    images={location.images}
+    bare
+    compact
+  />
+</article>
+
+<style>
+  .location-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .location-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .location-card-header h3 {
+    margin: 0;
+  }
+
+  .availability-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-accent-dark);
+    background: var(--color-bg-alt);
+    border-radius: 999px;
+    padding: 0.2rem 0.65rem;
+  }
+
+  .best-for {
+    font-size: 0.95rem;
+  }
+
+  .location-details {
+    list-style: none;
+    margin: 0.75rem 0;
+    padding: 0;
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .fine-note {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+</style>

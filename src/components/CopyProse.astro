@@ -1,0 +1,27 @@
+---
+export interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
+---
+
+<div class="prose" set:html={html} />
+
+<style is:global>
+  .prose h2 {
+    margin-top: 2.2em;
+  }
+
+  .prose h2:first-child {
+    margin-top: 0;
+  }
+
+  .prose ul {
+    padding-left: 1.2rem;
+  }
+
+  .prose strong {
+    color: var(--color-text);
+  }
+</style>

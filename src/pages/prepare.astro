@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadCopySections } from '../lib/markdown';
+
+const { frontmatter, sections } = loadCopySections('prepare');
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.metaDescription}>
+  <section class="section">
+    <div class="container">
+      <h1>{frontmatter.title}</h1>
+      <div class="prepare-accordions">
+        {sections.map((section) => (
+          <details class="prepare-item">
+            <summary>{section.heading}</summary>
+            <div class="prose" set:html={section.html} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prepare-accordions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 46rem;
+  }
+
+  .prepare-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.4rem;
+  }
+
+  .prepare-item summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    list-style: none;
+  }
+
+  .prepare-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .prepare-item summary::after {
+    content: '+';
+    float: right;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .prepare-item[open] summary::after {
+    content: '\2212';
+  }
+
+  .prepare-item .prose {
+    margin-top: 0.9rem;
+  }
+
+  .prepare-item .prose :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

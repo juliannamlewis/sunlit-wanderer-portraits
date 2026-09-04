@@ -5,18 +5,20 @@ export interface Props {
   images: { file: string; alt: string }[];
   eyebrow?: string;
   title?: string;
+  bare?: boolean;
+  compact?: boolean;
 }
 
-const { id, folder, images, eyebrow, title } = Astro.props;
+const { id, folder, images, eyebrow, title, bare = false, compact = false } = Astro.props;
 const basePath = `/images/${folder}/`;
 ---
 
 {images.length > 0 && (
-  <section class="gallery-section" id={id}>
-    <div class="container">
+  <section class:list={['gallery-section', { 'gallery-section-bare': bare }]} id={id}>
+    <div class:list={[{ container: !bare }]}>
       {eyebrow && <span class="eyebrow">{eyebrow}</span>}
       {title && <h2>{title}</h2>}
-      <div class="gallery-grid">
+      <div class:list={['gallery-grid', { 'gallery-grid-compact': compact }]}>
         {images.map((img, i) => (
           <button
             type="button"
@@ -45,6 +47,10 @@ const basePath = `/images/${folder}/`;
     padding: 2.5rem 0;
   }
 
+  .gallery-section-bare {
+    padding: 0;
+  }
+
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -61,6 +67,18 @@ const basePath = `/images/${folder}/`;
 
   @media (min-width: 960px) {
     .gallery-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .gallery-grid-compact {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .gallery-grid-compact {
       grid-template-columns: repeat(4, 1fr);
     }
   }
@@ -131,6 +149,10 @@ const basePath = `/images/${folder}/`;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  .lightbox[hidden] {
+    display: none;
   }
 </style>
 

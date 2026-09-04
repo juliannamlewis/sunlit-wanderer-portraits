@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /specials
+Disallow: /resources
+Disallow: /albums-and-keepsakes
+Disallow: /local-favorites
+Disallow: /prop-library

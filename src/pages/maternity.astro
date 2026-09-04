@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CopyProse from '../components/CopyProse.astro';
+import GallerySection from '../components/GallerySection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import { loadCopy } from '../lib/markdown';
+import gallery from '../content/galleries/maternity.json';
+import faq from '../content/faq/maternity.json';
+
+const { frontmatter, html } = loadCopy('maternity');
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.metaDescription}>
+  <section class="section page-intro">
+    <div class="container">
+      <CopyProse html={html} />
+    </div>
+  </section>
+
+  <GallerySection
+    id="maternity-gallery"
+    folder="maternity"
+    images={gallery.images}
+    eyebrow="Gallery"
+    title="Maternity"
+  />
+
+  <div class="section-alt">
+    <PricingSection category="maternity" />
+  </div>
+
+  <ReviewsSection placement="maternity" />
+
+  <FaqSection title={faq.title} questions={faq.questions} />
+</BaseLayout>
