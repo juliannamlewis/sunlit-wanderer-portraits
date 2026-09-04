@@ -5,6 +5,7 @@ import GallerySection from '../components/GallerySection.astro';
 import PricingSection from '../components/PricingSection.astro';
 import ReviewsSection from '../components/ReviewsSection.astro';
 import FaqSection from '../components/FaqSection.astro';
+import PinterestBoards from '../components/PinterestBoards.astro';
 import { loadCopy } from '../lib/markdown';
 import gallery from '../content/galleries/families.json';
 import faq from '../content/faq/families.json';
@@ -34,4 +35,6 @@ const { frontmatter, html } = loadCopy('families');
   <ReviewsSection placement="families" />
 
   <FaqSection title={faq.title} questions={faq.questions} />
+
+  <PinterestBoards category="families" />
 </BaseLayout>

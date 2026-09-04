@@ -1,0 +1,55 @@
+---
+import { site } from '../lib/content';
+
+export interface Props {
+  category: keyof typeof site.pinterestBoards;
+}
+
+const { category } = Astro.props;
+const boards = (site.pinterestBoards[category] ?? []).filter(
+  (b: any) => b.linkedAtLaunch !== false,
+);
+---
+
+{boards.length > 0 && (
+  <section class="pinterest-boards">
+    <div class="container">
+      <span class="eyebrow">More inspiration</span>
+      <ul class="pinterest-list">
+        {boards.map((b: any) => (
+          <li><a href={b.url} target="_blank" rel="noopener">{b.label}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .pinterest-boards {
+    padding: 2rem 0;
+  }
+
+  .pinterest-list {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .pinterest-list a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-accent-dark);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .pinterest-list a:hover {
+    border-color: var(--color-accent);
+  }
+</style>
