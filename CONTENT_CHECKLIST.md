@@ -225,17 +225,18 @@ Swapping in the real artwork later is a one-file change.
 
 ---
 
-## Interim fix — the existing Shopify portraits page
+## Resolved — the old Shopify portraits page (2026-09-05)
 
-`thesunlitwanderer.com/pages/portraits` is live and taking QR traffic right now.
-Until the new site exists:
-
-- [ ] State session prices in plain text near the top
-- [ ] Real "Book Your Session" button (an actual button, not a text link) at top
-      and bottom
-- [ ] Reorder for mobile: what it costs → book → images → how it works →
-      digitals → locations → policies → book
-- [ ] Add 4–5 more images, including a family with young children
+**Decided.** The new site is live at `portraits.thesunlitwanderer.com` (see
+`HANDOFF.md` deploy status). Julie deliberately chose **not** to link it from
+the main Shopify store navigation — the print shop and the portrait business
+stay separate audiences on purpose, and no printed materials existed yet
+pointing at the old `/pages/portraits` page, so there's nothing to redirect.
+New local marketing (QR codes, business cards) will point directly at the new
+subdomain instead. The old Shopify page's content quality is no longer a
+priority to fix — it's simply not the thing local clients will be handed
+anymore. This is a deliberate choice, not an oversight — don't re-raise it as
+an open item.
 
 ---
 

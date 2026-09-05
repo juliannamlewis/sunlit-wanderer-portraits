@@ -5,6 +5,36 @@
 
 ---
 
+## ⚠️ Update, September 5, 2026 — the site is live
+
+Everything below describes the state of the project *before* the build. The
+build is now done and deployed:
+
+- **Live at:** `https://portraits.thesunlitwanderer.com`
+- **Code:** `https://github.com/juliannamlewis/sunlit-wanderer-portraits`
+  (branch `main`)
+- **Hosting:** Cloudflare Pages, project name `sunlit-wanderer-portraits`.
+  Deployed via Wrangler CLI (`npx wrangler pages deploy dist`), not the
+  Cloudflare dashboard's "Create application" flow — that flow currently
+  defaults to creating a Worker rather than a classic Pages project, which
+  matters because only Pages custom domains support a plain CNAME record when
+  DNS lives elsewhere (Shopify, here) without moving the whole domain onto
+  Cloudflare's nameservers. If this project's Pages deployment ever needs
+  recreating, use Wrangler, not the dashboard button.
+- **DNS:** a single CNAME record (`portraits` → `sunlit-wanderer-portraits.
+  pages.dev`) was added in Shopify. No other DNS records were touched.
+- **Deliberately not linked from the main Shopify store nav** — Julie wants
+  the portrait business and the print shop to stay separate audiences. Local
+  marketing (QR codes, business cards) points at the new subdomain directly.
+  Don't add it to Shopify's navigation without asking first.
+
+Every page in the "What remains to be built" section below has since been
+built. See `git log` in this repo for the real build history rather than
+trusting this file's older sections for code status — they're kept for the
+locked decisions and content inventory, which are still accurate.
+
+---
+
 ## What this is
 
 A portrait photography website for The Sunlit Wanderer, launching at
