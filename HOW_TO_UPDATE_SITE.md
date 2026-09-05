@@ -127,14 +127,26 @@ Nothing here publishes automatically. The workflow is always:
 1. A change is made to a content file or the code.
 2. Run `npm run dev` and open `http://localhost:4321` to see it — this is
    your private preview, nobody else can see it.
-3. You look it over.
-4. Only once you approve, the change is pushed to GitHub, which triggers a
-   new deployment on Cloudflare Pages.
+3. You look it over and approve it.
 
-Cloudflare Pages also builds a temporary preview link for every change
-pushed to a non-production branch, if you want a shareable link to review
-something on your phone before it goes live on the real site — ask Claude to
-set that up when you're ready to deploy for the first time.
+**Important — publishing is a manual, separate step**, not automatic on
+every GitHub push. The live site (`sunlit-wanderer-portraits` on Cloudflare
+Pages) was set up via Cloudflare's command-line tool (Wrangler), not through
+its dashboard's GitHub auto-deploy integration — the dashboard flow currently
+defaults to creating a different kind of project (a Worker) whose custom
+domain setup would have required moving this whole domain's DNS to
+Cloudflare, which we deliberately avoided. The tradeoff: pushing to GitHub
+alone does **not** update the live site.
+
+To actually publish an approved change:
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name sunlit-wanderer-portraits --branch main
+```
+GitHub still holds the full version history (push there too, for the record
+and for rollback), but the `wrangler pages deploy` command is what visitors
+actually see. Ask Claude to run this once changes are approved, or run it
+yourself from a terminal in this folder.
 
 ## Rollback
 
