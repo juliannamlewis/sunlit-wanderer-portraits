@@ -18,7 +18,28 @@
     "Summer"
   ],
   "seasonalNote": "Fall is the standout here — the color along the trails is genuinely worth timing a session around.",
-  "images": [],
+  "images": [
+    {
+      "file": "sycamore-01-silhouette-flare-closeup.jpg",
+      "alt": "A couple nose-to-nose in silhouette, sunset flare between them, pond in the background"
+    },
+    {
+      "file": "sycamore-02-silhouette-pond-holding-hands.jpg",
+      "alt": "A couple holding hands in silhouette facing a pond at sunset"
+    },
+    {
+      "file": "sycamore-03-family-log-golden-hour.jpg",
+      "alt": "A family of five sitting on a fallen log at the edge of the pond at golden hour"
+    },
+    {
+      "file": "sycamore-04-fall-leaves-couple.jpg",
+      "alt": "A couple lying in fallen autumn leaves, smiling at each other"
+    },
+    {
+      "file": "sycamore-05-family-fall-foliage.jpg",
+      "alt": "A family of four standing together under golden fall foliage"
+    }
+  ],
   "video": "",
-  "_status": "Description and walking level confirmed. Restrooms, parking and accessibility still need to be verified on site. Images not selected."
+  "_status": "Description and walking level confirmed. Restrooms, parking and accessibility still need to be verified on site. 5 images added."
 }

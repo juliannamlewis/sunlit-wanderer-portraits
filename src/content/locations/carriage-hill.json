@@ -17,7 +17,28 @@
     "Fall"
   ],
   "seasonalNote": "The most varied location I use, which is why so many Extended sessions start here.",
-  "images": [],
+  "images": [
+    {
+      "file": "carriage-hill-01-barn-father-kids.jpg",
+      "alt": "Father sitting with his young daughter and baby in front of a red barn"
+    },
+    {
+      "file": "carriage-hill-02-boardwalk-closeup-sunset.jpg",
+      "alt": "A couple nose-to-nose on a wooden boardwalk, backlit by golden hour sun"
+    },
+    {
+      "file": "carriage-hill-03-blanket-family-laughing.jpg",
+      "alt": "A family of four laughing together on a blanket in an open field"
+    },
+    {
+      "file": "carriage-hill-04-boardwalk-couple-wide.jpg",
+      "alt": "A couple sitting together on a wooden boardwalk through dry winter reeds"
+    },
+    {
+      "file": "carriage-hill-05-boardwalk-embrace-sunset.jpg",
+      "alt": "A couple embracing at sunset among bare trees along the boardwalk"
+    }
+  ],
   "video": "",
-  "_status": "Description written. 0 images — this is now the only gap on the Locations page. Walking, restrooms, parking and accessibility still to confirm."
+  "_status": "Description written. 5 images — meets the 4-10 range. Walking, restrooms, parking and accessibility still to confirm."
 }
