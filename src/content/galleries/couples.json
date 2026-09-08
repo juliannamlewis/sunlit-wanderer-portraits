@@ -1,7 +1,23 @@
 {
-  "_comment": "Ordered list of images for the Couples & Engagement gallery. Files live in public/images/couples/. Naming: couples-01-short-description.jpg. EMPTY UNTIL SELECTED.",
+  "_comment": "Ordered list of images for the Couples & Engagement gallery. Files live in public/images/couples/. Naming: couples-01-short-description.jpg.",
   "category": "Couples & Engagement",
-  "images": [],
-  "_status": "Not selected yet.",
-  "_selectionGuidance": "Lead with interaction — walking, laughing, looking at each other — rather than a formal facing-camera portrait, since the page explicitly promises chemistry over posed romance. Include at least one detail frame (rings, hands) and one image of a couple who read as comfortable rather than intensely affectionate, so camera-shy couples can see themselves here."
+  "images": [
+    { "file": "couples-01-walking-hand-in-hand.jpg", "alt": "A couple walking hand in hand outdoors on a casual afternoon" },
+    { "file": "couples-02-laughing-golden-light.jpg", "alt": "A couple laughing together, close and joyful, in warm golden light" },
+    { "file": "couples-03-forehead-touch-backlit.jpg", "alt": "A couple touching foreheads together, backlit by warm sunset light" },
+    { "file": "couples-04-ring-detail.jpg", "alt": "Close-up of a couple's hands showing an engagement ring" },
+    { "file": "couples-05-piggyback-fall-a.jpg", "alt": "A couple laughing together, one giving the other a piggyback ride, surrounded by fall foliage" },
+    { "file": "couples-06-piggyback-fall-b.jpg", "alt": "A couple laughing together on a piggyback ride in a fall-colored field" },
+    { "file": "couples-07-wooded-embrace-golden.jpg", "alt": "A couple embracing in a wooded setting, golden evening light around them" },
+    { "file": "couples-08-leaves-cheek-to-cheek.jpg", "alt": "A couple lying together on fall leaves, cheek to cheek" },
+    { "file": "couples-09-face-touch-water-reflection.jpg", "alt": "A couple sharing a tender moment by the water, one touching the other's face" },
+    { "file": "couples-10-swing-bench-rustic.jpg", "alt": "A couple sitting close together on a rustic wooden swing bench" },
+    { "file": "couples-11-kissing-wooded-closeup.jpg", "alt": "A close-up of a couple kissing in a wooded, leafy setting" },
+    { "file": "couples-12-wooden-dock-plaid.jpg", "alt": "A couple sitting together on a wooden dock, dressed casually in plaid" },
+    { "file": "couples-13-silhouette-sunset.jpg", "alt": "A couple standing in silhouette holding hands against a sunset over the water" },
+    { "file": "couples-14-hugging-lake-casual.jpg", "alt": "A couple hugging casually by the lake in cozy sweaters" },
+    { "file": "couples-15-sunset-flare-bench.jpg", "alt": "A couple sitting close together on a bench at sunset, warm light flaring across the frame" }
+  ],
+  "_selectionGuidance": "Lead with interaction — walking, laughing, looking at each other — rather than a formal facing-camera portrait, since the page explicitly promises chemistry over posed romance. Includes a ring-detail frame and a range from playful (piggyback) to quietly comfortable (lake hug), so camera-shy couples can see themselves here too.",
+  "_excluded": "From the 18-image source set (Website Gallery Pics/Couples_Engagement, 2026-09-07): one extra piggyback frame and one extra water-reflection face-touch frame, both near-duplicates of ones kept, trimmed to bring the set from 18 to 15."
 }
