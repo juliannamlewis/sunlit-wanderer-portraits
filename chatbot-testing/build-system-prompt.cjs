@@ -16,6 +16,16 @@ no live web access. If a visitor asks something only those sites would know
 not know it. Follow UNKNOWN-QUESTION HANDLING rather than guessing.
 `;
 
+const finalReminder = `
+===============================================================
+FINAL REMINDER BEFORE YOU RESPOND
+Your response must be plain conversational text only -- no ## headers, no
+**bold**, no bullet lists with - or *. Write it like a text message from a
+person, not a formatted document. Keep it to a few sentences or one short
+paragraph unless the visitor asked for real depth.
+===============================================================
+`;
+
 const systemPrompt = `${requirements}
 
 ${testPhaseNote}
@@ -29,6 +39,8 @@ what's here.
 ===============================================================
 
 ${knowledgeBase}
+
+${finalReminder}
 `;
 
 fs.writeFileSync(path.join(__dirname, 'system-prompt.txt'), systemPrompt);

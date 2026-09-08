@@ -17,6 +17,7 @@ export interface Props {
     seasonalNote: string;
     practicalNote?: string;
     images: { file: string; alt: string }[];
+    establishingPhotos?: { file: string; alt: string }[];
   };
 }
 
@@ -51,6 +52,19 @@ const details = [
 
   {location.seasonalNote && <p class="fine-note">{location.seasonalNote}</p>}
   {location.practicalNote && <p class="fine-note">{location.practicalNote}</p>}
+
+  {location.establishingPhotos && location.establishingPhotos.length > 0 && (
+    <div class="establishing-photos">
+      <span class="establishing-label">What it actually looks like</span>
+      <GallerySection
+        id={`loc-${location.id}-establishing`}
+        folder={`locations/${location.id}`}
+        images={location.establishingPhotos}
+        bare
+        compact
+      />
+    </div>
+  )}
 
   <GallerySection
     id={`loc-${location.id}`}
@@ -98,17 +112,46 @@ const details = [
 
   .location-details {
     list-style: none;
-    margin: 0.75rem 0;
+    margin: 1rem 0;
     padding: 0;
-    font-size: 0.88rem;
-    color: var(--color-text-muted);
     display: grid;
-    gap: 0.3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .location-details li {
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    color: var(--color-text);
+  }
+
+  .location-details li strong {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-dark);
+    margin-bottom: 0.15rem;
   }
 
   .fine-note {
     font-size: 0.85rem;
     color: var(--color-text-muted);
     font-style: italic;
+  }
+
+  .establishing-photos {
+    margin-top: 1rem;
+  }
+
+  .establishing-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
   }
 </style>

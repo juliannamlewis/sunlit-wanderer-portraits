@@ -28,3 +28,23 @@ immediately ("fix it with whatever you recommend").
 **Not yet tested:** the 2-3 minute time-based nudge (separate from the
 10-question count) still can't be validated by a scripted test, since it's
 wall-clock time, not turn count. Will need real-world observation once live.
+
+---
+
+## 2026-09-08 — v1.2: formatting fix, take two
+
+The first formatting instruction (v1.1) removed `##` headers but `**bold**`
+and `-` bullets kept leaking through. Strengthened the instruction with
+explicit WRONG/RIGHT examples and added a second copy of the reminder at
+the very end of the system prompt (after the knowledge base), so it's the
+last thing the model reads before responding.
+
+Retested on the three question types that previously produced the most
+Markdown (pricing breakdown, Extended session details, what to wear/bring).
+All three came back completely clean -- zero `*` or `#` characters. Also
+reconfirmed the vague-frustration and wedding-disclaimer fixes still hold
+with the updated prompt.
+
+**Still open:** the 10-question hard trigger (needs code-level turn
+counting, not a prompt instruction -- see v1.1 entry above). Not addressed
+in this pass.
