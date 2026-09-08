@@ -1,5 +1,5 @@
 {
-  "_comment": "The three session tiers. Change a price here and it updates the homepage cards, every session page, and the pricing section. Tier names locked as Short / Full / Extended per Changelog v1.1 §7.",
+  "_comment": "The three session tiers. Change a price here and it updates the homepage cards, every session page, and the pricing section. Tier names locked as Short / Standard / Extended per Changelog v1.3 §7 (supersedes the earlier Short/Full/Extended naming).",
   "universalPolicy": {
     "heading": "Every session includes every finished photograph",
     "body": "You receive all of the professionally edited photographs selected for your final gallery. You don't choose a handful of files, and you never pay extra to unlock the rest.",
@@ -36,7 +36,7 @@
       "duration": "About 40 minutes",
       "minimumImages": 30,
       "minimumImagesDisplay": "30+ edited images",
-      "bestFor": "Most people. Room to move around, change backgrounds, and photograph different groupings.",
+      "bestFor": "The best fit for most sessions. Room to move around, change backgrounds, and photograph different groupings.",
       "description": "The new family portrait plus enough candids to go with it — siblings together, the kids on their own, mom and dad by themselves, the serious ones and the silly ones. Enough variety for frames, gifts and a small album.",
       "includes": [
         "About 40 minutes of photography",
@@ -58,10 +58,10 @@
       "minimumImages": 50,
       "minimumImagesDisplay": "50+ edited images",
       "bestFor": "Fuller storytelling — multiple looks, more combinations, and enough images for wall groupings and albums.",
-      "description": "Built for families who haven't updated their portraits in years and want enough to work with: siblings alone and together, a mix of scenery and light, outfit changes, and two or three nearby settings when it's practical. Also the right fit for a more comprehensive grad session.",
+      "description": "Built for families who haven't updated their portraits in years and want enough to work with: siblings alone and together, a mix of scenery and light, outfit changes, and two or three nearby settings as time allows. Also the right fit for a more comprehensive grad session.",
       "includes": [
         "About 90 minutes of photography",
-        "Up to 2–3 nearby locations when practical",
+        "Up to 2–3 nearby locations as time allows",
         "50+ high-resolution, professionally edited images",
         "Private ShootProof gallery, available for 30 days",
         "Optional gallery app for iPhone and Android",
