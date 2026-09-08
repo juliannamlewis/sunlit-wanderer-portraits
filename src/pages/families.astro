@@ -14,12 +14,6 @@ const { frontmatter, html } = loadCopy('families');
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.metaDescription}>
-  <section class="section page-intro">
-    <div class="container">
-      <CopyProse html={html} />
-    </div>
-  </section>
-
   <GallerySection
     id="families-gallery"
     folder="families"
@@ -27,6 +21,12 @@ const { frontmatter, html } = loadCopy('families');
     eyebrow="Gallery"
     title="Families & Kids"
   />
+
+  <section class="section page-intro">
+    <div class="container">
+      <CopyProse html={html} />
+    </div>
+  </section>
 
   <div class="section-alt">
     <PricingSection category="families" />
