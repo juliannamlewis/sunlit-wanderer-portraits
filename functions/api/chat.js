@@ -90,7 +90,7 @@ async function sendLeadEmail(env, lead) {
     return;
   }
 
-  await fetch('https://api.resend.com/emails', {
+  const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${env.RESEND_API_KEY}`,
@@ -103,6 +103,12 @@ async function sendLeadEmail(env, lead) {
       text: `New lead from the site chatbot.\n\nName: ${lead.first_name || '(not given)'}\nContact (${lead.contact_method}): ${lead.contact_value}\nWhat they want to know: ${lead.question_summary}\n`,
     }),
   });
+
+  if (!res.ok) {
+    console.error(`Resend API error ${res.status}:`, await res.text());
+  } else {
+    console.log('Lead email sent successfully:', JSON.stringify(lead));
+  }
 }
 
 async function logTranscript(env, messages) {
