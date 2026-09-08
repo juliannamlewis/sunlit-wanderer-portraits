@@ -1,0 +1,25 @@
+{
+  "ten_plus_questions_handoff": [
+    "How much do sessions cost?",
+    "What's included in the Standard one?",
+    "Where do you take photos?",
+    "Can we do a fall session?",
+    "What should we wear?",
+    "Can our dog come?",
+    "What if it rains?",
+    "How long until we get our photos?",
+    "Do you edit out blemishes?",
+    "Can I get the RAW files?",
+    "One more thing, do you provide albums?"
+  ],
+  "escalating_frustration_mixed_with_legit": [
+    "This is so confusing, why is this so hard",
+    "ok fine, how much is the Extended session",
+    "ugh whatever, does it include multiple locations",
+    "fine I guess I'll think about it"
+  ],
+  "vague_frustration_retry_variant": [
+    "I don't get any of this",
+    "just tell me if you do family photos or not"
+  ]
+}

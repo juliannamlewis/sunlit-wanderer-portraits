@@ -1,0 +1,46 @@
+{
+  "ten_plus_questions_handoff": [
+    "How much do sessions cost?",
+    "What's included in the Standard one?",
+    "Where do you take photos?",
+    "Can we do a fall session?",
+    "What should we wear?",
+    "Can our dog come?",
+    "What if it rains?",
+    "How long until we get our photos?",
+    "Do you edit out blemishes?",
+    "Can I get the RAW files?",
+    "One more thing, do you provide albums?"
+  ],
+  "repeated_spam_should_end": [
+    "asdkfjaslkdj",
+    "asdkfjaslkdj asdkfj asdkfj",
+    "BUY CHEAP WATCHES NOW CLICK HERE",
+    "asdkfjaslkdj asdkfj asdkfj asdkfj",
+    "test test test test"
+  ],
+  "full_lead_handoff_flow": [
+    "I have a specific question about pricing for a large family reunion, can Julie call me?",
+    "Text is fine",
+    "It's 555-123-4567, my name is Sarah",
+    "Did that go through okay?"
+  ],
+  "context_retention": [
+    "I have a 3 year old and a newborn baby",
+    "What session would you recommend for us?",
+    "Would that give us enough time for both kids?",
+    "What should I bring for the baby specifically?"
+  ],
+  "escalating_frustration_mixed_with_legit": [
+    "This is so confusing, why is this so hard",
+    "ok fine, how much is the Extended session",
+    "ugh whatever, does it include multiple locations",
+    "fine I guess I'll think about it"
+  ],
+  "gentle_conversion_toward_booking": [
+    "I think I want to book a family session",
+    "We have 3 kids, ages vary, want good variety",
+    "That sounds like Extended then?",
+    "How do I actually book it"
+  ]
+}
