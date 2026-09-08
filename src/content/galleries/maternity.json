@@ -1,7 +1,9 @@
 {
-  "_comment": "Ordered list of images for the Maternity gallery. Files live in public/images/maternity/. Naming: maternity-01-short-description.jpg. EMPTY UNTIL SELECTED.",
+  "_comment": "Ordered list of images for the Maternity gallery. Files live in public/images/maternity/. Naming: maternity-01-short-description.jpg. EMPTY UNTIL SELECTED. emptyGalleryNote and emptyGalleryCallout render on the page ONLY while images is empty — once real photos are added, delete both fields (or leave them; they'll simply stop showing once images.length > 0, no cleanup required).",
   "category": "Maternity",
   "images": [],
+  "emptyGalleryNote": "You may notice there's no gallery here yet. Most maternity photos are personal, and plenty of clients understandably don't want theirs posted publicly — so this page is quiet on purpose, not by accident. If you'd like to see a few examples privately, message me and I'm happy to share some with permission.",
+  "emptyGalleryCallout": "I'm also currently looking for a few moms willing to let me feature some faceless, belly-only images here, with a model discount as a thank-you. If that could be you, I'd love to talk.",
   "_status": "Not selected yet.",
   "_selectionGuidance": "Show range rather than one look, because the page promises a client-led session: mother alone and mother with partner, at least one with existing children, and a mix of flowing-dress and everyday-clothing styling. Avoid making the gallery read as one uniform aesthetic."
 }
