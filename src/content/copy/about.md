@@ -1,12 +1,7 @@
 ---
 title: About
-status: DRAFT — needs Julie's approval and a photo
+status: Text approved 2026-09-08 — still needs an About photo
 metaDescription: About Julie, the photographer behind The Sunlit Wanderer.
-note: >
-  Drafted from the ingredients listed in Requirements §36. Rewrite freely — this
-  is meant to sound like you, and you're the only one who can confirm whether it
-  does. Requirements say keep it short and human, not a biography. An About photo
-  is still needed.
 ---
 
 ## Hi, I'm Julie
@@ -19,7 +14,7 @@ around Ohio taking pictures of fields and fog when nobody's asked me to.
 I'm a mom. I have a dog and a cat, I read too many mystery novels, and I have
 never once turned down chocolate.
 
-What I care about in this work is pretty simple. Most of the photographs that
-end up mattering to people aren't the perfect ones — they're the ones that
-caught somebody being exactly who they were that year. That's what I'm trying to
-get for you.
+What I care about in this work is pretty simple. You'll get the posed portrait
+you came for — but even in the middle of posing, it's usually the split-second,
+unguarded moment right before or after that ends up being the one you love
+most. That's what I enjoy capturing for you.
