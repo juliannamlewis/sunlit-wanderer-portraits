@@ -44,6 +44,14 @@ const howItWorks = [
     Already booked? Prepare for your session &rarr;
   </a>
 
+  <GallerySection
+    id="home-gallery"
+    folder="home"
+    images={homeGallery.images}
+    eyebrow="Portfolio"
+    title="A little of everything"
+  />
+
   <section class="section plan-your-session">
     <div class="container">
       <h2>Plan Your Session</h2>
@@ -77,14 +85,6 @@ const howItWorks = [
       </div>
     </div>
   </section>
-
-  <GallerySection
-    id="home-gallery"
-    folder="home"
-    images={homeGallery.images}
-    eyebrow="Portfolio"
-    title="A little of everything"
-  />
 
   <div class="section-alt">
     <PricingSection />
