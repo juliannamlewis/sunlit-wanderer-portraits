@@ -5,14 +5,16 @@ metaDescription: Personalized senior portrait sessions in Dayton, Ohio, built ar
 
 ## This should look like them
 
-A senior session is a strange assignment, because two people usually want two
-different things from it. The senior wants images that feel like them — a little
-more personality, a little more edge, something they'd actually post. The parent
-wants something timeless for announcements, for the relatives, and for the wall
-at graduation.
+A high school senior or college grad is a bit of a juggling act, because two
+people usually want two different things from it. The grad wants images that
+feel like them — a little more personality, maybe a little more edge,
+something they'd actually want to post. Parents want something classic and
+timeless — for grad party decor, for gifts, for announcements, and yes, for
+mom's brag book.
 
 Both are reasonable. Both are achievable in one session. They just need a few
-minutes of planning first so we come away with each.
+minutes of planning beforehand so everyone comes away with some of each —
+which is easiest with a Standard or Extended session.
 
 ## Bring what matters to them
 
