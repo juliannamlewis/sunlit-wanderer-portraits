@@ -1,7 +1,29 @@
 {
-  "_comment": "The homepage mixed portfolio gallery. 12–20 of the strongest photographs, drawn from all four public categories, in an order that feels varied rather than grouped by category. Images can be reused from the category galleries — reference the same filename from its own folder. EMPTY UNTIL SELECTED.",
+  "_comment": "The homepage mixed portfolio gallery. Drawn from all four public categories. Entries with a 'folder' field point at an image already placed in that category's own folder (reuse, not a copy) — entries without one live in public/images/home/. Order matters — the first image leads the page.",
   "category": "Mixed portfolio",
   "targetCount": "12–20",
-  "images": [],
-  "_status": "Not selected yet. Requires signed releases. Blocks nothing structurally — the homepage builds with the gallery section hidden until images are added."
+  "images": [
+    { "file": "home-01-dad-toddler-shoulders-forest.jpg", "alt": "A father lifting a toddler onto his shoulders in a sunlit forest, an older sibling nearby" },
+    { "file": "grads-02-cap-toss-gazebo.jpg", "folder": "grads", "alt": "A graduate in a red gown tossing their cap into the air at an outdoor gazebo" },
+    { "file": "home-02-family-walking-line.jpg", "alt": "A family walking together in a line, holding hands, through a wooded path" },
+    { "file": "couples-04-ring-detail.jpg", "folder": "couples", "alt": "Close-up of a couple's hands showing an engagement ring" },
+    { "file": "home-03-baby-cake-balloons.jpg", "alt": "A baby with a messy face celebrating with balloons and cake" },
+    { "file": "home-04-family-posed-bench.jpg", "alt": "A family of four posed together outdoors on a rustic bench" },
+    { "file": "home-05-girl-fence-backlit.jpg", "alt": "A young girl smiling at a wooden fence, backlit by warm light" },
+    { "file": "home-06-multigenerational-walk-wooded.jpg", "alt": "Three generations of a family walking together on a wooded path" },
+    { "file": "home-07-dog-path-bw.jpg", "alt": "Black and white photograph of a dog walking alone along a quiet path" },
+    { "file": "couples-01-walking-hand-in-hand.jpg", "folder": "couples", "alt": "A couple walking hand in hand outdoors on a casual afternoon" },
+    { "file": "home-08-mom-toddler-basket.jpg", "alt": "A mother playing with her toddler in a basket on the grass" },
+    { "file": "home-09-child-grass-field.jpg", "alt": "A young child standing thoughtfully in a sunlit grass field" },
+    { "file": "grads-16-sunflower-field.jpg", "folder": "grads", "alt": "A graduate standing in a sunflower field in golden light" },
+    { "file": "home-10-family-posed-rock.jpg", "alt": "A family of four posed together outdoors on a large rock" },
+    { "file": "home-11-dad-baby-toddler-blanket.jpg", "alt": "A father lying on a blanket outdoors with a baby and toddler" },
+    { "file": "home-12-girl-tall-grass.jpg", "alt": "A young girl standing in tall golden grass" },
+    { "file": "home-13-boy-stone-wall-denim.jpg", "alt": "A young boy standing against a stone wall in a denim jacket" },
+    { "file": "grads-17-dayton-inspires-mural.jpg", "folder": "grads", "alt": "A graduate posing beside a colorful 'Dayton Inspires' mural" },
+    { "file": "home-14-family-silhouette-lake.jpg", "alt": "A family standing together in silhouette by a lake" },
+    { "file": "home-15-girl-peeking-fence.jpg", "alt": "A young girl peeking through a gap in a wooden fence" }
+  ],
+  "_selectionCommentary": "Julie pre-selected 30 candidates (Website Gallery Pics/Home Page). Trimmed to 20 per the site's own 12-20 target. Ten of the 30 were exact-file duplicates of images already placed on Families or Couples (silhouette-at-sunset, B&W baby feet, garden-flowers girl, both a couples leaves-cheek-to-cheek and a couples forehead-touch shot, siblings-in-leaves, boy-on-steps, the large family group, toddler-in-colorful-setting, and a second couples silhouette) — dropped in favor of images unique to this page. One more (a family in matching white tops) was excluded for the same coordinate-don't-match styling reason it was excluded from Families. Added three Grads and one additional Couples image, since the original 30 were 28 Families to 1 Couples to 0 Grads — this page is meant to represent all four categories. Reordered so the opener is a warm family moment rather than the black-and-white dog photo (kept, just moved mid-gallery), with category variety and B&W/color spaced through rather than clustered.",
+  "_status": "Selected and live as of 2026-09-08."
 }

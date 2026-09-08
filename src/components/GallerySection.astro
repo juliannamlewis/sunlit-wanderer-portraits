@@ -2,7 +2,7 @@
 export interface Props {
   id: string;
   folder: string;
-  images: { file: string; alt: string }[];
+  images: { file: string; alt: string; folder?: string }[];
   eyebrow?: string;
   title?: string;
   bare?: boolean;
@@ -11,6 +11,10 @@ export interface Props {
 
 const { id, folder, images, eyebrow, title, bare = false, compact = false } = Astro.props;
 const basePath = `/images/${folder}/`;
+
+function imgSrc(img: { file: string; folder?: string }) {
+  return img.folder ? `/images/${img.folder}/${img.file}` : basePath + img.file;
+}
 ---
 
 {images.length > 0 && (
@@ -23,11 +27,11 @@ const basePath = `/images/${folder}/`;
           <button
             type="button"
             class="gallery-thumb"
-            data-full={basePath + img.file}
+            data-full={imgSrc(img)}
             data-alt={img.alt}
             data-index={i}
           >
-            <img src={basePath + img.file} alt={img.alt} loading="lazy" decoding="async" />
+            <img src={imgSrc(img)} alt={img.alt} loading="lazy" decoding="async" />
           </button>
         ))}
       </div>
