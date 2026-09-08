@@ -5,3 +5,5 @@ dist/
 *.log
 .env
 .env.production
+chatbot-testing/site-knowledge-base.txt
+chatbot-testing/system-prompt.txt

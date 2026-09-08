@@ -41,6 +41,7 @@ const { variant = 'compact' } = Astro.props;
 
     <nav id="site-nav" class="site-nav">
       <ul>
+        <li><a href="/">Home</a></li>
         {navLinks.map((link) => (
           <li><a href={link.href}>{link.label}</a></li>
         ))}
