@@ -1,0 +1,28 @@
+{
+  "_comment": "Ordered list of images for the Grads gallery (renamed from High-School Seniors 2026-09-07 to also cover college grads — see REQUIREMENTS_CHANGELOG_v1.7.md). Order matters — the first image leads the page. Files live in public/images/grads/. Alt text says 'graduate' rather than 'high-school senior' throughout so it reads correctly for both audiences.",
+  "category": "Grads",
+  "images": [
+    { "file": "grads-01-bachelors-degree-sign.jpg", "alt": "A graduate in cap and gown holding a handwritten sign celebrating their bachelor's degree" },
+    { "file": "grads-02-cap-toss-gazebo.jpg", "alt": "A graduate in a red gown tossing their cap into the air at an outdoor gazebo" },
+    { "file": "grads-03-gown-red-stole-blossoms.jpg", "alt": "A graduate in a black gown and red stole walking a path lined with spring blossoms" },
+    { "file": "grads-04-red-dress-gown-drape-wind.jpg", "alt": "A graduate in a red dress with their gown draped dramatically in the wind, a stone wall behind them" },
+    { "file": "grads-05-athletic-soccer-gear.jpg", "alt": "A graduate in athletic wear holding soccer gear outdoors" },
+    { "file": "grads-06-track-uniform-medal.jpg", "alt": "A graduate in a track uniform wearing a medal, standing on a track" },
+    { "file": "grads-07-soccer-ball-goal.jpg", "alt": "A graduate holding a soccer ball toward the camera in front of a goal" },
+    { "file": "grads-08-soccer-uniform-grass.jpg", "alt": "A graduate in a soccer uniform sitting on the grass beside a ball near the goal" },
+    { "file": "grads-09-denim-jacket-brick-street.jpg", "alt": "A graduate in a denim jacket standing on a brick city street" },
+    { "file": "grads-10-brick-street-bridge-fall.jpg", "alt": "A graduate standing on a brick street with a bridge and fall foliage behind them" },
+    { "file": "grads-11-plaid-shirt-golden-hour.jpg", "alt": "A graduate in a plaid shirt standing by a tree in golden evening light" },
+    { "file": "grads-12-arms-crossed-brick-street.jpg", "alt": "A graduate standing with arms crossed on a brick city street" },
+    { "file": "grads-13-graffiti-mural.jpg", "alt": "A graduate posed against a colorful graffiti mural" },
+    { "file": "grads-14-plaid-wooded-fence.jpg", "alt": "A graduate leaning on a wooden fence in a wooded, fall-colored setting" },
+    { "file": "grads-15-stone-steps-off-shoulder.jpg", "alt": "A graduate leaning on a stone stair railing in an off-shoulder top" },
+    { "file": "grads-16-sunflower-field.jpg", "alt": "A graduate standing in a sunflower field in golden light" },
+    { "file": "grads-17-dayton-inspires-mural.jpg", "alt": "A graduate posing beside a colorful 'Dayton Inspires' mural" },
+    { "file": "grads-18-golden-hour-stone-ledge.jpg", "alt": "A graduate seated on a stone ledge in warm golden-hour light" },
+    { "file": "grads-19-night-cityscape.jpg", "alt": "A graduate standing against a dramatic night cityscape" },
+    { "file": "grads-20-balustrade-casual.jpg", "alt": "A graduate sitting casually on a stone balustrade overlooking the city" }
+  ],
+  "_selectionGuidance": "Aim for a spread that speaks to both audiences: personality-driven, model-like frames a grad would choose, and timeless portraits a parent or the grad's own family would want. Include at least one with something meaningful to them — a sport, an instrument, a uniform — and, given the category now covers college grads too, keep at least one or two literal graduation-moment images (cap, gown, degree) in rotation so the page visually explains the rename.",
+  "_excluded": "From the 45-image batch in Website Gallery Pics/Grads/Grads.zip (2026-09-07): several near-duplicate frames from the same sessions (kept the strongest of each pair), one frame ambiguous about what the subject was holding (erred cautious), and roughly half the batch simply not needed once 20 were selected with good variety — plenty left to draw from later if a swap is ever wanted."
+}

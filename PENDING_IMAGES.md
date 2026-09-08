@@ -35,15 +35,11 @@ in CONTENT_CHECKLIST.md and remain the single biggest content gap on the site.
 
 ---
 
-## Priority 2 — Sports seniors (already referenced in the live gallery)
+## Priority 2 — Sports seniors: closed (2026-09-07)
 
-These two are currently sitting in the repo as watermarked files. Replacing them
-is a straight overwrite.
-
-| Source | Target filename | Folder |
-|---|---|---|
-| IMG_1203 — soccer, bleachers | `seniors-03-soccer-bleachers.jpg` | `public/images/seniors/` |
-| IMG_1192 — track, lane markings | `seniors-04-track-lanes.jpg` | `public/images/seniors/` |
+**No longer needed.** The Seniors page was renamed to Grads and its gallery
+was fully replaced with a fresh 20-image batch — these two watermarked
+frames (soccer, track) are no longer used anywhere on the site.
 
 ---
 

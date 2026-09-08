@@ -1,5 +1,5 @@
 ---
-title: High-School Seniors
+title: Grads
 metaDescription: Personalized senior portrait sessions in Dayton, Ohio, built around what your senior actually cares about.
 ---
 

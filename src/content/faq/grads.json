@@ -1,6 +1,6 @@
 {
-  "_comment": "High-School Seniors page FAQ. Do not add questions about split fall/spring sessions or delayed cap-and-gown sessions — those are not advertised at launch.",
-  "title": "Questions about senior sessions",
+  "_comment": "Grads page FAQ (renamed from High-School Seniors 2026-09-07 to also cover college grads — see REQUIREMENTS_CHANGELOG_v1.7.md). Do not add questions about split fall/spring sessions or delayed cap-and-gown sessions — those are not advertised at launch. The first answer below still says 'high school' explicitly and needs Julie's revised wording.",
+  "title": "Questions about grad sessions",
   "questions": [
     {
       "q": "Can we bring things that actually matter to them?",

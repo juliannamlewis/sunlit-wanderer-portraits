@@ -38,15 +38,24 @@ Update this table at each review.
 
 | Image set | Where used | Subject | Release status | Replace when |
 |---|---|---|---|---|
-| Senior session — DAI, Oregon District, Wegerzyn (8 frames) | DAI, Downtown Dayton and Wegerzyn location galleries; 2 in Seniors gallery | Family member (granddaughter) | Verbal permission given | A paying senior client with a signed release covers the same locations |
-| Sports seniors — soccer and track (2 frames, twins) | Seniors gallery | Former clients | Text approval, temporary | **Review January 2027** |
-| Male senior — Oregon District and DAI (4 frames) | Downtown Dayton and DAI location galleries; 2 in Seniors gallery | Former client (mothers are friends) | Text approval, temporary | **Review January 2027** |
+| Senior session — DAI, Oregon District, Wegerzyn (8 frames) | DAI, Downtown Dayton and Wegerzyn location galleries only (no longer in the category gallery — see note below) | Family member (granddaughter) | Verbal permission given | A paying grad client with a signed release covers the same locations |
+| Male senior — Oregon District and DAI (4 frames) | Downtown Dayton and DAI location galleries only (no longer in the category gallery — see note below) | Former client (mothers are friends) | Text approval, temporary | **Review January 2027** |
 | Families & Kids gallery (7 frames) | Families category gallery | Mixed — prior clients and family | Releases being re-obtained | As signed releases return |
+
+**2026-09-07 note:** the Seniors category page was renamed to Grads and its
+gallery was fully replaced with a fresh 20-image batch from
+`Website Gallery Pics/Grads/Grads.zip` — all newly supplied and cleared for
+site use. The two watermarked sports frames (soccer, track) that were the
+prior top action item are no longer used anywhere on the site; that action
+item is closed. The DAI/Oregon/Wegerzyn and male-senior frames above still
+live on the *Locations* pages only now, not the Grads gallery, but they're
+the same underlying releases and still due for the January 2027 check.
 
 ### ⚠️ January 2027 — specific action
 
-Six senior images are running on **temporary text approval**, not signed
-releases. At the January review, check what can be replaced with fall 2026
+Ten location-gallery images (the two rows above) are running on **temporary
+verbal or text approval**, not signed releases. At the January review, check
+what can be replaced with fall 2026
 client work covered by a signed release on file. If replacements aren't
 available yet, re-confirm the approvals rather than letting them run silently
 for another year.

@@ -20,7 +20,7 @@ export function reviewsFor(placement: string) {
 
 export const navLinks = [
   { href: '/families', label: 'Families & Kids' },
-  { href: '/seniors', label: 'High-School Seniors' },
+  { href: '/grads', label: 'Grads' },
   { href: '/maternity', label: 'Maternity' },
   { href: '/couples', label: 'Couples & Engagement' },
   { href: '/locations', label: 'Locations' },
