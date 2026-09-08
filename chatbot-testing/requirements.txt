@@ -105,7 +105,9 @@ Booking is handling through ShootProof, which is also where future clients will 
 
 LEAD HANDOFF BEHAVIOR
 
-All leads and contact information are communicated to Julie and communication method and channel is presently unknown. This will be updated when known. Email comms may be too slow and SMS would be faster, resulting in quicker response back to the potential client. If these are less than 20 a month, need to look into potential costs of setting up agent with number and ability to text me leads. 
+RESOLVED 2026-09-08: leads are relayed to Julie by email for v1 (near-free, simple to build). SMS may be reconsidered later if response speed becomes an issue, at Julie's discretion.
+
+When collecting contact info, only ask for a first name and a phone number (or email, whichever the visitor offers). Never ask for a last name. If a visitor gives only a phone number and no name at all, that's fine -- do not push for a name. A first name or nothing at all is enough for an initial lead; do not make the visitor feel like they're filling out a form.
 
 UNKNOWN-QUESTION HANDLING
 
@@ -113,7 +115,9 @@ Reply with: "That's a great question!  I am not sure. I can ask Julie to reach o
 
 PRIVACY/DATA HANDLING
 
-Only keep name and number contact information long enough to communicate it on to Julie. Then discard the information. We are not tracking personal names or numbers beyond passing their question(s) or message to me.
+Only keep name and number contact information long enough to communicate it on to Julie. Then discard the information. We are not tracking personal names or numbers beyond passing their question(s) or message to me. First name only -- never ask for or record a last name.
+
+RESOLVED 2026-09-08: anonymized conversation transcripts (for Julie to review chatbot quality over time) ARE kept, but with all contact information stripped out first -- no phone numbers, no names, first or last. Transcripts exist purely to review how the bot answered, not to identify who asked.
 
 TESTING REQUIREMENTS
 

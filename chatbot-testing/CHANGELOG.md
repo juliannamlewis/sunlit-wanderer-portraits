@@ -48,3 +48,20 @@ with the updated prompt.
 **Still open:** the 10-question hard trigger (needs code-level turn
 counting, not a prompt instruction -- see v1.1 entry above). Not addressed
 in this pass.
+
+---
+
+## 2026-09-08 — v1.3: lead delivery channel decided, first-name-only privacy
+
+Julie confirmed three decisions:
+
+1. **Lead delivery channel: email for v1** (her call, matching the earlier
+   recommendation). SMS stays a possible later upgrade.
+2. **First name only, never pushed.** The bot should ask for a first name
+   and a phone/email, but never ask for a last name, and never press a
+   visitor who only gives a number with no name at all. Updated
+   LEAD HANDOFF BEHAVIOR and PRIVACY/DATA HANDLING accordingly.
+3. **Anonymized transcripts: yes.** Julie wants to review chatbot quality
+   over time without keeping identifiable data online. Transcripts are
+   kept with all contact info (name, number) stripped before storage --
+   they exist to review answers, not to identify who asked.
