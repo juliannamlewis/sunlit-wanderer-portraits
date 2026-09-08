@@ -1,0 +1,7 @@
+name = "sunlit-wanderer-portraits"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-08"
+
+[[kv_namespaces]]
+binding = "CHATBOT_TRANSCRIPTS"
+id = "a57707df867244938d6513496fac9044"
