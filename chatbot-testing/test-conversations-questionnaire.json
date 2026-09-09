@@ -1,0 +1,27 @@
+{
+  "questionnaire_no_repeat_already_given_info": [
+    "Hi! I want to book a short family session at Sycamore State Park, just me and my two kids",
+    "Sure, let's do the questionnaire now",
+    "Ava is 8 and Ben is 5, and I'm Jordan",
+    "They're both pretty comfortable in front of a camera, Ava especially loves posing",
+    "No specific schedule concerns",
+    "Nothing specific, just want great photos",
+    "No specific shot, just candid",
+    "Bright and airy would be great",
+    "No inspiration photos",
+    "Color is fine",
+    "I've got outfits covered"
+  ],
+  "questionnaire_prefers_link_later": [
+    "I'd like to book a couples session",
+    "Actually I'm really short on time right now, can you just send me something to fill out later?",
+    "Sure, it's Jordan, you can text me at 937-555-0190"
+  ],
+  "questionnaire_maternity_sensitivity_check": [
+    "I want to book a maternity session",
+    "Yes let's do the questions now",
+    "My due date is November 3rd",
+    "This is our first baby",
+    "Just my husband will be joining"
+  ]
+}

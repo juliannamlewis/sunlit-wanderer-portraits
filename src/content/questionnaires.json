@@ -1,0 +1,99 @@
+{
+  "_comment": "Structured version of the ShootProof questionnaire build sheets (Website Gallery Pics/../Downloads/*.md, 2026-09-17). Used to let the chatbot walk a visitor through their session questionnaire conversationally instead of requiring the ShootProof web form. Order matters within each questionnaire. 'required: true' fields must always be asked; others can be skipped if the visitor is rushed or doesn't want to answer.",
+  "intro": "A few quick questions to help plan your session — nothing here is required to \"get right.\" The more I know about you and what you're hoping for, the better Julie can plan locations, timing, and shots that feel like you. Should take about 5 minutes.",
+  "family-kids": {
+    "label": "Family & Kids",
+    "questions": [
+      { "id": "names_ages", "section": "Who's Joining Us", "text": "Names and ages of everyone being photographed (include pets!)", "type": "paragraph", "required": true },
+      { "id": "kid_personalities", "section": "Who's Joining Us", "text": "Anything I should know about the kids' personalities or what makes them comfortable in front of a camera?", "type": "paragraph", "required": false },
+      { "id": "logistics_timing", "section": "Who's Joining Us", "text": "Any nap schedules, meal timing, or other logistics that would help pick the best time of day?", "type": "paragraph", "required": false },
+      { "id": "family_story", "section": "Your Story", "text": "Tell me a little about your family's story — what's going on in this season of life, and what made you want to do a session right now?", "type": "paragraph", "required": false },
+      { "id": "session_goals", "section": "Session Goals", "text": "What do you most want to walk away with?", "type": "checkboxes", "required": false, "options": ["Wall art for our home", "Images to share on social media", "Updated family photos (haven't had any in a while)", "A gift for grandparents or family", "Documenting a specific milestone (new baby, move, anniversary, etc.)", "Just want great photos, no specific plan"] },
+      { "id": "specific_shot", "section": "Session Goals", "text": "Is there a specific shot or moment you really want captured?", "type": "paragraph", "required": false },
+      { "id": "vibe", "section": "Style & Vibe", "text": "How would you describe the vibe you're going for?", "type": "checkboxes", "required": false, "options": ["Bright & airy", "Warm & golden", "Moody & rich tones", "Candid & playful", "Classic & posed", "Adventurous & outdoorsy", "Not sure — open to your suggestion"] },
+      { "id": "inspiration", "section": "Style & Vibe", "text": "Do you have any inspiration photos or a Pinterest board you'd like to share?", "type": "short_answer", "required": false },
+      { "id": "color_bw", "section": "Style & Vibe", "text": "Color photos, black & white, or a mix?", "type": "radio", "required": false, "options": ["Color", "Black & white", "A mix — you decide"] },
+      { "id": "outfit_help", "section": "Wardrobe & Location", "text": "Would you like help planning outfits for everyone?", "type": "radio", "required": true, "options": ["Yes, please send me your outfit guide", "I've got it covered", "Somewhere in between — I could use a few tips"] },
+      { "id": "location_help", "section": "Wardrobe & Location", "text": "Would you like help choosing a location, or do you already have one in mind?", "type": "radio", "required": true, "options": ["Please recommend a location", "I already have a location in mind", "Open to either"] },
+      { "id": "location_name", "section": "Wardrobe & Location", "text": "If you already have a location in mind, what is it?", "type": "short_answer", "required": false, "skipUnless": "location_help answer implies they have a location in mind" },
+      { "id": "props", "section": "Personal Props", "text": "Are there any personal props you're considering bringing? (a blanket, a family heirloom, a favorite toy or book, instruments, signs, a pet, anything that feels like \"you\")", "type": "paragraph", "required": false },
+      { "id": "contact_method", "section": "Logistics", "text": "Preferred contact method", "type": "radio", "required": false, "options": ["Call", "Text"] },
+      { "id": "contact_time", "section": "Logistics", "text": "Best time of day to reach you", "type": "radio", "required": false, "options": ["Morning", "Afternoon", "Evening"] },
+      { "id": "product_samples", "section": "Logistics", "text": "Which product samples would you like to see at your viewing appointment?", "type": "checkboxes", "required": false, "options": ["Ask Julie for the current product list"] },
+      { "id": "anything_else", "section": "Anything Else", "text": "Anything else I should know, or any questions for Julie before session day?", "type": "paragraph", "required": false }
+    ]
+  },
+  "grads": {
+    "label": "Grads",
+    "questions": [
+      { "id": "grad_name_school", "section": "About the Grad", "text": "Grad's name and school", "type": "short_answer", "required": true },
+      { "id": "degree_year", "section": "About the Grad", "text": "What are you graduating with, and what year? (degree/program, expected grad date)", "type": "short_answer", "required": true },
+      { "id": "proud_of", "section": "About the Grad", "text": "Anything you're especially proud of from this chapter? (activities, honors, a team, a job you landed, a hard thing you pushed through)", "type": "paragraph", "required": false },
+      { "id": "joining", "section": "About the Grad", "text": "Will anyone be joining for a few frames?", "type": "checkboxes", "required": false, "options": ["Parents", "Siblings", "Grandparents", "Significant other", "Friends", "Pet", "Just me"] },
+      { "id": "whats_next", "section": "Your Story", "text": "What are you most excited about after graduation? Where's this next chapter headed?", "type": "paragraph", "required": false },
+      { "id": "session_goals", "section": "Session Goals", "text": "What do you most want to walk away with?", "type": "checkboxes", "required": false, "options": ["Wall art", "Announcement or grad card photos", "Images to share on social media", "A gift for parents or grandparents", "Just want great photos, no specific plan"] },
+      { "id": "specific_shot", "section": "Session Goals", "text": "Is there a specific shot or moment you really want captured?", "type": "paragraph", "required": false },
+      { "id": "vibe", "section": "Style & Vibe", "text": "How would you describe the vibe you're going for?", "type": "checkboxes", "required": false, "options": ["Bright & airy", "Warm & golden", "Moody & rich tones", "Candid & fun", "Classic & posed", "Adventurous & outdoorsy", "Not sure — open to your suggestion"] },
+      { "id": "inspiration", "section": "Style & Vibe", "text": "Do you have any inspiration photos or a Pinterest board you'd like to share?", "type": "short_answer", "required": false },
+      { "id": "color_bw", "section": "Style & Vibe", "text": "Color photos, black & white, or a mix?", "type": "radio", "required": false, "options": ["Color", "Black & white", "A mix — you decide"] },
+      { "id": "cap_gown", "section": "Wardrobe & Location", "text": "Will you be wearing your cap & gown, and do you want dedicated shots in it?", "type": "radio", "required": true, "options": ["Yes, cap & gown shots", "No, casual/professional attire only", "Both — cap & gown plus another outfit"] },
+      { "id": "outfit_help", "section": "Wardrobe & Location", "text": "Would you like help planning your other outfit(s)?", "type": "radio", "required": true, "options": ["Yes, please send me your outfit guide", "I've got it covered", "Somewhere in between — I could use a few tips"] },
+      { "id": "location_help", "section": "Wardrobe & Location", "text": "Would you like help choosing a location, or do you already have one in mind?", "type": "radio", "required": true, "options": ["Please recommend a location", "I already have a location in mind", "Open to either"] },
+      { "id": "location_name", "section": "Wardrobe & Location", "text": "If you already have a location in mind, what is it? (campus landmarks are always a nice option to consider!)", "type": "short_answer", "required": false, "skipUnless": "location_help answer implies they have a location in mind" },
+      { "id": "props", "section": "Personal Props", "text": "Are there any personal props you're considering bringing? (letterman jacket, honor cords/stoles, an instrument, sports gear, a diploma or acceptance letter, keys to a new car, a pet)", "type": "paragraph", "required": false },
+      { "id": "contact_method", "section": "Logistics", "text": "Preferred contact method", "type": "radio", "required": false, "options": ["Call", "Text"] },
+      { "id": "contact_time", "section": "Logistics", "text": "Best time of day to reach you", "type": "radio", "required": false, "options": ["Morning", "Afternoon", "Evening"] },
+      { "id": "product_samples", "section": "Logistics", "text": "Which product samples would you like to see at your viewing appointment?", "type": "checkboxes", "required": false, "options": ["Ask Julie for the current product list"] },
+      { "id": "anything_else", "section": "Anything Else", "text": "Anything else I should know, or any questions for Julie before session day?", "type": "paragraph", "required": false }
+    ]
+  },
+  "couples": {
+    "label": "Couples / Engagement",
+    "questions": [
+      { "id": "both_names", "section": "About You Two", "text": "Both of your names", "type": "short_answer", "required": true },
+      { "id": "time_together", "section": "About You Two", "text": "How long have you two been together?", "type": "short_answer", "required": false },
+      { "id": "occasion", "section": "About You Two", "text": "Is this session for an engagement, an anniversary, or just because?", "type": "radio", "required": true, "options": ["Engagement", "Anniversary", "Just because — no occasion needed"] },
+      { "id": "joining", "section": "About You Two", "text": "Will anyone else be joining for a few frames?", "type": "checkboxes", "required": false, "options": ["Pet", "Family or friends (surprise proposal witnesses, etc.)", "Just us"] },
+      { "id": "their_story", "section": "Your Story", "text": "Tell me your story — how did you two meet, and (if this is an engagement) how did the proposal happen?", "type": "paragraph", "required": false },
+      { "id": "session_goals", "section": "Session Goals", "text": "What do you most want to walk away with?", "type": "checkboxes", "required": false, "options": ["Wall art for our home", "Save-the-date or announcement photos", "Images to share on social media", "Just want great photos, no specific plan"] },
+      { "id": "specific_shot", "section": "Session Goals", "text": "Is there a specific shot or moment you really want captured?", "type": "paragraph", "required": false },
+      { "id": "vibe", "section": "Style & Vibe", "text": "How would you describe the vibe you're going for?", "type": "checkboxes", "required": false, "options": ["Bright & airy", "Warm & golden", "Moody & rich tones", "Candid & playful", "Classic & posed", "Adventurous & outdoorsy", "Not sure — open to your suggestion"] },
+      { "id": "inspiration", "section": "Style & Vibe", "text": "Do you have any inspiration photos or a Pinterest board you'd like to share?", "type": "short_answer", "required": false },
+      { "id": "color_bw", "section": "Style & Vibe", "text": "Color photos, black & white, or a mix?", "type": "radio", "required": false, "options": ["Color", "Black & white", "A mix — you decide"] },
+      { "id": "outfit_help", "section": "Wardrobe & Location", "text": "Would you like help planning coordinating outfits for both of you?", "type": "radio", "required": true, "options": ["Yes, please send me your outfit guide", "I've got it covered", "Somewhere in between — I could use a few tips"] },
+      { "id": "location_help", "section": "Wardrobe & Location", "text": "Would you like help choosing a location, or do you already have one in mind?", "type": "radio", "required": true, "options": ["Please recommend a location", "I already have a location in mind", "Open to either"] },
+      { "id": "location_name", "section": "Wardrobe & Location", "text": "If you already have a location in mind, what is it?", "type": "short_answer", "required": false, "skipUnless": "location_help answer implies they have a location in mind" },
+      { "id": "ring_shots", "section": "Wardrobe & Location", "text": "If this is an engagement session, would you like a few close-up ring shots?", "type": "radio", "required": false, "options": ["Yes", "No", "N/A — not an engagement session"] },
+      { "id": "props", "section": "Personal Props", "text": "Are there any personal props you're considering bringing? (a blanket, a picnic setup, a pet, a meaningful vehicle, a proposal ring box, an instrument, anything that feels like \"you two\")", "type": "paragraph", "required": false },
+      { "id": "contact_method", "section": "Logistics", "text": "Preferred contact method", "type": "radio", "required": false, "options": ["Call", "Text"] },
+      { "id": "contact_time", "section": "Logistics", "text": "Best time of day to reach you", "type": "radio", "required": false, "options": ["Morning", "Afternoon", "Evening"] },
+      { "id": "product_samples", "section": "Logistics", "text": "Which product samples would you like to see at your viewing appointment?", "type": "checkboxes", "required": false, "options": ["Ask Julie for the current product list"] },
+      { "id": "anything_else", "section": "Anything Else", "text": "Anything else I should know, or any questions for Julie before session day?", "type": "paragraph", "required": false }
+    ]
+  },
+  "maternity": {
+    "label": "Maternity",
+    "questions": [
+      { "id": "due_date", "section": "About Your Growing Family", "text": "Due date", "type": "short_answer", "required": true },
+      { "id": "first_or_adding", "section": "About Your Growing Family", "text": "Is this your first baby, or are you adding to your family?", "type": "radio", "required": true, "options": ["First baby", "Adding to our family"] },
+      { "id": "siblings_joining", "section": "About Your Growing Family", "text": "If you're adding to your family, will older sibling(s) join the session? (names and ages)", "type": "paragraph", "required": false, "skipUnless": "first_or_adding answer is 'Adding to our family'" },
+      { "id": "joining", "section": "About Your Growing Family", "text": "Will your partner be joining, and anyone else?", "type": "checkboxes", "required": false, "options": ["Partner", "Pet", "Grandparents-to-be", "Just me"] },
+      { "id": "baby_name", "section": "About Your Growing Family", "text": "Baby's name, if you're comfortable sharing (totally optional — happy to keep it as \"baby\" if not ready to share!)", "type": "short_answer", "required": false },
+      { "id": "pregnancy_story", "section": "Your Story", "text": "Tell me a bit about this pregnancy journey and what you're most looking forward to as a family.", "type": "paragraph", "required": false },
+      { "id": "session_goals", "section": "Session Goals", "text": "What do you most want to walk away with?", "type": "checkboxes", "required": false, "options": ["Wall art for our home", "Images to share on social media", "A gift for grandparents-to-be", "Just want great photos, no specific plan"] },
+      { "id": "specific_shot", "section": "Session Goals", "text": "Is there a specific shot or moment you really want captured?", "type": "paragraph", "required": false },
+      { "id": "vibe", "section": "Style & Vibe", "text": "How would you describe the vibe you're going for?", "type": "checkboxes", "required": false, "options": ["Bright & airy", "Warm & golden", "Moody & rich tones", "Soft & romantic", "Classic & posed", "Adventurous & outdoorsy", "Not sure — open to your suggestion"] },
+      { "id": "inspiration", "section": "Style & Vibe", "text": "Do you have any inspiration photos or a Pinterest board you'd like to share?", "type": "short_answer", "required": false },
+      { "id": "color_bw", "section": "Style & Vibe", "text": "Color photos, black & white, or a mix?", "type": "radio", "required": false, "options": ["Color", "Black & white", "A mix — you decide"] },
+      { "id": "outfit_help", "section": "Wardrobe & Location", "text": "Would you like help planning outfits for everyone joining? (flowing maternity dresses, coordinating family looks, etc.)", "type": "radio", "required": true, "options": ["Yes, please send me your outfit guide", "I've got it covered", "Somewhere in between — I could use a few tips"] },
+      { "id": "location_help", "section": "Wardrobe & Location", "text": "Would you like help choosing a location, or do you already have one in mind?", "type": "radio", "required": true, "options": ["Please recommend a location", "I already have a location in mind", "Open to either"] },
+      { "id": "location_name", "section": "Wardrobe & Location", "text": "If you already have a location in mind, what is it?", "type": "short_answer", "required": false, "skipUnless": "location_help answer implies they have a location in mind" },
+      { "id": "props", "section": "Personal Props", "text": "Are there any personal props you're considering bringing? (an ultrasound photo, baby shoes, a sonogram print, a sign with the due date or baby's name, a blanket or heirloom, older sibling's favorite toy)", "type": "paragraph", "required": false },
+      { "id": "contact_method", "section": "Logistics", "text": "Preferred contact method", "type": "radio", "required": false, "options": ["Call", "Text"] },
+      { "id": "contact_time", "section": "Logistics", "text": "Best time of day to reach you", "type": "radio", "required": false, "options": ["Morning", "Afternoon", "Evening"] },
+      { "id": "product_samples", "section": "Logistics", "text": "Which product samples would you like to see at your viewing appointment?", "type": "checkboxes", "required": false, "options": ["Ask Julie for the current product list"] },
+      { "id": "anything_else", "section": "Anything Else", "text": "Anything else I should know, or any questions for Julie before session day?", "type": "paragraph", "required": false }
+    ],
+    "sensitivityNote": "Do not ask about the pregnancy itself beyond what the client volunteers in the pregnancy_story question -- no health questions, no \"how is the pregnancy going.\" Keep any such detail to what the visitor offers on their own."
+  }
+}

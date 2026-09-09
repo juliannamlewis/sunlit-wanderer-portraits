@@ -24,7 +24,7 @@ const TEN_QUESTION_THRESHOLD = 10;
 const SUBMIT_LEAD_TOOL = {
   name: 'submit_lead',
   description:
-    "Call this when a visitor has agreed to have Julie follow up and has provided a phone number or email (and optionally a first name). Do this exactly once per lead -- don't call it again later in the same conversation unless the visitor gives new contact info.",
+    "Call this when a visitor has agreed to have Julie follow up and has provided a phone number or email (and optionally a first name). Do this exactly once per lead -- don't call it again later in the same conversation unless the visitor gives new contact info. Do not call this for a visitor who is completing their full session questionnaire in the conversation -- use submit_questionnaire for that instead, it captures contact info too.",
   input_schema: {
     type: 'object',
     properties: {
@@ -47,6 +47,49 @@ const SUBMIT_LEAD_TOOL = {
       },
     },
     required: ['contact_method', 'contact_value', 'question_summary'],
+  },
+};
+
+const SUBMIT_QUESTIONNAIRE_TOOL = {
+  name: 'submit_questionnaire',
+  description:
+    "Call this exactly once, after walking a visitor conversationally through their full session questionnaire (all the questions Required or otherwise offered for their session type, per the questionnaire content in your knowledge base) and they've answered or explicitly skipped each one. Do not call submit_lead separately for the same visitor -- this captures their contact info too.",
+  input_schema: {
+    type: 'object',
+    properties: {
+      session_type: {
+        type: 'string',
+        enum: ['family-kids', 'grads', 'couples', 'maternity'],
+        description: 'Which questionnaire was used.',
+      },
+      first_name: {
+        type: 'string',
+        description: "Visitor's first name, or empty string if not given. Never include a last name.",
+      },
+      contact_method: {
+        type: 'string',
+        enum: ['text', 'call', 'email'],
+        description: 'How the visitor wants to be contacted.',
+      },
+      contact_value: {
+        type: 'string',
+        description: 'The phone number or email address the visitor provided.',
+      },
+      answers: {
+        type: 'array',
+        description:
+          'One entry per question actually asked, in the order asked. Omit entries for questions the visitor explicitly skipped.',
+        items: {
+          type: 'object',
+          properties: {
+            question: { type: 'string', description: 'The exact question text asked, from the knowledge base.' },
+            answer: { type: 'string', description: "The visitor's answer, in their own words." },
+          },
+          required: ['question', 'answer'],
+        },
+      },
+    },
+    required: ['session_type', 'contact_method', 'contact_value', 'answers'],
   },
 };
 
@@ -73,7 +116,7 @@ async function callClaude(env, messages, extraSystemNote) {
       model: MODEL,
       max_tokens: 600,
       system,
-      tools: [SUBMIT_LEAD_TOOL],
+      tools: [SUBMIT_LEAD_TOOL, SUBMIT_QUESTIONNAIRE_TOOL],
       messages,
     }),
   });
@@ -111,6 +154,39 @@ async function sendLeadEmail(env, lead) {
     console.log(
       `Lead email sent successfully. from=${env.LEAD_FROM_EMAIL} to=${env.LEAD_NOTIFY_EMAIL} response=${body}`,
     );
+  }
+}
+
+async function sendQuestionnaireEmail(env, data) {
+  const answersText = (data.answers || [])
+    .map((a) => `Q: ${a.question}\nA: ${a.answer}`)
+    .join('\n\n');
+  const text = `Completed questionnaire from the site chatbot (${data.session_type}).\n\nName: ${data.first_name || '(not given)'}\nContact (${data.contact_method}): ${data.contact_value}\n\n${answersText}\n`;
+
+  if (!env.RESEND_API_KEY || !env.LEAD_NOTIFY_EMAIL || !env.LEAD_FROM_EMAIL) {
+    console.log('Questionnaire captured but email not configured yet:', text);
+    return;
+  }
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: env.LEAD_FROM_EMAIL,
+      to: env.LEAD_NOTIFY_EMAIL,
+      subject: `Questionnaire completed: ${data.session_type}${data.first_name ? ' - ' + data.first_name : ''}`,
+      text,
+    }),
+  });
+
+  const body = await res.text();
+  if (!res.ok) {
+    console.error(`Resend API error ${res.status}:`, body);
+  } else {
+    console.log(`Questionnaire email sent successfully. to=${env.LEAD_NOTIFY_EMAIL} response=${body}`);
   }
 }
 
@@ -156,10 +232,19 @@ export async function onRequestPost(context) {
 
   try {
     let data = await callClaude(env, messages, extraSystemNote);
-    let toolUse = data.content?.find((c) => c.type === 'tool_use' && c.name === 'submit_lead');
+    let toolUse = data.content?.find(
+      (c) => c.type === 'tool_use' && (c.name === 'submit_lead' || c.name === 'submit_questionnaire'),
+    );
 
     if (toolUse) {
-      await sendLeadEmail(env, toolUse.input);
+      let toolResultText;
+      if (toolUse.name === 'submit_questionnaire') {
+        await sendQuestionnaireEmail(env, toolUse.input);
+        toolResultText = 'Questionnaire relayed to Julie successfully.';
+      } else {
+        await sendLeadEmail(env, toolUse.input);
+        toolResultText = 'Lead relayed to Julie successfully.';
+      }
 
       const followUpMessages = [
         ...messages,
@@ -170,7 +255,7 @@ export async function onRequestPost(context) {
             {
               type: 'tool_result',
               tool_use_id: toolUse.id,
-              content: 'Lead relayed to Julie successfully.',
+              content: toolResultText,
             },
           ],
         },

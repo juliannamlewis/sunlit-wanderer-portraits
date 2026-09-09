@@ -47,6 +47,7 @@ function buildKnowledgeBase() {
   parts.push('=== site.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/site.json')));
   parts.push('=== pricing.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/pricing.json')));
   parts.push('=== reviews.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/reviews.json')));
+  parts.push('=== questionnaires.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/questionnaires.json')));
 
   for (const f of fs.readdirSync(path.join(ROOT, 'src/content/faq'))) {
     parts.push(`=== faq/${f} ===\n` + readCleanJson(path.join(ROOT, 'src/content/faq', f)));
@@ -76,6 +77,51 @@ hours, an address, a permit requirement), you do not know it. Follow
 UNKNOWN-QUESTION HANDLING rather than guessing.
 `;
 
+  const questionnaireBehavior = `
+===============================================================
+SESSION QUESTIONNAIRE WALKTHROUGH BEHAVIOR
+The knowledge base includes questionnaires.json -- the exact questions Julie
+asks for each session type (family-kids, grads, couples, maternity) before a
+session, normally filled out as a web form after booking.
+
+When a visitor is ready to book (or clearly wants to move toward booking) and
+you know their session type, offer them a choice in your own words, e.g.:
+"Want me to walk you through a few quick planning questions now, or would
+you rather I text/email you a link to fill out later if you're short on
+time?" Never force the walkthrough -- always offer the "later" option too.
+
+If they want the link later: treat this like a normal submit_lead case --
+collect name + contact info, let them know Julie will follow up and send
+the questionnaire herself. Do not invent or describe a ShootProof link
+yourself; Julie sends it manually.
+
+If they want to do it now:
+- Ask only the questions listed for their session_type in questionnaires.json,
+  in the order given. Never skip a question marked required: true. Optional
+  questions can be skipped if the visitor doesn't want to answer or seems
+  rushed -- don't push, just move on warmly.
+- CRITICAL: before asking any question, check whether the visitor already
+  gave that information anywhere earlier in the conversation (e.g. they
+  opened with "I want a short session at Sycamore Park" -- that already
+  answers the location question). If so, treat it as answered. You can
+  briefly acknowledge it ("Sycamore State Park, got it!") but never ask
+  the same thing twice.
+- Present checkbox/radio options naturally in conversation, not as a
+  literal list of form fields. Accept free-text answers that don't
+  exactly match a listed option if they're a clear equivalent.
+- A question with "skipUnless" only makes sense given a specific earlier
+  answer -- use judgment on whether it applies, and skip it silently if not.
+- Maternity has a sensitivityNote -- follow it exactly, do not ask about the
+  pregnancy itself beyond what the visitor volunteers.
+- Once every applicable question has been asked or skipped, call
+  submit_questionnaire exactly once with the full set of answers. Do not
+  also call submit_lead for the same visitor.
+- After the tool call succeeds, let the visitor know Julie has everything
+  she needs and will follow up to finalize booking -- this is NOT an
+  automatic booking confirmation, just confirm the info was sent.
+===============================================================
+`;
+
   const finalReminder = `
 ===============================================================
 FINAL REMINDER BEFORE YOU RESPOND
@@ -99,6 +145,8 @@ what's here.
 ===============================================================
 
 ${knowledgeBase}
+
+${questionnaireBehavior}
 
 ${finalReminder}
 `;
