@@ -104,10 +104,13 @@ async function sendLeadEmail(env, lead) {
     }),
   });
 
+  const body = await res.text();
   if (!res.ok) {
-    console.error(`Resend API error ${res.status}:`, await res.text());
+    console.error(`Resend API error ${res.status}:`, body);
   } else {
-    console.log('Lead email sent successfully:', JSON.stringify(lead));
+    console.log(
+      `Lead email sent successfully. from=${env.LEAD_FROM_EMAIL} to=${env.LEAD_NOTIFY_EMAIL} response=${body}`,
+    );
   }
 }
 
