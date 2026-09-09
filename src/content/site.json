@@ -14,7 +14,8 @@
     "all": "https://thesunlitwanderer.shootproof.com/booking",
     "short": "https://thesunlitwanderer.shootproof.com/booking/the-short",
     "standard": "https://thesunlitwanderer.shootproof.com/booking/the-standard",
-    "extended": "https://thesunlitwanderer.shootproof.com/booking/the-extended"
+    "extended": "https://thesunlitwanderer.shootproof.com/booking/the-extended",
+    "current-special": "https://thesunlitwanderer.shootproof.com/booking/fall-mini-sessions"
   },
   "contact": {
     "_comment": "Messenger is primary. The m.me link must ALWAYS render as a button labeled 'Message me' — never as a visible URL. The Google Voice number is the only number published anywhere.",

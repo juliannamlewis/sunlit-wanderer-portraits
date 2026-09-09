@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 const HIDDEN_PAGES = [
-  '/specials',
   '/resources',
   '/albums-and-keepsakes',
   '/local-favorites',

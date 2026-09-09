@@ -40,6 +40,10 @@ const howItWorks = [
     </div>
   </section>
 
+  <a class="specials-callout" href="/specials">
+    Check out this month's Specials &rarr;
+  </a>
+
   <a class="already-booked" href="/prepare">
     Already booked? Prepare for your session &rarr;
   </a>
@@ -209,6 +213,21 @@ const howItWorks = [
 
   .already-booked:hover {
     background: var(--color-forest);
+  }
+
+  .specials-callout {
+    display: block;
+    text-align: center;
+    padding: 0.9rem 1rem;
+    background: var(--color-accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .specials-callout:hover {
+    background: var(--color-accent-dark);
   }
 
   .steps-grid {

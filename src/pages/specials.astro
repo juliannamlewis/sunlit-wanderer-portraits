@@ -1,11 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingButton from '../components/BookingButton.astro';
 ---
 
-<BaseLayout title="Specials" noindex>
+<BaseLayout
+  title="Specials"
+  description="Limited-time mini session specials from The Sunlit Wanderer — portrait photography in Dayton, Ohio. New specials posted regularly."
+>
   <section class="section">
-    <div class="container">
-      <h1>Specials</h1>
+    <div class="container specials-container">
+      <h1 class="visually-hidden">Current Specials</h1>
+      <img
+        src="/images/specials/current-special.jpg"
+        alt="Current photography special from The Sunlit Wanderer — see pricing, dates, and details in the graphic above"
+        class="specials-flyer"
+        width="1200"
+        height="628"
+      />
+      <div class="specials-cta">
+        <BookingButton tierKey="current-special" label="Book Now" />
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .specials-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 900px;
+  }
+
+  .specials-flyer {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .specials-cta :global(.btn) {
+    font-size: 1.1rem;
+    padding: 0.9rem 2.5rem;
+  }
+</style>
