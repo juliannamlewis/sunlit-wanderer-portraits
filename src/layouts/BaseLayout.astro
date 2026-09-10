@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MobileBookingBar from '../components/MobileBookingBar.astro';
 import ChatWidget from '../components/ChatWidget.astro';
+import { ASSISTANTS_LIVE } from '../lib/flags';
 import { site } from '../lib/content';
 import '../styles/global.css';
 
@@ -77,6 +78,6 @@ const localBusinessSchema = {
     </main>
     <Footer />
     <MobileBookingBar />
-    {!noindex && <ChatWidget />}
+    {!noindex && ASSISTANTS_LIVE && <ChatWidget />}
   </body>
 </html>

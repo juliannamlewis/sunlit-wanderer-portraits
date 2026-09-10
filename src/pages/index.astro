@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookingButton from '../components/BookingButton.astro';
+import VoiceCallButton from '../components/VoiceCallButton.astro';
+import { ASSISTANTS_LIVE } from '../lib/flags';
 import GallerySection from '../components/GallerySection.astro';
 import PricingSection from '../components/PricingSection.astro';
 import ReviewsSection from '../components/ReviewsSection.astro';
@@ -33,6 +35,7 @@ const howItWorks = [
       <div class="hero-actions">
         <a href="#home-gallery" class="btn btn-outline hero-outline-btn">Portfolio Gallery</a>
         <BookingButton />
+        {ASSISTANTS_LIVE && <VoiceCallButton class="hero-outline-btn" />}
       </div>
       <p class="hero-quiet">
         Questions? <a href={site.contact.messenger} target="_blank" rel="noopener">{site.contact.messengerLabel}</a>

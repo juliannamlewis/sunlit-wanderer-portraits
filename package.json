@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^5.1.1",
-    "marked": "^15.0.4"
+    "marked": "^15.0.4",
+    "retell-client-js-sdk": "^3.0.1"
   }
 }

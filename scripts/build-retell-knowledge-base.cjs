@@ -1,15 +1,26 @@
 // Builds well-structured Markdown files for Retell's RAG-based Knowledge Base
 // (chunked + vector-searched, top ~3 chunks per turn) -- a different consumption
 // model than the text chatbot's single system-prompt dump, so raw JSON here
-// would retrieve poorly. Output goes to retell-knowledge-base/*.md for upload
-// as Files in the Retell dashboard (Retell's own docs recommend .md over .txt).
+// would retrieve poorly.
+//
+// Output goes to public/agent-knowledge/*.md, which Astro publishes as plain
+// static files at https://portraits.thesunlitwanderer.com/agent-knowledge/*.md
+// on every deploy. In Retell, add each as a URL-type Knowledge Base source
+// (not a File upload) with auto-refresh enabled -- Retell re-checks URL
+// sources every 24 hours on its own, so specials/pricing/etc. changes reach
+// the voice agent automatically on the next deploy, no manual re-upload.
+//
+// Run this before `npm run build` any time src/content/*.json changes and
+// you want the voice agent's knowledge to stay current. Output is gitignored
+// (regenerable), same convention as chatbot-testing/*.txt.
+//
 // Contains supporting information ONLY, per Retell's guidance -- no behavior
-// instructions, which stay in the agent's main prompt.
+// instructions, which stay in the agent's main prompt (see retell-agent-prompt.md).
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const OUT_DIR = path.join(ROOT, 'retell-knowledge-base');
+const OUT_DIR = path.join(ROOT, 'public', 'agent-knowledge');
 
 function readJson(p) {
   return JSON.parse(fs.readFileSync(p, 'utf-8'));
@@ -18,7 +29,7 @@ function readJson(p) {
 function write(name, content) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(path.join(OUT_DIR, name), content.trim() + '\n');
-  console.log(`Wrote retell-knowledge-base/${name} (${content.length} chars)`);
+  console.log(`Wrote public/agent-knowledge/${name} (${content.length} chars)`);
 }
 
 function buildBusinessOverview() {

@@ -1,0 +1,90 @@
+---
+export interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<button type="button" id="voice-call-btn" class={`btn btn-outline voice-call-btn ${className}`.trim()}>
+  <span aria-hidden="true">&#9742;</span> Talk With Us
+</button>
+<p id="voice-call-status" class="voice-call-status" hidden></p>
+
+<script>
+  import { RetellClient } from 'retell-client-js-sdk';
+
+  const PUBLIC_KEY = 'key_6104676b3cb02f56e19158538250';
+  const AGENT_ID = 'agent_6decd4a3da3a67a3d34fb13007';
+
+  const btn = document.getElementById('voice-call-btn') as HTMLButtonElement;
+  const statusEl = document.getElementById('voice-call-status') as HTMLParagraphElement;
+
+  const client = new RetellClient({ key: PUBLIC_KEY });
+  let call: ReturnType<typeof client.createWebCall> | null = null;
+
+  function setStatus(text: string, show = true) {
+    statusEl.textContent = text;
+    statusEl.hidden = !show;
+  }
+
+  function resetButton() {
+    btn.innerHTML = '<span aria-hidden="true">&#9742;</span> Talk With Us';
+    btn.disabled = false;
+  }
+
+  async function startCall() {
+    if (call && call.status !== 'ended') {
+      await call.end();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<span aria-hidden="true">&#9742;</span> Connecting...';
+    setStatus('Connecting -- one moment...');
+
+    try {
+      call = client.createWebCall({
+        agent_id: AGENT_ID,
+        hooks: {
+          onStatus: (status: string) => {
+            if (status === 'live') {
+              btn.innerHTML = '<span aria-hidden="true">&#9742;</span> End Call';
+              btn.disabled = false;
+              setStatus("You're connected -- talk anytime, tap End Call when you're done.");
+            }
+          },
+          onEnd: () => {
+            resetButton();
+            setStatus('Call ended. Thanks for chatting!');
+            setTimeout(() => setStatus('', false), 4000);
+          },
+          onError: () => {
+            resetButton();
+            setStatus("Something went wrong connecting the call -- you're welcome to message us instead.");
+          },
+        },
+      });
+    } catch {
+      resetButton();
+      setStatus("Couldn't start the call -- you're welcome to message us instead.");
+    }
+  }
+
+  btn.addEventListener('click', startCall);
+</script>
+
+<style>
+  .voice-call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: inherit;
+  }
+
+  .voice-call-status {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: inherit;
+    opacity: 0.85;
+  }
+</style>
