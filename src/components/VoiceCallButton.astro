@@ -13,14 +13,44 @@ const { class: className = '' } = Astro.props;
 <script>
   import { RetellClient } from 'retell-client-js-sdk';
 
-  const PUBLIC_KEY = 'key_6104676b3cb02f56e19158538250';
+  const PUBLIC_KEY = 'public_key_923aacb3a06f223ce6c59';
   const AGENT_ID = 'agent_6decd4a3da3a67a3d34fb13007';
+
+  // Lightweight per-browser abuse guard: cap web calls in a rolling window,
+  // then send repeat visitors to Messenger instead of another call.
+  const MAX_CALLS = 3;
+  const WINDOW_MS = 24 * 60 * 60 * 1000;
+  const STORE_KEY = 'tsw_voice_calls';
+  const MESSENGER_URL = 'https://m.me/311951671232';
 
   const btn = document.getElementById('voice-call-btn') as HTMLButtonElement;
   const statusEl = document.getElementById('voice-call-status') as HTMLParagraphElement;
 
-  const client = new RetellClient({ key: PUBLIC_KEY });
-  let call: ReturnType<typeof client.createWebCall> | null = null;
+  function callCount(): number {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+      if (!raw.windowStart || Date.now() - raw.windowStart > WINDOW_MS) return 0;
+      return raw.count || 0;
+    } catch {
+      return 0;
+    }
+  }
+
+  function recordCall() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+      const fresh = !raw.windowStart || Date.now() - raw.windowStart > WINDOW_MS;
+      localStorage.setItem(
+        STORE_KEY,
+        JSON.stringify({
+          windowStart: fresh ? Date.now() : raw.windowStart,
+          count: (fresh ? 0 : raw.count || 0) + 1,
+        }),
+      );
+    } catch {
+      /* private mode / storage blocked -- limit just won't persist, fine */
+    }
+  }
 
   function setStatus(text: string, show = true) {
     statusEl.textContent = text;
@@ -32,15 +62,30 @@ const { class: className = '' } = Astro.props;
     btn.disabled = false;
   }
 
+  function showLimitReached() {
+    btn.innerHTML = 'Message Julie directly';
+    btn.onclick = () => window.open(MESSENGER_URL, '_blank', 'noopener');
+    setStatus("You've reached us a few times already -- for anything else, message Julie directly and she'll get right back to you.");
+  }
+
+  const client = new RetellClient({ key: PUBLIC_KEY });
+  let call: ReturnType<typeof client.createWebCall> | null = null;
+
   async function startCall() {
     if (call && call.status !== 'ended') {
       await call.end();
       return;
     }
 
+    if (callCount() >= MAX_CALLS) {
+      showLimitReached();
+      return;
+    }
+
     btn.disabled = true;
     btn.innerHTML = '<span aria-hidden="true">&#9742;</span> Connecting...';
     setStatus('Connecting -- one moment...');
+    recordCall();
 
     try {
       call = client.createWebCall({
@@ -54,6 +99,10 @@ const { class: className = '' } = Astro.props;
             }
           },
           onEnd: () => {
+            if (callCount() >= MAX_CALLS) {
+              showLimitReached();
+              return;
+            }
             resetButton();
             setStatus('Call ended. Thanks for chatting!');
             setTimeout(() => setStatus('', false), 4000);
@@ -75,16 +124,15 @@ const { class: className = '' } = Astro.props;
 
 <style>
   .voice-call-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
     font-family: inherit;
+    white-space: nowrap;
   }
 
   .voice-call-status {
-    margin-top: 0.6rem;
+    flex-basis: 100%;
+    margin: 0.4rem 0 0;
     font-size: 0.85rem;
-    color: inherit;
-    opacity: 0.85;
+    color: #fff;
+    opacity: 0.9;
   }
 </style>
