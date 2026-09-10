@@ -5,7 +5,7 @@ export interface Props {
 const { class: className = '' } = Astro.props;
 ---
 
-<button type="button" id="voice-call-btn" class={`btn btn-outline voice-call-btn ${className}`.trim()}>
+<button type="button" id="voice-call-btn" class={`btn voice-call-btn ${className}`.trim()}>
   <span aria-hidden="true">&#9742;</span> Talk With Us
 </button>
 <p id="voice-call-status" class="voice-call-status" hidden></p>
