@@ -9,3 +9,4 @@ chatbot-testing/site-knowledge-base.txt
 chatbot-testing/system-prompt.txt
 .dev.vars
 .wrangler/
+retell-knowledge-base/
