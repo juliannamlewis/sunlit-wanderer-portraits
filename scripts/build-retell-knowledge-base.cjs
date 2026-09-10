@@ -35,7 +35,8 @@ function buildBusinessOverview() {
     md += `Duration: ${tier.duration}. Minimum images: ${tier.minimumImagesDisplay}.\n`;
     md += `Best for: ${tier.bestFor}\n`;
     md += `${tier.description}\n`;
-    md += `Includes: ${tier.includes.join('; ')}.\n\n`;
+    md += `Includes: ${tier.includes.join('; ')}.\n`;
+    md += `Important: the ${tier.priceDisplay} price includes every professionally edited image from the session, not a set or limited number -- there is no picking a handful of files and no paying extra to unlock the rest.\n\n`;
   }
 
   md += `## Which Session Fits Which Category\n${pricing.whichFits.intro}\n\n`;
@@ -45,7 +46,10 @@ function buildBusinessOverview() {
     md += `Standard session: ${guidance.standard}\n`;
     md += `Extended session: ${guidance.extended}\n\n`;
   }
-  md += `Note on timing: ${pricing.whichFits.timingNote}\n`;
+  md += `Note on timing: ${pricing.whichFits.timingNote}\n\n`;
+
+  md += `## Outfit Changes Policy\n`;
+  md += `Multiple outfits or outfit changes are only a standard part of Grad sessions and Extended-tier sessions (any category). Standard and Short sessions for families, maternity, and couples don't include outfit changes as a rule. If a client wants to bring an extra outfit anyway, that's something Julie arranges personally -- never offer it proactively or imply it's a standard option.\n`;
 
   write('business-overview.md', md);
 }
