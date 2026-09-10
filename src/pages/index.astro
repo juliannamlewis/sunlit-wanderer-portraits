@@ -11,6 +11,7 @@ import { site, pricing, navLinks } from '../lib/content';
 import { loadCopy } from '../lib/markdown';
 import homeGallery from '../content/galleries/home.json';
 import generalFaq from '../content/faq/general.json';
+import specials from '../content/specials.json';
 
 const categoryLinks = navLinks.slice(0, 4);
 const about = loadCopy('about');
@@ -43,9 +44,12 @@ const howItWorks = [
     </div>
   </section>
 
-  <a class="specials-callout" href="/specials">
-    Check out this month's Specials &rarr;
-  </a>
+  {specials.active && (
+    <a class="specials-callout" href="/specials">
+      <span class="specials-tag">&#10022; This Month</span>
+      <span class="specials-text">{specials.bannerText} &rarr;</span>
+    </a>
+  )}
 
   <a class="already-booked" href="/prepare">
     Already booked? Prepare for your session &rarr;
@@ -225,18 +229,41 @@ const howItWorks = [
   }
 
   .specials-callout {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem 0.75rem;
     text-align: center;
-    padding: 0.9rem 1rem;
+    padding: 1.1rem 1rem;
     background: var(--color-accent);
     color: #fff;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
   }
 
   .specials-callout:hover {
     background: var(--color-accent-dark);
+  }
+
+  .specials-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .specials-text {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
   }
 
   .steps-grid {
