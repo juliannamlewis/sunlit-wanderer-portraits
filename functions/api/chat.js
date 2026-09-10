@@ -16,6 +16,7 @@
 // the chatbot still works without it.
 
 import { SYSTEM_PROMPT } from './_system-prompt.js';
+import { sendNotificationEmail } from './_notify.js';
 
 const MODEL = 'claude-sonnet-4-5';
 const MAX_MESSAGES = 40; // ~20 back-and-forth turns; caps worst-case cost per conversation
@@ -128,66 +129,20 @@ async function callClaude(env, messages, extraSystemNote) {
 }
 
 async function sendLeadEmail(env, lead) {
-  if (!env.RESEND_API_KEY || !env.LEAD_NOTIFY_EMAIL || !env.LEAD_FROM_EMAIL) {
-    console.log('Lead captured but email not configured yet:', JSON.stringify(lead));
-    return;
-  }
-
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: env.LEAD_FROM_EMAIL,
-      to: env.LEAD_NOTIFY_EMAIL,
-      subject: `New chatbot lead${lead.first_name ? ': ' + lead.first_name : ''}`,
-      text: `New lead from the site chatbot.\n\nName: ${lead.first_name || '(not given)'}\nContact (${lead.contact_method}): ${lead.contact_value}\nWhat they want to know: ${lead.question_summary}\n`,
-    }),
+  await sendNotificationEmail(env, {
+    subject: `New chatbot lead${lead.first_name ? ': ' + lead.first_name : ''}`,
+    text: `New lead from the site chatbot.\n\nName: ${lead.first_name || '(not given)'}\nContact (${lead.contact_method}): ${lead.contact_value}\nWhat they want to know: ${lead.question_summary}\n`,
   });
-
-  const body = await res.text();
-  if (!res.ok) {
-    console.error(`Resend API error ${res.status}:`, body);
-  } else {
-    console.log(
-      `Lead email sent successfully. from=${env.LEAD_FROM_EMAIL} to=${env.LEAD_NOTIFY_EMAIL} response=${body}`,
-    );
-  }
 }
 
 async function sendQuestionnaireEmail(env, data) {
   const answersText = (data.answers || [])
     .map((a) => `Q: ${a.question}\nA: ${a.answer}`)
     .join('\n\n');
-  const text = `Completed questionnaire from the site chatbot (${data.session_type}).\n\nName: ${data.first_name || '(not given)'}\nContact (${data.contact_method}): ${data.contact_value}\n\n${answersText}\n`;
-
-  if (!env.RESEND_API_KEY || !env.LEAD_NOTIFY_EMAIL || !env.LEAD_FROM_EMAIL) {
-    console.log('Questionnaire captured but email not configured yet:', text);
-    return;
-  }
-
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: env.LEAD_FROM_EMAIL,
-      to: env.LEAD_NOTIFY_EMAIL,
-      subject: `Questionnaire completed: ${data.session_type}${data.first_name ? ' - ' + data.first_name : ''}`,
-      text,
-    }),
+  await sendNotificationEmail(env, {
+    subject: `Questionnaire completed: ${data.session_type}${data.first_name ? ' - ' + data.first_name : ''}`,
+    text: `Completed questionnaire from the site chatbot (${data.session_type}).\n\nName: ${data.first_name || '(not given)'}\nContact (${data.contact_method}): ${data.contact_value}\n\n${answersText}\n`,
   });
-
-  const body = await res.text();
-  if (!res.ok) {
-    console.error(`Resend API error ${res.status}:`, body);
-  } else {
-    console.log(`Questionnaire email sent successfully. to=${env.LEAD_NOTIFY_EMAIL} response=${body}`);
-  }
 }
 
 async function logTranscript(env, messages) {
