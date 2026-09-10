@@ -123,7 +123,26 @@ function buildQuestionnaires() {
   write('questionnaires.md', md);
 }
 
+function buildSpecials() {
+  const specialsPath = path.join(ROOT, 'src/content/specials.json');
+  if (!fs.existsSync(specialsPath)) return;
+  const s = readJson(specialsPath);
+  if (!s.active) return;
+
+  let md = `# Current Special: ${s.name}\n\n`;
+  md += `Price: ${s.priceDisplay}. Duration: ${s.duration}.\n\n`;
+  md += `## Location\n${s.location}\n\n`;
+  md += `## Dates\n${s.dates}\n\n`;
+  md += `## Policy\n${s.policy}\n\n`;
+  md += `## Questionnaire\n${s.questionnaire}\n\n`;
+  if (s.urgencyNote) md += `## Urgency Note\n${s.urgencyNote}\n\n`;
+  if (s.comparisonToShort) md += `## How This Differs From the Short Session\n${s.comparisonToShort}\n\n`;
+
+  write('specials.md', md);
+}
+
 buildBusinessOverview();
+buildSpecials();
 buildFaq();
 buildLocations();
 buildCategoryDescriptions();

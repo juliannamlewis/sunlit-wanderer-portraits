@@ -36,6 +36,7 @@ parts.push('=== site.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/si
 parts.push('=== pricing.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/pricing.json')));
 parts.push('=== reviews.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/reviews.json')));
 parts.push('=== questionnaires.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/questionnaires.json')));
+parts.push('=== specials.json (the currently running special) ===\n' + readCleanJson(path.join(ROOT, 'src/content/specials.json')));
 
 for (const f of fs.readdirSync(path.join(ROOT, 'src/content/faq'))) {
   parts.push(`=== faq/${f} ===\n` + readCleanJson(path.join(ROOT, 'src/content/faq', f)));

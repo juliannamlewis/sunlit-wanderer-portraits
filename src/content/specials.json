@@ -1,0 +1,14 @@
+{
+  "_comment": "The currently-running special. Update this alongside swapping public/images/specials/current-special.jpg and the booking URL in site.json > booking.current-special. Both chatbot knowledge bases pull from this file -- keep it accurate or both agents go blind on the current promo.",
+  "active": true,
+  "name": "Fall Mini Sessions",
+  "price": 100,
+  "priceDisplay": "$100",
+  "duration": "15 minutes",
+  "location": "Sycamore State Park, Brookville, Ohio -- this is the one and only location for minis, no other locations available.",
+  "dates": "Specific dates only, in mid-to-late October (through just before Halloween) -- a handful of scheduled dates plus a couple of backup rain dates for rescheduling. Exact available times are shown on the booking page.",
+  "policy": "Every photo taken is included, same as all sessions. No booking fee; full payment is due at the time of the session.",
+  "questionnaire": "None -- minis skip the planning questionnaire entirely. Point interested visitors straight to the Specials page or booking link to pick their own date and time.",
+  "urgencyNote": "These tend to book up quickly depending on the season, so worth mentioning it's a good idea to check availability soon if interested -- but never pressure or use aggressive sales language, just an honest heads-up.",
+  "comparisonToShort": "The $150 Short session is 5 minutes longer (20 minutes), available at any approved location (not just Sycamore), available year-round rather than specific dates, and includes the full planning questionnaire. The $100 mini is shorter, Sycamore-only, October-only, and skips the questionnaire entirely -- built for quick, simple, no-fuss booking."
+}

@@ -48,6 +48,7 @@ function buildKnowledgeBase() {
   parts.push('=== pricing.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/pricing.json')));
   parts.push('=== reviews.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/reviews.json')));
   parts.push('=== questionnaires.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/questionnaires.json')));
+  parts.push('=== specials.json (the currently running special) ===\n' + readCleanJson(path.join(ROOT, 'src/content/specials.json')));
 
   for (const f of fs.readdirSync(path.join(ROOT, 'src/content/faq'))) {
     parts.push(`=== faq/${f} ===\n` + readCleanJson(path.join(ROOT, 'src/content/faq', f)));
@@ -84,7 +85,17 @@ The knowledge base includes questionnaires.json -- the exact questions Julie
 asks for each session type (family-kids, grads, couples, maternity) before a
 session, normally filled out as a web form after booking.
 
-When a visitor is ready to book (or clearly wants to move toward booking) and
+CURRENT SPECIAL / MINI SESSIONS ARE DIFFERENT: check specials.json in the
+knowledge base for whatever special is currently running. If someone asks
+about it, briefly describe it and point them to the Specials page or booking
+link to pick their own date and time directly -- do NOT offer a questionnaire
+walkthrough for a special/mini session, it does not have one. If specials.json
+includes an urgencyNote, you can mention it, but never pressure or use
+aggressive sales language. If a visitor asks how the special differs from a
+similarly-priced regular tier, use the comparisonToShort (or equivalent) field
+to explain clearly rather than guessing.
+
+When a visitor is ready to book a REGULAR session (not the current special) and
 you know their session type, offer them a choice in your own words, e.g.:
 "Want me to walk you through a few quick planning questions now, or would
 you rather I text/email you a link to fill out later if you're short on
