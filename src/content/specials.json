@@ -2,7 +2,7 @@
   "_comment": "The currently-running special. Update this alongside swapping public/images/specials/current-special.jpg and the booking URL in site.json > booking.current-special. Both chatbot knowledge bases pull from this file -- keep it accurate or both agents go blind on the current promo.",
   "active": true,
   "name": "Fall Mini Sessions",
-  "bannerText": "Fall Mini Sessions — $100, about 15 minutes at Sycamore",
+  "bannerText": "$100, 15-minute sessions at Sycamore State Park",
   "price": 100,
   "priceDisplay": "$100",
   "duration": "15 minutes",
