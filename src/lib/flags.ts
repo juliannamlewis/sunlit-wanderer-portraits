@@ -7,4 +7,4 @@
 //
 // Flip to true only when Julie has signed off on going live. Preview deploys
 // can be built with this temporarily true to test, then set back to false.
-export const ASSISTANTS_LIVE = false;
+export const ASSISTANTS_LIVE = true;
