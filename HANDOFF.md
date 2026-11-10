@@ -135,7 +135,7 @@ changelog entry and Julie's explicit approval.
 ### Privacy and safety
 - **Never publish a child's name or age.** Anywhere. Alt text included.
 - Nothing from a client gallery is public without a signed release.
-- The **Google Voice number is the only number published**: (513) 318-7278.
+- **Only one phone number is published**: (937) 719-8683 (was the Google Voice number (513) 318-7278 until November 2026 — see Changelog v1.8).
 - Messenger link `https://m.me/311951671232` must **always render as a button
   labeled "Message me"**, never as a visible URL, and never link to a personal
   Facebook profile.

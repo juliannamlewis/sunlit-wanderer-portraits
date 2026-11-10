@@ -18,12 +18,12 @@
     "current-special": "https://thesunlitwanderer.shootproof.com/booking/fall-mini-sessions"
   },
   "contact": {
-    "_comment": "Messenger is primary. The m.me link must ALWAYS render as a button labeled 'Message me' — never as a visible URL. The Google Voice number is the only number published anywhere.",
+    "_comment": "Messenger is primary. The m.me link must ALWAYS render as a button labeled 'Message me' — never as a visible URL. (937) 719-8683 is the only number published anywhere (changed from the old Google Voice number, Changelog v1.8).",
     "messenger": "https://m.me/311951671232",
     "messengerLabel": "Message me",
-    "phoneDisplay": "(513) 318-7278",
-    "phoneSms": "sms:+15133187278",
-    "phoneTel": "tel:+15133187278"
+    "phoneDisplay": "(937) 719-8683",
+    "phoneSms": "sms:+19377198683",
+    "phoneTel": "tel:+19377198683"
   },
   "social": {
     "_comment": "Facebook URL needs to be confirmed on a phone before launch — the page has no username, so the numeric-ID form is the only option. Instagram and TikTok are blank until the handles are confirmed; blank means the icon simply does not render.",
