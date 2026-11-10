@@ -49,7 +49,7 @@ const howItWorks = [
 
     <div class="container hero-inner">
       <span class="eyebrow hero-eyebrow">{site.site.serviceArea}</span>
-      <h1 class="hero-heading">{site.site.tagline}</h1>
+      <h1 class="hero-heading">{site.site.heroHeadline || site.site.tagline}</h1>
       <p class="hero-price">Sessions from {pricing.tiers[0].priceDisplay}</p>
       <div class="hero-actions">
         <a href="#home-gallery" class="btn btn-outline hero-outline-btn">Portfolio Gallery</a>
