@@ -48,7 +48,12 @@ function buildKnowledgeBase() {
   parts.push('=== pricing.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/pricing.json')));
   parts.push('=== reviews.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/reviews.json')));
   parts.push('=== questionnaires.json ===\n' + readCleanJson(path.join(ROOT, 'src/content/questionnaires.json')));
-  parts.push('=== specials.json (the currently running special) ===\n' + readCleanJson(path.join(ROOT, 'src/content/specials.json')));
+  const specials = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/content/specials.json'), 'utf-8'));
+  parts.push(
+    specials.active
+      ? '=== specials.json (the currently running special) ===\n' + readCleanJson(path.join(ROOT, 'src/content/specials.json'))
+      : '=== specials.json ===\nNo special or mini session is running right now. If asked, say so plainly and offer the regular Short, Standard and Extended sessions instead. Do not describe any past special as available.',
+  );
 
   for (const f of fs.readdirSync(path.join(ROOT, 'src/content/faq'))) {
     parts.push(`=== faq/${f} ===\n` + readCleanJson(path.join(ROOT, 'src/content/faq', f)));

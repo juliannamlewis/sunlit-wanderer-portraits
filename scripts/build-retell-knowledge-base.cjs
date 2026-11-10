@@ -138,7 +138,11 @@ function buildSpecials() {
   const specialsPath = path.join(ROOT, 'src/content/specials.json');
   if (!fs.existsSync(specialsPath)) return;
   const s = readJson(specialsPath);
-  if (!s.active) return;
+  // Overwrite rather than skip, so a past special's file doesn't linger in the KB.
+  if (!s.active) {
+    write('specials.md', '# Current Special\n\nNo special or mini session is running right now. If asked, say so plainly and offer the regular Short, Standard and Extended sessions instead. Do not describe any past special as available.\n');
+    return;
+  }
 
   let md = `# Current Special: ${s.name}\n\n`;
   md += `Price: ${s.priceDisplay}. Duration: ${s.duration}.\n\n`;

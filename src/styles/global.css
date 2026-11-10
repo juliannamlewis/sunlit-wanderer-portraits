@@ -29,6 +29,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keeps in-page jump targets from landing under the sticky header */
+  scroll-padding-top: 6.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

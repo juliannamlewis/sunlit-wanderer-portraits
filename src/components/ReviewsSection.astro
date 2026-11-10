@@ -4,13 +4,16 @@ import { reviewsFor } from '../lib/content';
 export interface Props {
   placement: string;
   heading?: string;
+  /** 'slider' shows one large quote at a time; falls back to a grid for a single review. */
+  variant?: 'grid' | 'slider';
 }
 
-const { placement, heading = 'What clients say' } = Astro.props;
+const { placement, heading = 'What clients say', variant = 'grid' } = Astro.props;
 const items = reviewsFor(placement);
+const isSlider = variant === 'slider' && items.length > 1;
 ---
 
-{items.length > 0 && (
+{items.length > 0 && !isSlider && (
   <section class="reviews-section">
     <div class="container">
       <h2>{heading}</h2>
@@ -25,6 +28,45 @@ const items = reviewsFor(placement);
     </div>
   </section>
 )}
+
+{isSlider && (
+  <section class="reviews-slider" data-reviews-slider>
+    <div class="container slider-inner">
+      <span class="eyebrow">{heading}</span>
+      <div class="slider-track">
+        {items.map((r, i) => (
+          <blockquote class="slider-quote" data-slide hidden={i !== 0}>
+            <p>&ldquo;{r.text}&rdquo;</p>
+            <footer>{r.name}</footer>
+          </blockquote>
+        ))}
+      </div>
+      <div class="slider-controls">
+        <button type="button" class="slider-arrow" data-prev aria-label="Previous review">&larr;</button>
+        <span class="slider-count" aria-live="polite"><span data-current>1</span> / {items.length}</span>
+        <button type="button" class="slider-arrow" data-next aria-label="Next review">&rarr;</button>
+      </div>
+    </div>
+  </section>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-reviews-slider]').forEach((slider) => {
+    const slides = [...slider.querySelectorAll<HTMLElement>('[data-slide]')];
+    const counter = slider.querySelector<HTMLElement>('[data-current]')!;
+    let current = 0;
+
+    function show(index: number) {
+      slides[current].hidden = true;
+      current = (index + slides.length) % slides.length;
+      slides[current].hidden = false;
+      counter.textContent = String(current + 1);
+    }
+
+    slider.querySelector('[data-prev]')?.addEventListener('click', () => show(current - 1));
+    slider.querySelector('[data-next]')?.addEventListener('click', () => show(current + 1));
+  });
+</script>
 
 <style>
   .reviews-section {
@@ -60,5 +102,77 @@ const items = reviewsFor(placement);
     font-weight: 600;
     color: var(--color-text-muted);
     font-size: 0.85rem;
+  }
+
+  .reviews-slider {
+    padding: 4.5rem 0;
+    text-align: center;
+  }
+
+  .slider-inner {
+    max-width: 50rem;
+  }
+
+  .slider-track {
+    display: grid;
+    min-height: 12rem;
+    align-items: center;
+  }
+
+  .slider-quote {
+    margin: 0;
+    animation: quote-in 0.5s ease;
+  }
+
+  .slider-quote p {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+    line-height: 1.5;
+    margin: 0 0 1.25rem;
+  }
+
+  .slider-quote footer {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  @keyframes quote-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 1.75rem;
+  }
+
+  .slider-arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .slider-arrow:hover {
+    background: var(--color-forest);
+    border-color: var(--color-forest);
+    color: var(--color-cream);
+  }
+
+  .slider-count {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    min-width: 3rem;
   }
 </style>

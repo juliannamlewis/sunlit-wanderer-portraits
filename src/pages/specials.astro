@@ -1,26 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookingButton from '../components/BookingButton.astro';
+import { site } from '../lib/content';
+import specials from '../content/specials.json';
+
+// While no special is switched on in specials.json, the old flyer and its
+// booking link stay hidden — this page stays reachable for old QR codes and
+// links, but points people to regular sessions instead.
 ---
 
 <BaseLayout
   title="Specials"
   description="Limited-time mini session specials from The Sunlit Wanderer — portrait photography in Dayton, Ohio. New specials posted regularly."
+  noindex={!specials.active}
 >
   <section class="section">
-    <div class="container specials-container">
-      <h1 class="visually-hidden">Current Specials</h1>
-      <img
-        src="/images/specials/current-special.jpg"
-        alt="Current photography special from The Sunlit Wanderer — see pricing, dates, and details in the graphic above"
-        class="specials-flyer"
-        width="1200"
-        height="628"
-      />
-      <div class="specials-cta">
-        <BookingButton tierKey="current-special" label="Book Now" />
+    {specials.active ? (
+      <div class="container specials-container">
+        <h1 class="visually-hidden">Current Specials</h1>
+        <img
+          src="/images/specials/current-special.jpg"
+          alt="Current photography special from The Sunlit Wanderer — see pricing, dates, and details in the graphic above"
+          class="specials-flyer"
+          width="1200"
+          height="628"
+        />
+        <div class="specials-cta">
+          <BookingButton tierKey="current-special" label="Book Now" />
+        </div>
       </div>
-    </div>
+    ) : (
+      <div class="container specials-container specials-off">
+        <h1>Specials</h1>
+        <p>There isn't a special running right now, but regular sessions are open year-round.</p>
+        <div class="specials-off-actions">
+          <a href="/#plan" class="btn">Plan Your Session</a>
+          <a href={site.contact.messenger} target="_blank" rel="noopener" class="btn btn-outline">{site.contact.messengerLabel}</a>
+        </div>
+      </div>
+    )}
   </section>
 </BaseLayout>
 
@@ -43,5 +61,20 @@ import BookingButton from '../components/BookingButton.astro';
   .specials-cta :global(.btn) {
     font-size: 1.1rem;
     padding: 0.9rem 2.5rem;
+  }
+
+  .specials-off {
+    text-align: center;
+    max-width: 36rem;
+    padding: 2rem 1.25rem;
+    gap: 0.5rem;
+  }
+
+  .specials-off-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
   }
 </style>

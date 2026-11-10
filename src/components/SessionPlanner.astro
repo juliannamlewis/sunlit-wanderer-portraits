@@ -1,0 +1,503 @@
+---
+// Homepage "Plan Your Session" picker. Three steps, each remembering the
+// choice: session type → length → setting. Choosing a type swaps in that
+// type's guidance on the length cards; choosing a length points the booking
+// button at that tier's ShootProof page. Without JavaScript every step still
+// reads as a normal, static section.
+import { site, pricing, sessionLinks, bookingUrl } from '../lib/content';
+
+const modules = import.meta.glob('../content/locations/*.json', { eager: true });
+const locations = Object.values(modules)
+  .map((m: any) => m.default)
+  .filter((loc: any) => loc.status === 'published' && loc.images?.length > 0)
+  .sort((a: any, b: any) => a.name.localeCompare(b.name))
+  .map((loc: any) => ({
+    id: loc.id,
+    name: loc.name,
+    thumb: `/images/locations/${loc.id}/${loc.images[0].file}`,
+    alt: loc.images[0].alt,
+  }));
+
+const byCategory = pricing.whichFits.byCategory as Record<string, Record<string, string>>;
+---
+
+<section class="section planner" id="plan" data-planner>
+  <div class="container">
+    <h2 class="planner-title">Plan Your Session</h2>
+
+    <ol class="planner-progress" aria-hidden="true">
+      <li data-progress="type"><span>01</span> Type</li>
+      <li data-progress="tier"><span>02</span> Length</li>
+      <li data-progress="location"><span>03</span> Setting</li>
+    </ol>
+
+    <div class="planner-step" id="categories">
+      <h3><span class="step-num">01</span> Choose your session type</h3>
+      <div class="type-grid">
+        {sessionLinks.map((s) => (
+          <button type="button" class="type-option" data-type={s.key} data-label={s.label} data-href={s.href} aria-pressed="false">
+            {s.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="planner-step" id="pricing">
+      <h3><span class="step-num">02</span> Choose your session length</h3>
+      <p class="planner-intro">{pricing.whichFits.intro}</p>
+      <div class="tier-grid">
+        {pricing.tiers.map((tier) => (
+          <button
+            type="button"
+            class="tier-option"
+            data-tier={tier.bookingUrlKey}
+            data-label={tier.name}
+            data-price={tier.priceDisplay}
+            data-book={bookingUrl(tier.bookingUrlKey as any)}
+            aria-pressed="false"
+          >
+            <span class="tier-name">{tier.name}</span>
+            <span class="tier-price">{tier.priceDisplay}</span>
+            <span class="tier-meta">{tier.duration} &middot; {tier.minimumImagesDisplay}</span>
+            <span class="tier-fit" data-fit="">{tier.bestFor}</span>
+            {sessionLinks.map((s) => byCategory[s.key]?.[tier.id] && (
+              <span class="tier-fit" data-fit={s.key} hidden>{byCategory[s.key][tier.id]}</span>
+            ))}
+            <span class="tier-includes">
+              {tier.includes.map((line) => <span>{line}</span>)}
+            </span>
+          </button>
+        ))}
+      </div>
+      <p class="planner-note">{pricing.whichFits.timingNote}</p>
+      <p class="planner-note">{pricing.universalPolicy.includesLine}</p>
+    </div>
+
+    <div class="planner-step" id="find-your-setting">
+      <h3><span class="step-num">03</span> Find your setting</h3>
+      <div class="location-grid">
+        {locations.map((loc) => (
+          <button type="button" class="location-option" data-location={loc.id} data-label={loc.name} aria-pressed="false">
+            <img src={loc.thumb} alt="" loading="lazy" decoding="async" />
+            <span class="location-option-label">{loc.name}</span>
+          </button>
+        ))}
+      </div>
+      <p class="planner-fine">
+        <a href="/locations">Explore Locations</a> &middot; Already have somewhere special in mind?
+        <a href={site.contact.messenger} target="_blank" rel="noopener">Tell me about it.</a>
+      </p>
+    </div>
+
+    <div class="planner-summary" data-summary hidden>
+      <div class="summary-picks">
+        <span class="eyebrow">Your session</span>
+        <p class="summary-line" data-summary-line></p>
+        <p class="summary-links">
+          <a data-summary-type-link href="/">More about this session</a>
+          <span data-summary-location-wrap hidden>
+            <span data-summary-sep>&middot; </span><a data-summary-location-link href="/locations">See this location</a>
+          </span>
+        </p>
+      </div>
+      <a class="btn" data-summary-book href={bookingUrl('all')} target="_blank" rel="noopener">
+        See Availability &amp; Book
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-planner]');
+
+  if (root) {
+    const state: { type?: HTMLElement; tier?: HTMLElement; location?: HTMLElement } = {};
+    const summary = root.querySelector<HTMLElement>('[data-summary]')!;
+    const line = root.querySelector<HTMLElement>('[data-summary-line]')!;
+    const book = root.querySelector<HTMLAnchorElement>('[data-summary-book]')!;
+    const typeLink = root.querySelector<HTMLAnchorElement>('[data-summary-type-link]')!;
+    const locWrap = root.querySelector<HTMLElement>('[data-summary-location-wrap]')!;
+    const locLink = root.querySelector<HTMLAnchorElement>('[data-summary-location-link]')!;
+    const sep = root.querySelector<HTMLElement>('[data-summary-sep]')!;
+
+    function select(group: 'type' | 'tier' | 'location', button: HTMLElement) {
+      const already = state[group] === button;
+      root!.querySelectorAll<HTMLElement>(`[data-${group}]`).forEach((b) => b.setAttribute('aria-pressed', 'false'));
+      // Tapping the chosen setting again clears it — that step is optional.
+      if (already && group === 'location') {
+        state.location = undefined;
+      } else {
+        button.setAttribute('aria-pressed', 'true');
+        state[group] = button;
+      }
+      render();
+    }
+
+    function render() {
+      const type = state.type?.dataset.type ?? '';
+      root!.querySelectorAll<HTMLElement>('.tier-fit').forEach((el) => {
+        const hasOwn = type && el.parentElement!.querySelector(`[data-fit="${type}"]`);
+        el.hidden = hasOwn ? el.dataset.fit !== type : el.dataset.fit !== '';
+      });
+
+      root!.querySelectorAll<HTMLElement>('[data-progress]').forEach((el) => {
+        el.classList.toggle('is-done', Boolean(state[el.dataset.progress as keyof typeof state]));
+      });
+
+      if (!state.tier) {
+        summary.hidden = true;
+        return;
+      }
+
+      const parts = [state.type?.dataset.label, state.tier.dataset.label, state.location?.dataset.label].filter(Boolean);
+      line.textContent = `${parts.join(' · ')} — ${state.tier.dataset.price}`;
+      book.href = state.tier.dataset.book!;
+
+      typeLink.hidden = !state.type;
+      if (state.type) {
+        typeLink.href = state.type.dataset.href!;
+        typeLink.textContent = `More about ${state.type.dataset.label}`;
+      }
+
+      locWrap.hidden = !state.location;
+      sep.hidden = !state.type;
+      if (state.location) locLink.href = `/locations#loc-${state.location.dataset.location}`;
+
+      summary.hidden = false;
+    }
+
+    function next(selector: string) {
+      const target = root!.querySelector<HTMLElement>(selector);
+      const rect = target?.getBoundingClientRect();
+      // Only nudge forward when the next step is mostly off-screen.
+      if (target && rect && rect.top > window.innerHeight * 0.6) target.scrollIntoView({ block: 'start' });
+    }
+
+    root.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLElement>('button[data-type], button[data-tier], button[data-location]');
+      if (!button) return;
+      if (button.dataset.type) {
+        select('type', button);
+        next('#pricing');
+      } else if (button.dataset.tier) {
+        select('tier', button);
+        next('#find-your-setting');
+      } else {
+        select('location', button);
+        next('[data-summary]');
+      }
+    });
+  }
+</script>
+
+<style>
+  .planner-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .planner-progress {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .planner-progress li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .planner-progress li span {
+    font-family: var(--font-display);
+    color: var(--color-accent);
+  }
+
+  .planner-progress li.is-done {
+    background: var(--color-forest);
+    border-color: var(--color-forest);
+    color: var(--color-cream);
+  }
+
+  .planner-progress li.is-done span {
+    color: var(--color-gold);
+  }
+
+  .planner-step {
+    padding: 1.75rem 0 2.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .planner-step h3 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    margin-bottom: 1.1rem;
+  }
+
+  .step-num {
+    color: var(--color-accent);
+    font-size: 0.85em;
+  }
+
+  .planner-intro {
+    max-width: 44rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Shared selectable-option look */
+  .type-option,
+  .tier-option,
+  .location-option {
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    transition: border-color 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  }
+
+  .type-option:hover,
+  .tier-option:hover,
+  .location-option:hover {
+    transform: translateY(-2px);
+  }
+
+  .type-option:focus-visible,
+  .tier-option:focus-visible,
+  .location-option:focus-visible {
+    outline: 3px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .type-option[aria-pressed='true'],
+  .tier-option[aria-pressed='true'],
+  .location-option[aria-pressed='true'] {
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 22px rgba(149, 76, 32, 0.22);
+  }
+
+  .type-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .type-option {
+    padding: 0.8rem 1.4rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .type-option[aria-pressed='true'] {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  .type-option[aria-pressed='true']::before {
+    content: '✓ ';
+  }
+
+  .location-option {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-forest);
+  }
+
+  .location-option img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .location-option::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 34, 23, 0.78), rgba(26, 34, 23, 0) 60%);
+  }
+
+  .location-option-label {
+    position: absolute;
+    left: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.75rem;
+    z-index: 1;
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  .location-option[aria-pressed='true'] .location-option-label::before {
+    content: '✓ ';
+    color: var(--color-gold);
+  }
+
+  .tier-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  @media (min-width: 820px) {
+    .tier-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .tier-option {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    border-width: 1px;
+    outline: 1px solid transparent;
+  }
+
+  .tier-option[aria-pressed='true'] {
+    outline: 1px solid var(--color-accent);
+  }
+
+  .tier-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .tier-price {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    color: var(--color-accent-dark);
+    line-height: 1.1;
+  }
+
+  .tier-meta {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+  }
+
+  .tier-fit {
+    margin: 0.5rem 0;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  .tier-fit[hidden] {
+    display: none;
+  }
+
+  .tier-includes {
+    display: grid;
+    gap: 0.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .tier-includes span::before {
+    content: '— ';
+    color: var(--color-gold);
+  }
+
+  .planner-note {
+    margin: 1rem 0 0;
+    max-width: 46rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .location-grid {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 760px) {
+    .location-grid {
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    }
+  }
+
+  .planner-fine {
+    margin: 1.1rem 0 0;
+    font-size: 0.92rem;
+    color: var(--color-text-muted);
+  }
+
+  .planner-summary {
+    position: sticky;
+    bottom: 1rem;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-forest);
+    color: var(--color-cream);
+    border-radius: var(--radius);
+    box-shadow: 0 14px 34px rgba(26, 34, 23, 0.3);
+  }
+
+  .planner-summary[hidden] {
+    display: none;
+  }
+
+  @media (max-width: 720px) {
+    /* Clear the fixed mobile booking bar */
+    .planner-summary {
+      bottom: 5.25rem;
+    }
+  }
+
+  .planner-summary .eyebrow {
+    color: var(--color-gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .summary-line {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: #fff;
+  }
+
+  .summary-links {
+    margin: 0.3rem 0 0;
+    font-size: 0.88rem;
+  }
+
+  .summary-links a {
+    color: var(--color-cream);
+  }
+
+  .summary-links a[hidden] {
+    display: none;
+  }
+</style>

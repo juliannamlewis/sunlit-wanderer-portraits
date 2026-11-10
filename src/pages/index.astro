@@ -4,18 +4,26 @@ import BookingButton from '../components/BookingButton.astro';
 import VoiceCallButton from '../components/VoiceCallButton.astro';
 import { ASSISTANTS_LIVE } from '../lib/flags';
 import GallerySection from '../components/GallerySection.astro';
-import PricingSection from '../components/PricingSection.astro';
+import SessionPlanner from '../components/SessionPlanner.astro';
 import ReviewsSection from '../components/ReviewsSection.astro';
 import FaqSection from '../components/FaqSection.astro';
-import { site, pricing, navLinks } from '../lib/content';
+import { site, pricing, sessionLinks } from '../lib/content';
 import { loadCopy } from '../lib/markdown';
 import homeGallery from '../content/galleries/home.json';
 import generalFaq from '../content/faq/general.json';
 import specials from '../content/specials.json';
 
-const categoryLinks = navLinks.slice(0, 4);
 const about = loadCopy('about');
 const aboutTeaser = about.html.match(/<p>([\s\S]*?)<\/p>/)?.[1] ?? '';
+
+// Hero slideshow, in order. Landscape originals only — portrait crops badly
+// at desktop widths. The first slide is the one shown without JavaScript.
+const heroSlides = [
+  { src: '/images/families/families-02-silhouette-sunset.jpg', position: 'center 30%' },
+  { src: '/images/couples/couples-03-forehead-touch-backlit.jpg', position: 'center 40%' },
+  { src: '/images/home/home-06-multigenerational-walk-wooded.jpg', position: 'center 45%' },
+  { src: '/images/home/home-12-girl-tall-grass.jpg', position: 'center 40%' },
+];
 
 const howItWorks = [
   'Choose your session',
@@ -28,7 +36,17 @@ const howItWorks = [
 ---
 
 <BaseLayout title={site.site.name} headerVariant="full">
-  <section class="hero" style="background-image: linear-gradient(100deg, rgba(26,34,23,0.82) 0%, rgba(26,34,23,0.55) 45%, rgba(26,34,23,0.15) 75%), url('/images/families/families-02-silhouette-sunset.jpg');">
+  <section class="hero" data-hero>
+    <div class="hero-slides" aria-hidden="true">
+      {heroSlides.map((slide, i) => (
+        <div
+          class:list={['hero-slide', { 'is-active': i === 0 }]}
+          style={`background-image: url('${slide.src}'); background-position: ${slide.position};`}
+        />
+      ))}
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+
     <div class="container hero-inner">
       <span class="eyebrow hero-eyebrow">{site.site.serviceArea}</span>
       <h1 class="hero-heading">{site.site.tagline}</h1>
@@ -40,20 +58,51 @@ const howItWorks = [
       </div>
       <p class="hero-quiet">
         Questions? <a href={site.contact.messenger} target="_blank" rel="noopener">{site.contact.messengerLabel}</a>
+        {site.contact.phoneDisplay && (
+          <> or call/text <a href={site.contact.phoneTel}>{site.contact.phoneDisplay}</a></>
+        )}
       </p>
     </div>
+
+    {heroSlides.length > 1 && (
+      <div class="hero-dots" aria-hidden="true">
+        {heroSlides.map((_, i) => <span class:list={['hero-dot', { 'is-active': i === 0 }]} />)}
+      </div>
+    )}
   </section>
 
-  {specials.active && (
-    <a class="specials-callout" href="/specials">
-      <span class="specials-tag">&#10022; This Month</span>
-      <span class="specials-text">{specials.bannerText} &rarr;</span>
-    </a>
-  )}
+  <div class="notice-bar">
+    <div class="container notice-inner">
+      {specials.active && (
+        <a class="notice-special" href="/specials">
+          <span class="specials-tag">&#10022; This Month</span>
+          <span>{specials.bannerText} &rarr;</span>
+        </a>
+      )}
+      <a class="notice-booked" href="/prepare">Already booked? Prepare for your session &rarr;</a>
+    </div>
+  </div>
 
-  <a class="already-booked" href="/prepare">
-    Already booked? Prepare for your session &rarr;
-  </a>
+  <section class="section session-tiles">
+    <div class="container">
+      <span class="eyebrow">Sessions</span>
+      <div class="tile-grid">
+        {sessionLinks.map((s) => (
+          <a class="tile" href={s.href}>
+            {s.cover ? (
+              <img src={s.cover} alt="" loading="lazy" decoding="async" />
+            ) : (
+              <span class="tile-blank" aria-hidden="true"></span>
+            )}
+            <span class="tile-text">
+              <span class="tile-label">{s.label}</span>
+              <span class="tile-cta">{s.cover ? 'See gallery' : 'Learn more'}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <GallerySection
     id="home-gallery"
@@ -63,63 +112,11 @@ const howItWorks = [
     title="A little of everything"
   />
 
-  <section class="section plan-your-session">
-    <div class="container">
-      <h2>Plan Your Session</h2>
-      <div class="steps-grid">
-        <a class="step-card" href="#categories">
-          <span class="step-number">01</span>
-          <span class="step-label">Choose your session type</span>
-        </a>
-        <a class="step-card" href="#pricing">
-          <span class="step-number">02</span>
-          <span class="step-label">Choose your session length</span>
-        </a>
-        <a class="step-card" href="#find-your-setting">
-          <span class="step-number">03</span>
-          <span class="step-label">Find your setting</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section categories" id="categories">
-    <div class="container">
-      <h2>Choose your session type</h2>
-      <div class="category-grid">
-        {categoryLinks.map((link) => (
-          <a class="category-card" href={link.href}>
-            <span>{link.label}</span>
-            <span class="category-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <div class="section-alt">
-    <PricingSection />
+    <SessionPlanner />
   </div>
 
-  <section class="section find-your-setting" id="find-your-setting">
-    <div class="container">
-      <h2>Find Your Setting</h2>
-      <p>
-        Gardens, rustic trails, city streets or somewhere meaningful to you. See what
-        some of my favorite {site.site.serviceArea} locations actually look like before
-        choosing.
-      </p>
-      <div class="find-your-setting-actions">
-        <a href="/locations" class="btn">Explore Locations</a>
-      </div>
-      <p class="fine-print">
-        Already have somewhere special in mind?
-        <a href={site.contact.messenger} target="_blank" rel="noopener">Tell me about it.</a>
-      </p>
-    </div>
-  </section>
-
-  <section class="section-alt how-it-works">
+  <section class="section how-it-works">
     <div class="container">
       <h2>How It Works</h2>
       <ol class="steps-list">
@@ -128,13 +125,14 @@ const howItWorks = [
     </div>
   </section>
 
-  <ReviewsSection placement="home" />
+  <ReviewsSection placement="home" variant="slider" />
 
   <FaqSection title={generalFaq.title} questions={generalFaq.questions} />
 
   {aboutTeaser && (
     <section class="section-alt about-teaser">
       <div class="container about-teaser-inner">
+        <span class="eyebrow">Nice to meet you</span>
         <h2>Hi, I'm Julie</h2>
         <p set:html={aboutTeaser} />
         <a href="/about" class="btn btn-outline btn-small">More about me</a>
@@ -142,42 +140,105 @@ const howItWorks = [
     </section>
   )}
 
-  <section class="section closing-cta">
+  <section class="closing-cta">
     <div class="container closing-inner">
       <h2>Ready when you are</h2>
       <p>{site.site.serviceRadiusNote}</p>
       <BookingButton />
+      {site.contact.phoneDisplay && (
+        <p class="closing-phone">
+          Rather talk it through? Call or text <a href={site.contact.phoneTel}>{site.contact.phoneDisplay}</a>
+        </p>
+      )}
     </div>
   </section>
 </BaseLayout>
 
+<script>
+  // Crossfade the hero photographs. Skipped entirely for reduced-motion users,
+  // who keep the first slide.
+  const hero = document.querySelector<HTMLElement>('[data-hero]');
+  const slides = hero ? [...hero.querySelectorAll<HTMLElement>('.hero-slide')] : [];
+  const dots = hero ? [...hero.querySelectorAll<HTMLElement>('.hero-dot')] : [];
+
+  if (slides.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let current = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      slides[current].classList.remove('is-active');
+      dots[current]?.classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current]?.classList.add('is-active');
+    }, 6000);
+  }
+</script>
+
 <style>
   .hero {
-    padding: 5rem 0 4rem;
+    position: relative;
+    min-height: min(88vh, 52rem);
+    display: flex;
+    align-items: flex-end;
+    padding: 6rem 0 4.5rem;
+    overflow: hidden;
+    background: var(--color-forest);
+  }
+
+  .hero-slides,
+  .hero-slide,
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-slide {
     background-size: cover;
-    background-position: center 30%;
-    border-bottom: 1px solid var(--color-border);
+    opacity: 0;
+    transform: scale(1.06);
+    transition: opacity 1.6s ease, transform 7.5s ease-out;
+  }
+
+  .hero-slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(to top, rgba(26, 34, 23, 0.85) 0%, rgba(26, 34, 23, 0.35) 45%, rgba(26, 34, 23, 0.1) 100%),
+      linear-gradient(100deg, rgba(26, 34, 23, 0.55) 0%, rgba(26, 34, 23, 0) 60%);
   }
 
   .hero-inner {
-    max-width: 42rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-inner > * {
+    max-width: 40rem;
   }
 
   .hero-eyebrow {
     color: var(--color-cream);
+    letter-spacing: 0.22em;
   }
 
   .hero-heading {
     color: #fff;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    font-size: clamp(2.1rem, 4.6vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
   }
 
   .hero-price {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-style: italic;
+    font-size: 1.2rem;
     color: var(--color-cream);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
   }
 
   .hero-actions {
@@ -187,7 +248,7 @@ const howItWorks = [
   }
 
   @media (max-width: 560px) {
-    .hero-actions > * {
+    .hero-actions > :global(*) {
       flex: 1 1 100%;
     }
   }
@@ -211,168 +272,273 @@ const howItWorks = [
 
   .hero-quiet a {
     color: #fff;
+    white-space: nowrap;
   }
 
-  .already-booked {
-    display: block;
-    text-align: center;
-    padding: 0.9rem 1rem;
-    background: var(--color-soil);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-  }
-
-  .already-booked:hover {
-    background: var(--color-forest);
-  }
-
-  .specials-callout {
+  .hero-dots {
+    position: absolute;
+    z-index: 1;
+    right: 1.5rem;
+    bottom: 1.75rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.6rem 0.75rem;
-    text-align: center;
-    padding: 1.1rem 1rem;
-    background: var(--color-accent);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.01em;
+    gap: 0.45rem;
   }
 
-  .specials-callout:hover {
-    background: var(--color-accent-dark);
+  .hero-dot {
+    width: 1.6rem;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.4);
+    transition: background 0.4s ease;
+  }
+
+  .hero-dot.is-active {
+    background: #fff;
+  }
+
+  @media (max-width: 560px) {
+    .hero {
+      min-height: 0;
+      padding-top: 9rem;
+    }
+
+    .hero-dots {
+      display: none;
+    }
+  }
+
+  .notice-bar {
+    background: var(--color-soil);
+    color: var(--color-cream);
+    font-size: 0.92rem;
+  }
+
+  .notice-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .notice-bar a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .notice-bar a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .notice-special {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.7rem;
+    font-weight: 600;
+    color: #fff !important;
   }
 
   .specials-tag {
     display: inline-block;
     padding: 0.2rem 0.6rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.2);
-    font-size: 0.72rem;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: nowrap;
   }
 
-  .specials-text {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
+  .notice-booked {
+    margin-left: auto;
   }
 
-  .steps-grid {
-    display: grid;
-    gap: 0.85rem;
-    margin-top: 1.5rem;
-  }
+  @media (max-width: 640px) {
+    .notice-inner {
+      justify-content: center;
+      text-align: center;
+    }
 
-  @media (min-width: 720px) {
-    .steps-grid {
-      grid-template-columns: repeat(3, 1fr);
+    .notice-booked {
+      margin-left: 0;
     }
   }
 
-  .step-card {
-    display: flex;
-    align-items: baseline;
+  .session-tiles {
+    padding-bottom: 1rem;
+  }
+
+  .tile-grid {
+    display: grid;
     gap: 0.75rem;
-    padding: 1.25rem 1.5rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: var(--color-text);
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 0.75rem;
   }
 
-  .step-number {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-
-  .step-label {
-    font-weight: 600;
-  }
-
-  .category-grid {
-    display: grid;
-    gap: 0.85rem;
-    margin-top: 1.5rem;
-  }
-
-  @media (min-width: 640px) {
-    .category-grid {
-      grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 860px) {
+    .tile-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
     }
   }
 
-  .category-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.4rem 1.6rem;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
+  .tile {
+    position: relative;
+    display: block;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
     border-radius: var(--radius);
+    background: var(--color-forest);
+    color: #fff;
     text-decoration: none;
-    color: var(--color-text);
+  }
+
+  .tile img,
+  .tile-blank {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .tile-blank {
+    background:
+      radial-gradient(circle at 30% 25%, rgba(182, 139, 69, 0.55), transparent 60%),
+      linear-gradient(160deg, var(--color-olive), var(--color-forest));
+  }
+
+  .tile:hover img {
+    transform: scale(1.05);
+  }
+
+  .tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 34, 23, 0.8), rgba(26, 34, 23, 0) 55%);
+  }
+
+  .tile-text {
+    position: absolute;
+    z-index: 1;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .tile-label {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+    font-weight: 500;
+    line-height: 1.15;
+  }
+
+  .tile-cta {
+    font-size: 0.7rem;
     font-weight: 600;
-    transition: border-color 0.15s ease, transform 0.1s ease;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-cream);
   }
 
-  .category-card:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
+  .tile-cta::after {
+    content: ' →';
+    display: inline-block;
+    transition: transform 0.2s ease;
   }
 
-  .category-arrow {
-    color: var(--color-accent);
-  }
-
-  .find-your-setting p {
-    max-width: 42rem;
-  }
-
-  .find-your-setting-actions {
-    margin: 1.25rem 0;
-  }
-
-  .fine-print {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
+  .tile:hover .tile-cta::after {
+    transform: translateX(4px);
   }
 
   .steps-list {
     margin: 1.5rem 0 0;
-    padding-left: 1.25rem;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
     display: grid;
-    gap: 0.6rem;
-    max-width: 32rem;
+    gap: 1rem;
+  }
+
+  @media (min-width: 720px) {
+    .steps-list {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem 2rem;
+    }
+  }
+
+  .steps-list li {
+    counter-increment: step;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--color-border);
+    font-weight: 500;
+  }
+
+  .steps-list li::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-accent);
+  }
+
+  .about-teaser {
+    padding: 4rem 0;
+    text-align: center;
   }
 
   .about-teaser-inner {
-    max-width: 34rem;
+    max-width: 38rem;
+  }
+
+  .about-teaser h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
   }
 
   .about-teaser p {
+    font-size: 1.05rem;
     color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
   }
 
   .closing-cta {
+    padding: 4.5rem 0;
     text-align: center;
+    background: var(--color-forest);
+    color: var(--color-cream);
+  }
+
+  .closing-cta h2 {
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 500;
   }
 
   .closing-inner {
     max-width: 34rem;
     margin: 0 auto;
+  }
+
+  .closing-phone {
+    margin: 1.25rem 0 0;
+    font-size: 0.95rem;
+  }
+
+  .closing-phone a {
+    color: #fff;
+    white-space: nowrap;
   }
 </style>
