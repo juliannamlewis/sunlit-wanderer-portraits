@@ -32,6 +32,11 @@ import BookingButton from './BookingButton.astro';
       backdrop-filter: blur(6px);
       border-top: 1px solid var(--color-border);
     }
+
+    /* Leave room on the right for the chat button when it's on the page */
+    :global(body:has(#chat-widget)) .mobile-booking-bar {
+      padding-right: 5rem;
+    }
   }
 
   .mobile-booking-bar :global(.mobile-book-btn) {

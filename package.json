@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/build-thumbnails.cjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/build-thumbnails.cjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -13,6 +15,7 @@
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^5.1.1",
     "marked": "^15.0.4",
-    "retell-client-js-sdk": "^3.0.1"
+    "retell-client-js-sdk": "^3.0.1",
+    "sharp": "^0.34.5"
   }
 }

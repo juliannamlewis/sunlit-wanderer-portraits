@@ -1,4 +1,6 @@
 ---
+import { thumb } from '../lib/content';
+
 export interface Props {
   id: string;
   folder: string;
@@ -27,11 +29,11 @@ function imgSrc(img: { file: string; folder?: string }) {
           <button
             type="button"
             class="gallery-thumb"
-            data-full={imgSrc(img)}
+            data-full={thumb(imgSrc(img), 'lg')}
             data-alt={img.alt}
             data-index={i}
           >
-            <img src={imgSrc(img)} alt={img.alt} loading="lazy" decoding="async" />
+            <img src={thumb(imgSrc(img))} alt={img.alt} loading="lazy" decoding="async" />
           </button>
         ))}
       </div>

@@ -106,10 +106,19 @@
     z-index: 150;
   }
 
+  /* On phones the chat button sits inside the bottom booking bar (which
+     leaves room for it) instead of floating over the page. */
   @media (max-width: 720px) {
     #chat-widget {
-      bottom: 5.5rem;
+      bottom: 0.65rem;
       right: 1rem;
+    }
+
+    #chat-widget #chat-toggle {
+      width: 3.55rem;
+      height: 3.55rem;
+      border-radius: 0.3rem;
+      box-shadow: none;
     }
   }
 

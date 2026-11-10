@@ -47,6 +47,13 @@ An empty gallery (`"images": []`) simply doesn't render on the site — no
 broken layout, no empty frame. That's intentional, so it's always safe to
 pull a photo out.
 
+You never need to make small or web-sized versions yourself. Every time the
+site is previewed or built, `scripts/build-thumbnails.cjs` makes lightweight
+copies of any new or changed photo in `public/thumbs/` (a small one for
+grids and tiles, a large one for the hero and full-screen view), and the
+pages load those instead of the full-size original. Your originals are
+never changed.
+
 ## How to change pricing, FAQs, or reviews
 
 Open the relevant JSON file and edit the text in quotes. Don't touch

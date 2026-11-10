@@ -10,3 +10,4 @@ chatbot-testing/system-prompt.txt
 .dev.vars
 .wrangler/
 public/agent-knowledge/
+public/thumbs/

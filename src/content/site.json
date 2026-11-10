@@ -26,9 +26,9 @@
     "phoneTel": "tel:+19377198683"
   },
   "social": {
-    "_comment": "Facebook URL needs to be confirmed on a phone before launch — the page has no username, so the numeric-ID form is the only option. Instagram and TikTok are blank until the handles are confirmed; blank means the icon simply does not render.",
+    "_comment": "Facebook URL needs to be confirmed on a phone before launch — the page has no username, so the numeric-ID form is the only option. Instagram confirmed November 10, 2026. TikTok is blank until the handle is confirmed; blank means the link simply does not render.",
     "facebook": "https://www.facebook.com/311951671232",
-    "instagram": "",
+    "instagram": "https://www.instagram.com/the_sunlit_wanderer/",
     "tiktok": "",
     "pinterest": "https://www.pinterest.com/thesunlitwanderer/"
   },

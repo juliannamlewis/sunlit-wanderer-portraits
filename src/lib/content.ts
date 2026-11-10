@@ -13,6 +13,13 @@ export function bookingUrl(key: BookingKey = 'all'): string {
   return siteData.booking[key];
 }
 
+// Points a /images/... photo at its lightweight WebP copy made by
+// scripts/build-thumbnails.cjs: 'sm' (640px) for grids and tiles, 'lg'
+// (1800px) for the hero and full-screen view.
+export function thumb(src: string, size: 'sm' | 'lg' = 'sm'): string {
+  return src.replace(/^\/images\//, `/thumbs/${size}/`).replace(/\.(jpe?g|png)$/i, '.webp');
+}
+
 export function reviewsFor(placement: string) {
   return reviews
     .filter((r) => r.placement === placement)

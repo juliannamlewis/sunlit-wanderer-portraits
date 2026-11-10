@@ -4,7 +4,7 @@
 // type's guidance on the length cards; choosing a length points the booking
 // button at that tier's ShootProof page. Without JavaScript every step still
 // reads as a normal, static section.
-import { site, pricing, sessionLinks, bookingUrl } from '../lib/content';
+import { site, pricing, sessionLinks, bookingUrl, thumb } from '../lib/content';
 
 const modules = import.meta.glob('../content/locations/*.json', { eager: true });
 const locations = Object.values(modules)
@@ -14,7 +14,7 @@ const locations = Object.values(modules)
   .map((loc: any) => ({
     id: loc.id,
     name: loc.name,
-    thumb: `/images/locations/${loc.id}/${loc.images[0].file}`,
+    thumb: thumb(`/images/locations/${loc.id}/${loc.images[0].file}`),
     alt: loc.images[0].alt,
   }));
 
@@ -470,9 +470,11 @@ const byCategory = pricing.whichFits.byCategory as Record<string, Record<string,
   }
 
   @media (max-width: 720px) {
-    /* Clear the fixed mobile booking bar */
+    /* Phones already have a fixed booking bar; stacking a second floating
+       bar on top of it crowds the screen, so the summary sits in place. */
     .planner-summary {
-      bottom: 5.25rem;
+      position: static;
+      margin-top: 1rem;
     }
   }
 
