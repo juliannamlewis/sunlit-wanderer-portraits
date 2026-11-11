@@ -4,8 +4,9 @@ import CopyProse from '../components/CopyProse.astro';
 import { loadCopy } from '../lib/markdown';
 import { thumb } from '../lib/content';
 
-// Photos come from about.md's frontmatter (photo / photoAccent). Leave either
-// blank and it simply doesn't render.
+// Photos come from about.md's frontmatter (photo / photoAccent, plus an
+// optional photoPosition to steer the crop). Leave either photo blank and it
+// simply doesn't render.
 const { frontmatter, html } = loadCopy('about');
 ---
 
@@ -13,11 +14,12 @@ const { frontmatter, html } = loadCopy('about');
   <section class="section">
     <div class:list={['container', { 'about-layout': frontmatter.photo }]}>
       {frontmatter.photo && (
-        <div class="about-photos">
+        <div class:list={['about-photos', { 'has-accent': frontmatter.photoAccent }]}>
           <img
             class="about-photo-main"
             src={thumb(frontmatter.photo, 'lg')}
             alt={frontmatter.photoAlt}
+            style={frontmatter.photoPosition ? `object-position: ${frontmatter.photoPosition}` : undefined}
             decoding="async"
           />
           {frontmatter.photoAccent && (
@@ -56,7 +58,10 @@ const { frontmatter, html } = loadCopy('about');
     width: 100%;
     max-width: 24rem;
     margin: 0 auto;
-    /* Room for the accent photo hanging off the bottom-right corner */
+  }
+
+  /* Room for the accent photo hanging off the bottom-right corner */
+  .about-photos.has-accent {
     padding: 0 2.5rem 3rem 0;
   }
 

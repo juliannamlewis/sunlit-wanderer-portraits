@@ -137,6 +137,7 @@ const howItWorks = [
             class="about-teaser-photo"
             src={thumb(about.frontmatter.photo)}
             alt={about.frontmatter.photoAlt}
+            style={about.frontmatter.photoPosition ? `object-position: ${about.frontmatter.photoPosition}` : undefined}
             loading="lazy"
             decoding="async"
           />

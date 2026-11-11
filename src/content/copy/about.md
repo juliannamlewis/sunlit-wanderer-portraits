@@ -1,10 +1,11 @@
 ---
 title: About
-status: Text approved 2026-09-08. Photos added 2026-11-10.
-photo: /images/about/julie-01-portrait.jpg
-photoAlt: Julie smiling outside a white carriage-house door, her camera on a strap around her neck
-photoAccent: /images/about/julie-02-camera.jpg
-photoAccentAlt: Julie looking out over a white camera held up to her eye
+status: Text approved 2026-09-08. Camera photo added 2026-11-10; Julie is getting a newer portrait to use as the main photo.
+photo: /images/about/julie-02-camera.jpg
+photoAlt: Julie looking out over a white camera held up to her eye
+photoPosition: center 35%
+photoAccent:
+photoAccentAlt:
 metaDescription: About Julie, the photographer behind The Sunlit Wanderer.
 ---
 
