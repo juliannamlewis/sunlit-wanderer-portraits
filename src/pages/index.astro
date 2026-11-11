@@ -130,12 +130,23 @@ const howItWorks = [
   <FaqSection title={generalFaq.title} questions={generalFaq.questions} />
 
   {aboutTeaser && (
-    <section class="section-alt about-teaser">
+    <section class:list={['section-alt about-teaser', { 'has-photo': about.frontmatter.photo }]}>
       <div class="container about-teaser-inner">
-        <span class="eyebrow">Nice to meet you</span>
-        <h2>Hi, I'm Julie</h2>
-        <p set:html={aboutTeaser} />
-        <a href="/about" class="btn btn-outline btn-small">More about me</a>
+        {about.frontmatter.photo && (
+          <img
+            class="about-teaser-photo"
+            src={thumb(about.frontmatter.photo)}
+            alt={about.frontmatter.photoAlt}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <div class="about-teaser-text">
+          <span class="eyebrow">Nice to meet you</span>
+          <h2>Hi, I'm Julie</h2>
+          <p set:html={aboutTeaser} />
+          <a href="/about" class="btn btn-outline btn-small">More about me</a>
+        </div>
       </div>
     </section>
   )}
@@ -512,6 +523,36 @@ const howItWorks = [
     font-size: 1.05rem;
     color: var(--color-text-muted);
     margin-bottom: 1.5rem;
+  }
+
+  /* With a photo: picture beside the text, left-aligned like a magazine intro */
+  .about-teaser.has-photo .about-teaser-inner {
+    max-width: 58rem;
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .about-teaser-photo {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: var(--radius);
+    box-shadow: 0 18px 40px rgba(26, 34, 23, 0.22);
+  }
+
+  @media (min-width: 760px) {
+    .about-teaser.has-photo {
+      text-align: left;
+    }
+
+    .about-teaser.has-photo .about-teaser-inner {
+      grid-template-columns: minmax(0, 20rem) 1fr;
+      gap: 3.5rem;
+    }
   }
 
   .closing-cta {

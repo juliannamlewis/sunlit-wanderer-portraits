@@ -2,14 +2,83 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CopyProse from '../components/CopyProse.astro';
 import { loadCopy } from '../lib/markdown';
+import { thumb } from '../lib/content';
 
+// Photos come from about.md's frontmatter (photo / photoAccent). Leave either
+// blank and it simply doesn't render.
 const { frontmatter, html } = loadCopy('about');
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.metaDescription}>
   <section class="section">
-    <div class="container">
+    <div class:list={['container', { 'about-layout': frontmatter.photo }]}>
+      {frontmatter.photo && (
+        <div class="about-photos">
+          <img
+            class="about-photo-main"
+            src={thumb(frontmatter.photo, 'lg')}
+            alt={frontmatter.photoAlt}
+            decoding="async"
+          />
+          {frontmatter.photoAccent && (
+            <img
+              class="about-photo-accent"
+              src={thumb(frontmatter.photoAccent)}
+              alt={frontmatter.photoAccentAlt}
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </div>
+      )}
       <CopyProse html={html} />
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .about-layout {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 820px) {
+    .about-layout {
+      grid-template-columns: minmax(0, 24rem) 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+  }
+
+  .about-photos {
+    position: relative;
+    width: 100%;
+    max-width: 24rem;
+    margin: 0 auto;
+    /* Room for the accent photo hanging off the bottom-right corner */
+    padding: 0 2.5rem 3rem 0;
+  }
+
+  .about-photo-main {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: var(--radius);
+    box-shadow: 0 18px 40px rgba(26, 34, 23, 0.22);
+  }
+
+  .about-photo-accent {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 45%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center 45%;
+    border: 6px solid var(--color-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 28px rgba(26, 34, 23, 0.25);
+  }
+</style>
